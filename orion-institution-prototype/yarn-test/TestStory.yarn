@@ -1,0 +1,35 @@
+title: Start
+tags: 
+position: 132.32368755340576,6.093853771686554
+---
+This is a test script for yarn spinner.
+This will show how working with yarn is done, and make sure everything is working in the project correctly.
+
+Here's some dialogue options
+-> This is one dialogue option
+    This is the text that displays when you select this option
+-> This is another
+    Now you'll never know what happened if you picked the first option
+
+If that worked correctly, you should see this no matter what now.
+
+This is another test, to see how jumping to other nodes work;
+-> Get the name of a colour
+    <<jump Colour>>
+-> Get the name of an animal
+    <<jump Animal>>
+
+If that worked correctly, you shouldn't be seeing this line.
+===
+
+title: Colour
+tags:
+---
+Orange.
+===
+
+title: Animal
+tags:
+---
+Whale Shark.
+===

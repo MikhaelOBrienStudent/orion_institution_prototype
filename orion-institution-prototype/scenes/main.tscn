@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://c0ag56dv7yy35"]
+
+[ext_resource type="PackedScene" uid="uid://bv42g323prh5f" path="res://addons/YarnSpinner-Godot/Scenes/DefaultDialogueSystem.tscn" id="1_o5qli"]
+[ext_resource type="Resource" uid="uid://c4a4xwnpvgqq7" path="res://yarn-test/TestStory.yarnproject" id="2_tbgi4"]
+
+[node name="Main" type="Node"]
+
+[node name="YarnSpinnerCanvasLayer" parent="." instance=ExtResource("1_o5qli")]
+
+[node name="DialogueRunner" parent="YarnSpinnerCanvasLayer" index="0"]
+yarnProject = ExtResource("2_tbgi4")
+autoStart = true
+startNode = "Start"
+
+[node name="OptionsPresenter" parent="YarnSpinnerCanvasLayer" index="3" node_paths=PackedStringArray("lastLineText", "lastLineContainer", "lastLineCharacterNameText")]
+showsLastLine = true
+lastLineText = NodePath("../LinePresenter/PresenterControl/LineText")
+lastLineContainer = NodePath("../LinePresenter/PresenterControl")
+lastLineCharacterNameText = NodePath("../LinePresenter/PresenterControl/CharacterNameText")
+useFadeEffect = true
+
+[editable path="YarnSpinnerCanvasLayer"]
