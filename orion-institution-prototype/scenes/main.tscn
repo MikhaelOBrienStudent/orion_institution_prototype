@@ -1,48 +1,49 @@
-[gd_scene load_steps=3 format=3 uid="uid://c0ag56dv7yy35"]
+[gd_scene load_steps=7 format=3 uid="uid://c0ag56dv7yy35"]
 
-[ext_resource type="PackedScene" uid="uid://dqe5yshlcmnpg" path="res://addons/YarnSpinner-Godot/Scenes/RoundedDialogueSystem.tscn" id="1_o5qli"]
-[ext_resource type="Resource" uid="uid://c4a4xwnpvgqq7" path="res://yarn-test/TestStory.yarnproject" id="2_tbgi4"]
+[ext_resource type="Texture2D" uid="uid://d4ei4cgokc1v5" path="res://Assets/Backgrounds/CAP_A1_Env_3.png" id="1_8gbba"]
+[ext_resource type="Theme" uid="uid://iw676ro4ts35" path="res://UI/Themes/dialogue_theme.tres" id="1_21xkr"]
+[ext_resource type="PackedScene" uid="uid://qqgoryldvogf" path="res://Templates/character.tscn" id="1_bo1nx"]
+[ext_resource type="Script" uid="uid://bmcj0r53sbh3h" path="res://Scripts/Game Management/quit_button.gd" id="2_6bp64"]
+[ext_resource type="PackedScene" uid="uid://rskqyvn1oq28" path="res://Templates/DialogueSystem.tscn" id="2_8gbba"]
+[ext_resource type="Resource" uid="uid://c4a4xwnpvgqq7" path="res://yarn-test/TestStory.yarnproject" id="4_jjvhh"]
 
 [node name="Main" type="Node"]
 
-[node name="RoundedYarnSpinnerCanvasLayer" parent="." instance=ExtResource("1_o5qli")]
+[node name="Scene1" type="Node" parent="."]
 
-[node name="DialogueRunner" parent="RoundedYarnSpinnerCanvasLayer" index="0"]
-yarnProject = ExtResource("2_tbgi4")
+[node name="Background" type="Sprite2D" parent="Scene1"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_8gbba")
+centered = false
+
+[node name="Character" parent="Scene1" instance=ExtResource("1_bo1nx")]
+
+[node name="DialogueCanvasLayer" parent="Scene1" instance=ExtResource("2_8gbba")]
+
+[node name="DialogueRunner" parent="Scene1/DialogueCanvasLayer" index="0"]
+yarnProject = ExtResource("4_jjvhh")
 autoStart = true
+startNode = "Start"
 
-[node name="LineText" parent="RoundedYarnSpinnerCanvasLayer/LinePresenter/PresenterControl" index="0"]
-anchor_left = 0.516
-anchor_top = 0.185
-anchor_right = 0.516
-anchor_bottom = 0.185
-offset_left = -514.432
-offset_top = 0.119987
-offset_right = 513.568
-offset_bottom = 192.12
+[node name="ContinueButton" parent="Scene1/DialogueCanvasLayer/LinePresenter/PresenterControl" index="2" node_paths=PackedStringArray("talking_character")]
+talking_character = NodePath("../../../../Character")
 
-[node name="CharacterNameText" parent="RoundedYarnSpinnerCanvasLayer/LinePresenter/PresenterControl/LineText" index="2"]
-visible = false
+[node name="GUI" type="CanvasLayer" parent="."]
 
-[node name="CharacterNameBubble" parent="RoundedYarnSpinnerCanvasLayer/LinePresenter/PresenterControl/LineText/CharacterNameText" index="1"]
-offset_bottom = -23.0
+[node name="Quit_button" type="Button" parent="GUI"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -96.0
+offset_top = 24.0
+offset_right = -23.0
+offset_bottom = 88.0
+grow_horizontal = 0
+theme = ExtResource("1_21xkr")
+theme_override_font_sizes/font_size = 41
+text = "X"
+script = ExtResource("2_6bp64")
 
-[node name="VBoxContainer" parent="RoundedYarnSpinnerCanvasLayer/OptionsPresenter/PresenterControl" index="0"]
-offset_left = -412.0
-offset_top = 53.0
-offset_right = 297.0
-offset_bottom = 261.0
+[connection signal="pressed" from="GUI/Quit_button" to="GUI/Quit_button" method="_on_pressed"]
 
-[node name="LastLineText" parent="RoundedYarnSpinnerCanvasLayer/OptionsPresenter/PresenterControl" index="1"]
-offset_left = -496.0
-offset_bottom = 312.0
-
-[node name="LastLineCharacterNameText" parent="RoundedYarnSpinnerCanvasLayer/OptionsPresenter/PresenterControl" index="2"]
-offset_left = -496.0
-offset_right = -21.0
-offset_bottom = 179.0
-
-[node name="CharacterNameBubble" parent="RoundedYarnSpinnerCanvasLayer/OptionsPresenter/PresenterControl/LastLineCharacterNameText" index="1"]
-offset_right = 16.0
-
-[editable path="RoundedYarnSpinnerCanvasLayer"]
+[editable path="Scene1/DialogueCanvasLayer"]

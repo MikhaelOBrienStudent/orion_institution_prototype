@@ -1,0 +1,220 @@
+[gd_scene load_steps=11 format=3 uid="uid://rskqyvn1oq28"]
+
+[ext_resource type="Script" uid="uid://budnld4qd513n" path="res://addons/YarnSpinner-Godot/Runtime/DialogueRunner.cs" id="1_j0g8m"]
+[ext_resource type="Script" uid="uid://b8nsxur6opm4k" path="res://addons/YarnSpinner-Godot/Runtime/Async/LinePresenter.cs" id="2_gatye"]
+[ext_resource type="Script" uid="uid://ba6k2ox6e4qg" path="res://addons/YarnSpinner-Godot/Runtime/Async/OptionsPresenter.cs" id="3_d8i44"]
+[ext_resource type="Theme" uid="uid://iw676ro4ts35" path="res://UI/Themes/dialogue_theme.tres" id="3_je7ng"]
+[ext_resource type="StyleBox" uid="uid://c0ptmisyv7bhs" path="res://UI/Themes/character_name_panel.tres" id="4_2b8sj"]
+[ext_resource type="PackedScene" uid="uid://b56ngcrq31nc5" path="res://Templates/OptionItem.tscn" id="4_lsd04"]
+[ext_resource type="FontFile" uid="uid://dq6rrp5fxbh42" path="res://UI/Fonts/ricasso/Ricasso-Regular.ttf" id="4_uuqvp"]
+[ext_resource type="Script" uid="uid://b1o5xpu22evvx" path="res://addons/YarnSpinner-Godot/Runtime/InMemoryVariableStorage.cs" id="5_1g5fu"]
+[ext_resource type="Script" uid="uid://c5gxawri864uf" path="res://addons/YarnSpinner-Godot/Runtime/LineProviders/TextLineProvider.cs" id="6_8jeg3"]
+[ext_resource type="Script" uid="uid://c0ud1tce62qen" path="res://Scripts/Character/continue_button.gd" id="6_kc84l"]
+
+[node name="DialogueCanvasLayer" type="CanvasLayer"]
+
+[node name="DialogueRunner" type="Control" parent="." node_paths=PackedStringArray("variableStorage", "lineProvider", "dialoguePresenters")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_j0g8m")
+variableStorage = NodePath("../InMemoryVariableStorage")
+lineProvider = NodePath("../TextLineProvider")
+dialoguePresenters = [NodePath("../LinePresenter"), NodePath("../OptionsPresenter")]
+
+[node name="VariableDebugText" type="RichTextLabel" parent="."]
+
+[node name="LinePresenter" type="Control" parent="." node_paths=PackedStringArray("dialogueRunner", "presenterControl", "lineText", "continueButton", "characterNameText", "characterNameContainer")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("2_gatye")
+dialogueRunner = NodePath("../DialogueRunner")
+presenterControl = NodePath("PresenterControl")
+lineText = NodePath("PresenterControl/DialogueBox/LineText")
+continueButton = NodePath("PresenterControl/ContinueButton")
+characterNameText = NodePath("PresenterControl/NameBox/CharacterNameText")
+characterNameContainer = NodePath("PresenterControl/NameBox/CharacterNameText")
+useFadeEffect = false
+fadeUpDuration = 0.1
+ConvertHTMLToBBCode = true
+
+[node name="PresenterControl" type="Control" parent="LinePresenter"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="DialogueBox" type="PanelContainer" parent="LinePresenter/PresenterControl"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = -312.0
+offset_right = -8.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("3_je7ng")
+
+[node name="LineText" type="RichTextLabel" parent="LinePresenter/PresenterControl/DialogueBox"]
+layout_mode = 2
+theme = ExtResource("3_je7ng")
+bbcode_enabled = true
+text = "The dialogue text should appear here!"
+
+[node name="NameBox" type="PanelContainer" parent="LinePresenter/PresenterControl"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 64.0
+offset_top = -402.0
+offset_right = -1240.0
+offset_bottom = -312.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("3_je7ng")
+theme_override_styles/panel = ExtResource("4_2b8sj")
+
+[node name="CharacterNameText" type="RichTextLabel" parent="LinePresenter/PresenterControl/NameBox"]
+self_modulate = Color(0, 0, 0, 1)
+layout_mode = 2
+theme = ExtResource("3_je7ng")
+theme_override_fonts/normal_font = ExtResource("4_uuqvp")
+theme_override_font_sizes/bold_italics_font_size = 40
+theme_override_font_sizes/italics_font_size = 40
+theme_override_font_sizes/mono_font_size = 40
+theme_override_font_sizes/normal_font_size = 40
+theme_override_font_sizes/bold_font_size = 40
+bbcode_enabled = true
+text = "Character Name"
+fit_content = true
+scroll_active = false
+
+[node name="ContinueButton" type="Button" parent="LinePresenter/PresenterControl"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -204.0
+offset_top = -112.0
+offset_right = -24.0
+offset_bottom = -20.0
+grow_horizontal = 0
+grow_vertical = 0
+focus_mode = 0
+mouse_default_cursor_shape = 2
+theme = ExtResource("3_je7ng")
+theme_override_font_sizes/font_size = 36
+text = "NEXT"
+script = ExtResource("6_kc84l")
+
+[node name="OptionsPresenter" type="Control" parent="." node_paths=PackedStringArray("presenterControl", "lastLineCharacterNameContainer", "optionParent")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("3_d8i44")
+presenterControl = NodePath("PresenterControl")
+optionItemPrefab = ExtResource("4_lsd04")
+lastLineCharacterNameContainer = NodePath("PresenterControl/LastLineNameBox/LastLineCharacterNameText")
+optionParent = NodePath("PresenterControl/VBoxContainer")
+useFadeEffect = false
+
+[node name="PresenterControl" type="Control" parent="OptionsPresenter"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="OptionsPresenter/PresenterControl"]
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -584.0
+offset_top = -108.0
+offset_right = 588.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 8
+
+[node name="LastLineBox" type="PanelContainer" parent="OptionsPresenter/PresenterControl"]
+visible = false
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -312.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("3_je7ng")
+
+[node name="LastLineText" type="RichTextLabel" parent="OptionsPresenter/PresenterControl/LastLineBox"]
+layout_mode = 2
+theme = ExtResource("3_je7ng")
+bbcode_enabled = true
+text = "The last line text goes here"
+scroll_active = false
+
+[node name="LastLineNameBox" type="PanelContainer" parent="OptionsPresenter/PresenterControl"]
+visible = false
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 64.0
+offset_top = -402.0
+offset_right = -1240.0
+offset_bottom = -312.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("3_je7ng")
+theme_override_styles/panel = ExtResource("4_2b8sj")
+
+[node name="LastLineCharacterNameText" type="RichTextLabel" parent="OptionsPresenter/PresenterControl/LastLineNameBox"]
+self_modulate = Color(0, 0, 0, 1)
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("4_uuqvp")
+theme_override_font_sizes/bold_italics_font_size = 40
+theme_override_font_sizes/italics_font_size = 40
+theme_override_font_sizes/mono_font_size = 40
+theme_override_font_sizes/normal_font_size = 40
+theme_override_font_sizes/bold_font_size = 40
+bbcode_enabled = true
+text = "Character Name"
+
+[node name="InMemoryVariableStorage" type="Node" parent="."]
+script = ExtResource("5_1g5fu")
+
+[node name="TextLineProvider" type="Node2D" parent="."]
+script = ExtResource("6_8jeg3")
+
+[connection signal="pressed" from="LinePresenter/PresenterControl/ContinueButton" to="LinePresenter/PresenterControl/ContinueButton" method="_on_pressed"]

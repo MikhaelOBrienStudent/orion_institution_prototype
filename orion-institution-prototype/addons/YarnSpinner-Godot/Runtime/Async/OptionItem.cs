@@ -11,81 +11,81 @@ namespace YarnSpinnerGodot;
 
 public partial class OptionItem : Control
 {
-    [Export] RichTextLabel? text;
-    [Export] private BaseButton? button;
-    public YarnTaskCompletionSource<DialogueOption?>? OnOptionSelected;
-    public System.Threading.CancellationToken completionToken;
+	[Export] RichTextLabel? text;
+	[Export] private BaseButton? button;
+	public YarnTaskCompletionSource<DialogueOption?>? OnOptionSelected;
+	public System.Threading.CancellationToken completionToken;
 
-    private bool hasSubmittedOptionSelection = false;
+	private bool hasSubmittedOptionSelection = false;
 
-    public void FocusButton()
-    {
-        if (!IsInstanceValid(button))
-        {
-            GD.PushError($"No {button} is set on this {nameof(OptionItem)}");
-            return;
-        }
+	public void FocusButton()
+	{
+		if (!IsInstanceValid(button))
+		{
+			GD.PushError($"No {button} is set on this {nameof(OptionItem)}");
+			return;
+		}
 
-        button!.GrabFocus();
-    }
+		button!.GrabFocus();
+	}
 
 
-    private DialogueOption? _option;
+	private DialogueOption? _option;
 
-    public DialogueOption? Option
-    {
-        get => _option;
+	public DialogueOption? Option
+	{
+		get => _option;
 
-        set
-        {
-            if (value == null)
-            {
-                _option = null;
-                return;
-            }
+		set
+		{
+			if (value == null)
+			{
+				_option = null;
+				return;
+			}
 
-            _option = value;
+			_option = value;
 
-            hasSubmittedOptionSelection = false;
+			hasSubmittedOptionSelection = false;
 
-            // When we're given an Option, use its text and update our
-            // interactibility.
-            text!.Text = value.Line.TextWithoutCharacterName.Text;
-            Visible = value.IsAvailable;
-        }
-    }
+			// When we're given an Option, use its text and update our
+			// interactibility.
+			text!.Text = value.Line.TextWithoutCharacterName.Text;
+			Visible = value.IsAvailable;
+		}
+	}
 
-    public override void _Ready()
-    {
-        if (!IsInstanceValid(text))
-        {
-            GD.PushError($"No {text} {nameof(RichTextLabel)} is set on this {nameof(OptionItem)}");
-        }
+	public override void _Ready()
+	{
+		if (!IsInstanceValid(text))
+		{
+			GD.PushError($"No {text} {nameof(RichTextLabel)} is set on this {nameof(OptionItem)}");
+		}
 
-        if (!IsInstanceValid(button))
-        {
-            GD.PushError($"No {button} is set on this {nameof(OptionItem)}");
-        }
-        else
-        {
-            button!.Connect(BaseButton.SignalName.Pressed, Callable.From(InvokeOptionSelected));
-        }
-    }
+		if (!IsInstanceValid(button))
+		{
+			GD.PushError($"No {button} is set on this {nameof(OptionItem)}");
+		}
+		else
+		{
+			button!.Connect(BaseButton.SignalName.Pressed, Callable.From(InvokeOptionSelected));
+		}
+	}
 
-    public void InvokeOptionSelected()
-    {
-        if (!Visible)
-        {
-            return;
-        }
+	public void InvokeOptionSelected()
+	{
+		if (!Visible)
+		{
+			return;
+		}
 
-        // We only want to invoke this once, because it's an error to
-        // submit an option when the Dialogue Runner isn't expecting it. To
-        // prevent this, we'll only invoke this if the flag hasn't been cleared already.
-        if (hasSubmittedOptionSelection == false && !completionToken.IsCancellationRequested)
-        {
-            hasSubmittedOptionSelection = true;
-            OnOptionSelected?.TrySetResult(this.Option);
-        }
-    }
+		// We only want to invoke this once, because it's an error to
+		// submit an option when the Dialogue Runner isn't expecting it. To
+		// prevent this, we'll only invoke this if the flag hasn't been cleared already.
+		if (hasSubmittedOptionSelection == false && !completionToken.IsCancellationRequested)
+		{
+			hasSubmittedOptionSelection = true;
+			OnOptionSelected?.TrySetResult(this.Option);
+		}
+	}
 }
