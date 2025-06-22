@@ -5,3 +5,6 @@ class_name Character
 
 func Talk() -> void:
 	animation_player.play("talk_jump")
+
+func Leave() -> void:
+	self.visible = false

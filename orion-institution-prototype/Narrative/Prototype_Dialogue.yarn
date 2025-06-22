@@ -1,0 +1,205 @@
+title: Start
+---
+//MC
+<<declare $friendship = 0>>
+<<declare $name = "">>
+
+What is your name?
+(Your name is Mifrah)
+<<set $name = "Mifrah">>
+
+//MC
+-> {$name}:Hello there. Welcome to the Orion Institute.
+    <<set $friendship +=1>>
+-> {$name}:Greetings Entity C-50-093
+    <<set $friendship -=1>>
+-> {$name}:(say nothing)
+
+//Cherry
+Who are you?
+
+//MC
+-> Tell the truth
+    {$name}:My name is {$name}. I'll be the researcher who will be working with you! What's your name?
+    <<set $friendship +=2>>
+    //Cherry
+    Cherry:... My name is Cherry.
+-> Lie
+    {$name}: My name is Rebecca.
+    <<set $friendship -=1>>
+    //Cherry
+    Cherry:Now why would you say  that, {$name}? Our friendship can't be based on lies. I'm Cherry, if you even cared.
+-> (say nothing)  
+    //Cherry
+    Cherry:Well I'm Cherry. Good to make your acquaintance, I guess.
+
+//MC
+{$name}:Do you know why you're here?
+
+//Cherry
+<<if $friendship >=1>>
+Cherry:Well {$name}, I presume it's a chance for you and your... kind, to poke and prod at me, and see what makes me tick?
+<<endif>>
+
+//Cherry
+<<if $friendship <=-1>>
+Cherry:Oh, so we can prance around and braid each others hair, of course.
+<<endif>>
+
+//Cherry
+<<if $friendship ==0>>
+Cherry:...
+<<endif>>
+
+//MC
+{$name}:You're here so that we can understand you more. Here at the Orion Institute, we do things to better our understanding of the world outside our own. We're not here to treat you terribly, we're here to work with you. 
+
+//Cherry
+Cherry:Uh huh. Sure.
+
+//MC
+-> {$name}:You seem to speak our language very well. Is that common where you're from?
+    <<set $friendship +=1>>
+    <<jump GoodEng>>
+-> {$name}:I didn't expect your english to be so good. Why are you so good at it?
+    <<set $friendship -=1>>
+    <<jump BadEng>>
+-> {$name}:Typically you entities aren't so good with my language. Why do you speak it so well?
+    <<set $friendship -=2>>
+    <<jump BadEng>>
+===
+title: GoodEng
+---
+//Cherry
+Cherry:If you must know, yes it is. Most of us learn English from a young age, as we often interact with you humans.
+//MC
+{$name}:Interesting. I didn't know our two species connected much. I'm learning so much already.
+<<jump Species>>
+===
+title: BadEng
+---
+//Cherry
+Cherry:Why do I? Why do you? I wouldn't expect someone as... stupid as you to be eloquent.
+//MC
+{$name}:Well excuse you. I'm just trying to make conversation!
+<<jump Species>>
+===
+title: Species
+---
+//MC
+-> {$name}:So tell me about... your type.
+    <<set $friendship -=1>>
+-> {$name}:I've never met another like you. Would you mind telling me a bit about yourself? And others within your species?
+
+<<if $friendship >=2>>
+//Cherry
+Cherry:Well. Where to even start. I suppose we're known for being tough. We all have physical forms, I know not every species does. Colour is a big part of who we are, only the lowest of the low believe in plain hair, or dull eyes.
+<<endif>>
+<<if $friendship <=-2>>
+//Cherry 
+Cherry:I don't see how thats any of your business. Why should you know more about me, then I do you?
+<<endif>>
+
+-> (Ask about hair)
+    <<set $friendship -=2>>
+    <<jump BadChoice>>
+-> (Ask about eyes)
+    <<set $friendship -=2>>
+    <<jump BadChoice>>
+-> (Ask about clothes)
+    <<set $friendship +=1>>
+    <<jump Clothes>>
+-> (Move on)
+    <<jump InMates>>
+===
+
+title: BadChoice
+---
+//Cherry
+Cherry:How. DARE YOU! What do you think gives you the right to question me like this? Do you not think pink is the perfect colour to match who I am? Do you think of me as some sort of borish prude? God, you humans are all the same.
+    <<jump InMates>>
+===
+
+title: Clothes
+---
+//Cherry
+Cherry:Oh, you like? Why thank you. I was going for... stylish yet still meaning business, you know? I'm glad you find it... appealing.
+    <<jump Choices>>
+===
+
+title: Choices
+---
+-> (Ask about hair)
+    <<set $friendship -=2>>
+    <<jump BadChoice>>
+-> (Ask about eyes)
+    <<set $friendship -=2>>
+    <<jump BadChoice>>
+-> (Move on)
+    <<jump InMates>>
+===
+
+title: InMates
+---
+//Cherry
+Cherry:I've heard voices, and sounds coming from the rooms around me. I presume I'm not the only one who's been... captured? I did hear a bit of music one night.
+-> (Truth)
+    //MC
+    <<set $friendship +=1>>
+    {$name}:I'm not supposed to talk about the other entities... but between you and me, we do have an Instrumental class on your left. I would assume that's who you heard.
+    //Cherry
+    Cherry:Interesting... Good to know, thank you.
+-> (Lie)
+    //MC
+    <<set $friendship -=1>>
+    {$name}:You must be hearing things. You're alone in this area at the moment.
+-> (Avoid)
+    //MC
+    {$name}:I can't answer that question, I'm sorry.
+    //Cherry
+    Well, never hurts to ask, I guess.
+
+<<if $friendship ==6>>
+//Cherry
+Cherry:Can I ask, why do you do this job? You seem less... arrogant, and rude, then others I've heard stories about. This line of work isn't what I'd envision for you.
+//MC
+{$name}:Well, I genuinely want to understand you. All of you. I believe that if we understand each other, maybe we can help each other.
+//Cherry
+Cherry:What a refreshing mindset.
+<<endif>>
+
+-> (Ask about family)
+    //MC
+    {$name}:Do you have any family? Or anyone that would maybe miss you while you're here?
+    //Cherry
+    <<if $friendship >=3>>
+    Cherry:I... I don't want to talk about that right now.
+    <<jump Goodbye>>
+    <<endif>>
+    //Cherry
+    <<if $friendship <=2>>
+    Cherry:I don't see how that's any of your business
+    <<jump Goodbye>>
+    <<endif>>
+-> (Say goodbye)
+    <<jump Goodbye>>
+===
+
+title: Goodbye
+---
+-> {$name}:Thank you for today.
+    //MC
+    <<set $friendship +=1>>
+    {$name}:It's been very wonderful talking to you today Cherry, so thank you. I do have to go check in on my other patients, but I will come by again tomorrow. 
+    //Cherry
+    Cherry:Looking forward to our next meeting, {$name}.
+-> Goodbye
+    //MC
+    {$name}:Well, we've made good progress today. I'll be back tomorrow.
+    //Cherry
+    Cherry:If you insist.
+-> (say nothing)   
+    //Cherry
+    Cherry:Well I'm done. I don't have anything else to say. Come back and torture me some other time.
+
+===

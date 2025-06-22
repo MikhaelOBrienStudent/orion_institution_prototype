@@ -1,0 +1,14 @@
+[remap]
+
+importer="yarnscript"
+type="Resource"
+uid="uid://d3gdi10ibewd"
+path="res://.godot/imported/Prototype_Dialogue.yarn-09f28010f58446d654362c86eb47377c.tres"
+
+[deps]
+
+source_file="res://Narrative/Prototype_Dialogue.yarn"
+dest_files=["res://.godot/imported/Prototype_Dialogue.yarn-09f28010f58446d654362c86eb47377c.tres"]
+
+[params]
+

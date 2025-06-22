@@ -1,7 +1,19 @@
-[gd_scene load_steps=4 format=3 uid="uid://b56ngcrq31nc5"]
+[gd_scene load_steps=6 format=3 uid="uid://b56ngcrq31nc5"]
 
 [ext_resource type="Script" uid="uid://e8endtpbxsql" path="res://addons/YarnSpinner-Godot/Runtime/Async/OptionItem.cs" id="1_lld20"]
 [ext_resource type="Theme" uid="uid://iw676ro4ts35" path="res://UI/Themes/dialogue_theme.tres" id="2_4wijh"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4wijh"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_alv4h"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pe0aq"]
 content_margin_left = 7.0
@@ -24,18 +36,22 @@ grow_vertical = 0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxEmpty_4wijh")
 script = ExtResource("1_lld20")
-text = NodePath("RichTextLabel")
+text = NodePath("PanelContainer/RichTextLabel")
 button = NodePath("Button")
 
 [node name="Button" type="Button" parent="."]
 layout_mode = 2
 theme = ExtResource("2_4wijh")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
+[node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 6
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_alv4h")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="PanelContainer"]
+layout_mode = 2
 mouse_filter = 2
 theme = ExtResource("2_4wijh")
 theme_override_colors/default_color = Color(0, 0, 0, 1)
@@ -49,4 +65,4 @@ bbcode_enabled = true
 text = "[center]Option View[/center]"
 fit_content = true
 scroll_active = false
-autowrap_mode = 0
+autowrap_mode = 2
