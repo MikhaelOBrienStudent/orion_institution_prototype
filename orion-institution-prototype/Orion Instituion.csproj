@@ -4,5 +4,5 @@
     <EnableDynamicLoading>true</EnableDynamicLoading>
     <RootNamespace>OrionInstituion</RootNamespace>
   </PropertyGroup>
-  <Import Project="addons\YarnSpinner-Godot\YarnSpinner-Godot.props"/>
+  <Import Project="addons\YarnSpinner-Godot\YarnSpinner-Godot.props" />
 </Project>
