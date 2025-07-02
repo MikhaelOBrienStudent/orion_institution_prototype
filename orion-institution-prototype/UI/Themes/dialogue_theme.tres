@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=10 format=3 uid="uid://iw676ro4ts35"]
+[gd_resource type="Theme" load_steps=11 format=3 uid="uid://iw676ro4ts35"]
 
 [ext_resource type="FontFile" uid="uid://dq6rrp5fxbh42" path="res://UI/Fonts/ricasso/Ricasso-Regular.ttf" id="1_ltvyw"]
 [ext_resource type="StyleBox" uid="uid://day233adg2oec" path="res://UI/Themes/button_panel_disabled.tres" id="2_4f0h6"]
@@ -9,6 +9,22 @@
 [ext_resource type="FontFile" uid="uid://bkus4862uk5n6" path="res://UI/Fonts/Industrial/Italic/Industrial-Italic.TTF" id="7_4f0h6"]
 [ext_resource type="FontFile" uid="uid://yni7qjimcu7o" path="res://UI/Fonts/0xa000/0xA000-Squareish-Bold.ttf" id="7_r7she"]
 [ext_resource type="FontFile" uid="uid://cx8sucjhrqkya" path="res://UI/Fonts/0xa000/0xA000-Regular.ttf" id="9_nqere"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r7she"]
+content_margin_left = 40.0
+content_margin_top = 20.0
+content_margin_right = 40.0
+content_margin_bottom = 20.0
+bg_color = Color(0.101961, 0.156863, 0.180392, 0.823529)
+border_width_left = 4
+border_width_top = 3
+border_width_right = 4
+border_width_bottom = 3
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 24
+corner_radius_bottom_right = 24
+corner_detail = 1
+anti_aliasing = false
 
 [resource]
 Button/colors/font_color = Color(0, 0, 0, 1)
@@ -22,6 +38,8 @@ Button/styles/hover = ExtResource("4_nqere")
 Button/styles/hover_pressed = ExtResource("5_fwi1k")
 Button/styles/normal = ExtResource("3_r7she")
 Button/styles/pressed = ExtResource("5_fwi1k")
+LineEdit/fonts/font = ExtResource("1_ltvyw")
+LineEdit/styles/normal = SubResource("StyleBoxFlat_r7she")
 PanelContainer/styles/panel = ExtResource("6_sex63")
 RichTextLabel/colors/default_color = Color(1, 1, 1, 1)
 RichTextLabel/font_sizes/bold_font_size = 50

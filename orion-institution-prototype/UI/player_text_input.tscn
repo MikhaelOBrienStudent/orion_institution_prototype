@@ -1,0 +1,36 @@
+[gd_scene load_steps=4 format=3 uid="uid://ccwppukwl520n"]
+
+[ext_resource type="Theme" uid="uid://iw676ro4ts35" path="res://UI/Themes/dialogue_theme.tres" id="1_eqald"]
+[ext_resource type="FontFile" uid="uid://coy4a7cny5xwr" path="res://UI/Fonts/ricasso/Ricasso-Regular.woff" id="2_0y8l1"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_wftmq"]
+font = ExtResource("2_0y8l1")
+font_size = 25
+outline_size = 14
+outline_color = Color(0, 0, 0, 1)
+
+[node name="PlayerTextInput" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LineEdit" type="LineEdit" parent="."]
+layout_mode = 0
+offset_left = -320.0
+offset_right = 320.0
+offset_bottom = 63.0
+theme = ExtResource("1_eqald")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = -288.0
+offset_top = -56.0
+offset_right = 288.0
+offset_bottom = -17.0
+text = "[INPUT PROMPT HERE]"
+label_settings = SubResource("LabelSettings_wftmq")
+horizontal_alignment = 1
+vertical_alignment = 1
