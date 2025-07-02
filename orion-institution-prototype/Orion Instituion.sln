@@ -1,6 +1,6 @@
 ﻿Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orion Instituion", "Orion Instituion.csproj", "{45CE2323-490E-4D16-914A-DBD6A91D3FE5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orion Instituion", "Orion Instituion.csproj", "{C9CE38A9-089D-4747-A33F-D2ED50108EE2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -9,11 +9,11 @@ Global
 	ExportRelease|Any CPU = ExportRelease|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{45CE2323-490E-4D16-914A-DBD6A91D3FE5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{45CE2323-490E-4D16-914A-DBD6A91D3FE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{45CE2323-490E-4D16-914A-DBD6A91D3FE5}.ExportDebug|Any CPU.ActiveCfg = ExportDebug|Any CPU
-		{45CE2323-490E-4D16-914A-DBD6A91D3FE5}.ExportDebug|Any CPU.Build.0 = ExportDebug|Any CPU
-		{45CE2323-490E-4D16-914A-DBD6A91D3FE5}.ExportRelease|Any CPU.ActiveCfg = ExportRelease|Any CPU
-		{45CE2323-490E-4D16-914A-DBD6A91D3FE5}.ExportRelease|Any CPU.Build.0 = ExportRelease|Any CPU
+		{C9CE38A9-089D-4747-A33F-D2ED50108EE2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C9CE38A9-089D-4747-A33F-D2ED50108EE2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C9CE38A9-089D-4747-A33F-D2ED50108EE2}.ExportDebug|Any CPU.ActiveCfg = ExportDebug|Any CPU
+		{C9CE38A9-089D-4747-A33F-D2ED50108EE2}.ExportDebug|Any CPU.Build.0 = ExportDebug|Any CPU
+		{C9CE38A9-089D-4747-A33F-D2ED50108EE2}.ExportRelease|Any CPU.ActiveCfg = ExportRelease|Any CPU
+		{C9CE38A9-089D-4747-A33F-D2ED50108EE2}.ExportRelease|Any CPU.Build.0 = ExportRelease|Any CPU
 	EndGlobalSection
 EndGlobal
