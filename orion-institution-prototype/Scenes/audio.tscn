@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://byi28peg3cmv"]
+
+[ext_resource type="Script" uid="uid://bprab8s6rqnbp" path="res://Scripts/Audio Scripts/sfx_clips.gd" id="1_y8l05"]
+[ext_resource type="Script" uid="uid://dxixduaf12wvm" path="res://Scripts/Audio Scripts/ambience.gd" id="2_c8j57"]
+
+[node name="Audio" type="Node"]
+
+[node name="SFX_Clips" type="Node" parent="."]
+script = ExtResource("1_y8l05")
+
+[node name="Ambience" type="Node" parent="." node_paths=PackedStringArray("audio_player_1")]
+script = ExtResource("2_c8j57")
+audio_player_1 = NodePath("AudioStreamPlayer_1")
+
+[node name="AudioStreamPlayer_1" type="AudioStreamPlayer" parent="Ambience"]
+bus = &"Ambience"
+
+[node name="AudioStreamPlayer_2" type="AudioStreamPlayer" parent="Ambience"]
+bus = &"Ambience"

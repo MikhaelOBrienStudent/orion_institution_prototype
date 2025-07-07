@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://37soojyye5eb"]
+
+[ext_resource type="Theme" uid="uid://iw676ro4ts35" path="res://UI/Themes/dialogue_theme.tres" id="1_bm56d"]
+[ext_resource type="Script" uid="uid://bmcj0r53sbh3h" path="res://Scripts/Game Management/quit_button.gd" id="2_n5m23"]
+
+[node name="GUI" type="CanvasLayer"]
+
+[node name="Quit_button" type="Button" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -96.0
+offset_top = 24.0
+offset_right = -23.0
+offset_bottom = 88.0
+grow_horizontal = 0
+theme = ExtResource("1_bm56d")
+theme_override_font_sizes/font_size = 41
+text = "X"
+script = ExtResource("2_n5m23")
+
+[connection signal="pressed" from="Quit_button" to="Quit_button" method="_on_pressed"]

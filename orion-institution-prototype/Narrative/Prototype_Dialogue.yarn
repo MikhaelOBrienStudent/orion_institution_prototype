@@ -5,8 +5,7 @@ title: Start
 <<declare $name = "">>
 
 What is your name?
-(Your name is Mifrah)
-<<set $name = "Mifrah">>
+<<set $name = SetPlayerName()>>
 
 //MC
 -> {$name}:Hello there. Welcome to the Orion Institute.

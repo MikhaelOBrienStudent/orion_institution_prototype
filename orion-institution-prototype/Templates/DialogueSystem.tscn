@@ -124,6 +124,7 @@ theme = ExtResource("3_je7ng")
 theme_override_font_sizes/font_size = 36
 text = "NEXT"
 script = ExtResource("6_kc84l")
+metadata/_custom_type_script = "uid://c0ud1tce62qen"
 
 [node name="OptionsPresenter" type="Control" parent="." node_paths=PackedStringArray("presenterControl", "lastLineCharacterNameContainer", "optionParent")]
 layout_mode = 3

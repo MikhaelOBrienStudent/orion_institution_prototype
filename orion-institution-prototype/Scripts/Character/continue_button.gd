@@ -1,4 +1,5 @@
 extends Button
+class_name ContinueButton
 
 @export var talking_character: Character
 
