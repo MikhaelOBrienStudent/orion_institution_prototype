@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://rskqyvn1oq28"]
+[gd_scene load_steps=14 format=3 uid="uid://rskqyvn1oq28"]
 
 [ext_resource type="Script" uid="uid://budnld4qd513n" path="res://addons/YarnSpinner-Godot/Runtime/DialogueRunner.cs" id="1_j0g8m"]
 [ext_resource type="Script" uid="uid://b8nsxur6opm4k" path="res://addons/YarnSpinner-Godot/Runtime/Async/LinePresenter.cs" id="2_gatye"]
@@ -10,6 +10,9 @@
 [ext_resource type="Script" uid="uid://b1o5xpu22evvx" path="res://addons/YarnSpinner-Godot/Runtime/InMemoryVariableStorage.cs" id="5_1g5fu"]
 [ext_resource type="Script" uid="uid://c5gxawri864uf" path="res://addons/YarnSpinner-Godot/Runtime/LineProviders/TextLineProvider.cs" id="6_8jeg3"]
 [ext_resource type="Script" uid="uid://c0ud1tce62qen" path="res://Scripts/Character/continue_button.gd" id="6_kc84l"]
+[ext_resource type="Script" uid="uid://cqmiirewaboot" path="res://Narrative/Commands/DialogueSignals.cs" id="11_t56k8"]
+[ext_resource type="Script" uid="uid://c1rcau3kbyn28" path="res://Scripts/signal_receiver.gd" id="12_ry6ui"]
+[ext_resource type="PackedScene" uid="uid://ccwppukwl520n" path="res://UI/player_text_input.tscn" id="13_6tvmo"]
 
 [node name="DialogueCanvasLayer" type="CanvasLayer"]
 
@@ -25,6 +28,8 @@ script = ExtResource("1_j0g8m")
 variableStorage = NodePath("../InMemoryVariableStorage")
 lineProvider = NodePath("../TextLineProvider")
 dialoguePresenters = [NodePath("../LinePresenter"), NodePath("../OptionsPresenter")]
+autoStart = true
+startNode = "Start"
 
 [node name="VariableDebugText" type="RichTextLabel" parent="."]
 
@@ -221,4 +226,20 @@ script = ExtResource("5_1g5fu")
 [node name="TextLineProvider" type="Node2D" parent="."]
 script = ExtResource("6_8jeg3")
 
+[node name="DialogueSignals" type="Node" parent="." node_paths=PackedStringArray("dialogueRunner")]
+script = ExtResource("11_t56k8")
+dialogueRunner = NodePath("../DialogueRunner")
+
+[node name="SignalReceiver" type="Node" parent="." node_paths=PackedStringArray("dialogue_nodes", "player_input_ui")]
+script = ExtResource("12_ry6ui")
+dialogue_nodes = [NodePath("../LinePresenter"), NodePath("../OptionsPresenter")]
+player_input_ui = NodePath("../PlayerTextInput")
+
+[node name="PlayerTextInput" parent="." instance=ExtResource("13_6tvmo")]
+visible = false
+
+[connection signal="onUnhandledCommand" from="DialogueRunner" to="SignalReceiver" method="_on_dialogue_runner_on_unhandled_command"]
 [connection signal="pressed" from="LinePresenter/PresenterControl/ContinueButton" to="LinePresenter/PresenterControl/ContinueButton" method="_on_pressed"]
+[connection signal="GetNameSignal" from="DialogueSignals" to="SignalReceiver" method="GetPlayerName"]
+[connection signal="HidePlayerInputSignal" from="DialogueSignals" to="SignalReceiver" method="HideInput"]
+[connection signal="InputReceived" from="PlayerTextInput" to="SignalReceiver" method="_on_player_text_input_input_received"]

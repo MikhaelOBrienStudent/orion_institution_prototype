@@ -5,7 +5,10 @@ title: Start
 <<declare $name = "">>
 
 What is your name?
-<<set $name = SetPlayerName()>>
+<<GetPlayerName DialogueSignals>>
+    -> Submit
+        <<set $name = SetPlayerName()>>
+        <<HidePlayerInput DialogueSignals>>
 
 //MC
 -> {$name}:Hello there. Welcome to the Orion Institute.
@@ -55,6 +58,8 @@ Cherry:...
 
 //Cherry
 Cherry:Uh huh. Sure.
+
+<<EnableNavigation DialogueSignals>>
 
 //MC
 -> {$name}:You seem to speak our language very well. Is that common where you're from?
@@ -200,5 +205,7 @@ title: Goodbye
 -> (say nothing)   
     //Cherry
     Cherry:Well I'm done. I don't have anything else to say. Come back and torture me some other time.
+
+<<EnableNavigation DialogueSignals>>
 
 ===

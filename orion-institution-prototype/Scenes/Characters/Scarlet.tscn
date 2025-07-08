@@ -1,0 +1,53 @@
+[gd_scene load_steps=6 format=3 uid="uid://bqm8pww0wodvf"]
+
+[ext_resource type="Script" uid="uid://cslr2rxets1xq" path="res://Scripts/Character/character.gd" id="1_dfp88"]
+[ext_resource type="Texture2D" uid="uid://dr4gladfba44p" path="res://Assets/Characters/scarlet.png" id="2_dfp88"]
+
+[sub_resource type="Animation" id="Animation_7kdcx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_x2270"]
+resource_name = "talk_jump"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.166667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -30), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_k35vb"]
+_data = {
+&"RESET": SubResource("Animation_7kdcx"),
+&"talk_jump": SubResource("Animation_x2270")
+}
+
+[node name="Scarlet" type="Node2D" node_paths=PackedStringArray("animation_player")]
+script = ExtResource("1_dfp88")
+animation_player = NodePath("AnimationPlayer")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(946, 1032)
+texture = ExtResource("2_dfp88")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_k35vb")
+}

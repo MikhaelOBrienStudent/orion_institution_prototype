@@ -1,6 +1,7 @@
 extends Node2D
 class_name Character
 
+@export var character_name: String
 @export var animation_player: AnimationPlayer
 
 func Talk() -> void:

@@ -34,7 +34,6 @@ offset_bottom = -42.0
 grow_horizontal = 2
 grow_vertical = 0
 size_flags_horizontal = 3
-size_flags_vertical = 3
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxEmpty_4wijh")
 script = ExtResource("1_lld20")
