@@ -1,0 +1,141 @@
+title: DayTwoCherry
+---
+//Cherry
+Ah. Good morning (name)
+
+//MC
+-> Good morning Cherry!
+    <<set $friendship +=1>>
+-> Hello
+-> (say nothing)
+    <<set $friendship -=1>>
+    
+//MC
+So, how are you?
+
+//Cherry
+<<if $friendship >=4>>
+Honestly? I've been better. I won't lie, this isn't the most comfortable cell I've seen, these clothes are starting to itch a bit, and I've started talking to the walls for company. So, could be a bit better, I guess!
+<<jump improvement>>
+<<endif>>
+<<if $friendship <=4>>
+I'm doing perfectly well, thank you very much. What a lovely place for me to be staying in.
+<<jump improvement>>
+<<endif>>
+===
+
+title: improvement
+---
+//MC
+Well maybe we can help each other out? Is there something I can do to improve your... living area?
+
+//Cherry
+Well depends. What would you want in return?
+
+//MC
+Just information. I want to know more about you, and how you ended up, the way you are.
+
+//Cherry
+Well in that case... A (TASK) here would be nice. If you like.
+
+//MC
+-> Accept
+    <<set $friendship +=1>>
+    I'm sure I can figure something like that out for you.
+    //Cherry
+    Thankyou, it is much appreciated. If I think of something worth sharing, you'll be the first I tell.
+-> Decline
+    <<set $friendship -=1>>
+    //Cherry
+    Well. I see how it is then.
+
+<<if $friendship >=6>>
+//Cherry
+So... I've kind of heard others talking about what this place is. But like... what (do) you do?
+//MC
+I'm security?
+//Cherry
+No silly, as in this place?
+//MC
+Oh! The Orion Institute is designed to study entities, such as yourself.
+//Cherry
+Yeah, but why?
+//MC
+Uh. I don't, actually know. Huh.
+<<endif>>
+
+//Cherry
+So, who runs this place? Who will, eventually, have the pleasure of interrogating me, hm?
+
+//MC
+-> (truth)
+    <<set $friendship +=1>>
+    His name is Magnus Owens, our institutes director. He's quite chill, don't worry, although he can be scary when he's mad.
+-> (avoid)
+    Who, Magnus? He's no one, don't even worry about it.
+-> (lie)
+    HA, Magnus will eat you alive
+    <<set $friendship -=1>>
+
+//Cherry
+Magnus... now why does that name ring a bell?
+
+//MC
+Maybe someone else has told you about him? He's quite a popular boss.
+
+//Cherry
+Hm. Maybe.
+
+...
+
+//MC
+Can I ask you something?
+
+//Cherry
+Shoot.
+
+-> Name
+    <<jump name>>
+-> Arrival
+    <<jump arrival>>
+-> Nevermind
+    <<jump goodbye>>
+===
+
+title: name
+---
+//MC
+Cherry. Is that a nickname?
+//Cherry
+Uh. I... I don't know. I think so?
+I can't quite remember.
+//MC
+Huh, weird. If you ever do remember, I'd love to know.
+<<jump goodbye>>
+===
+
+title: arrival
+---
+//MC
+Do you remember much of how you got here? Or the day you arrived?
+
+//Cherry
+Um. The day I arrived. I, uh, I don't remember. I think... I don't know. That's weird.
+
+//MC
+Huh. Yeah, very weird.
+<<jump goodbye>>
+===
+
+title: goodbye
+---
+//MC
+Well, it was good to talk to you again. You're a very interesting... person?
+//Cherry
+Person will do. It's interesting talking to you too, (name). I suppose I will be seeing you again sometime soon.
+//MC
+Goodbye Cherry.
+//Cherry
+Goodbye.
+
+===

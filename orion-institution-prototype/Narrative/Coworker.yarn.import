@@ -1,0 +1,14 @@
+[remap]
+
+importer="yarnscript"
+type="Resource"
+uid="uid://c00a1bwh75egv"
+path="res://.godot/imported/Coworker.yarn-5f3dd1ac327c7ce22ef23ede332f8b85.tres"
+
+[deps]
+
+source_file="res://Narrative/Coworker.yarn"
+dest_files=["res://.godot/imported/Coworker.yarn-5f3dd1ac327c7ce22ef23ede332f8b85.tres"]
+
+[params]
+
