@@ -64,7 +64,9 @@ current_character = "Cherry"
 [connection signal="StartDialogueSignal" from="DialogueCanvasLayer/DialogueSignals" to="DialogueCanvasLayer/SignalReceiver" method="_on_dialogue_signals_start_dialogue_signal"]
 [connection signal="EnableNavigation" from="DialogueCanvasLayer/SignalReceiver" to="SceneManager" method="EnableNavigation"]
 [connection signal="StartDialogue" from="DialogueCanvasLayer/SignalReceiver" to="SceneManager" method="EnableDialogue"]
+[connection signal="ChangeRoom" from="Navigation" to="Audio/SFX_Clips" method="change_room_sound"]
 [connection signal="StartDialogue" from="Navigation" to="SceneManager" method="EnableDialogue"]
 
+[editable path="Audio"]
 [editable path="DialogueCanvasLayer"]
 [editable path="Locations"]

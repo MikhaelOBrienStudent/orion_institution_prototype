@@ -1,5 +1,6 @@
 extends CanvasLayer
 signal StartDialogue
+signal ChangeRoom
 
 @export var current_location: Location
 
@@ -83,6 +84,8 @@ func ChangeLocation(direction: String) -> Location:
 	character_manager.ChangeCharacter(new_location.current_character)
 	if new_location.current_character:
 		StartDialogue.emit()
+	if direction != "HERE":
+		ChangeRoom.emit()
 	return new_location
 
 func _on_left_pressed() -> void:
