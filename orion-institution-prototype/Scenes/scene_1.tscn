@@ -1,39 +1,15 @@
-[gd_scene load_steps=7 format=3 uid="uid://cmnb3i3q6kt6g"]
+[gd_scene load_steps=3 format=3 uid="uid://cmnb3i3q6kt6g"]
 
-[ext_resource type="Texture2D" uid="uid://d4ei4cgokc1v5" path="res://Assets/Backgrounds/CAP_A1_Env_3.png" id="1_k3vav"]
 [ext_resource type="PackedScene" uid="uid://qqgoryldvogf" path="res://Templates/character.tscn" id="2_3pxkc"]
 [ext_resource type="Texture2D" uid="uid://dod8qlilv3ctm" path="res://Assets/Characters/REFSPRITE.png" id="3_rxb0p"]
-[ext_resource type="PackedScene" uid="uid://rskqyvn1oq28" path="res://Templates/DialogueSystem.tscn" id="4_r5xri"]
-[ext_resource type="Resource" uid="uid://l4ehu44v1t3b" path="res://Narrative/Prototype.yarnproject" id="5_7p6yt"]
-[ext_resource type="Script" uid="uid://depxtx5aolcxt" path="res://Narrative/Commands/PlayerInputHandler.cs" id="6_nwpuv"]
 
 [node name="Scene1" type="Node"]
 
-[node name="Background" type="Sprite2D" parent="."]
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("1_k3vav")
-centered = false
+[node name="Cherry" parent="." instance=ExtResource("2_3pxkc")]
+z_index = 1
 
-[node name="Character" parent="." instance=ExtResource("2_3pxkc")]
-
-[node name="Sprite2D" parent="Character" index="0"]
+[node name="Sprite2D" parent="Cherry" index="0"]
 position = Vector2(946, 1040)
 texture = ExtResource("3_rxb0p")
 
-[node name="DialogueCanvasLayer" parent="." instance=ExtResource("4_r5xri")]
-
-[node name="DialogueRunner" parent="DialogueCanvasLayer" index="0"]
-yarnProject = ExtResource("5_7p6yt")
-autoStart = true
-startNode = "Start"
-
-[node name="ContinueButton" parent="DialogueCanvasLayer/LinePresenter/PresenterControl" index="2" node_paths=PackedStringArray("talking_character")]
-talking_character = NodePath("../../../../Character")
-
-[node name="PlayerInputHandler" type="Node" parent="DialogueCanvasLayer"]
-script = ExtResource("6_nwpuv")
-
-[connection signal="onDialogueComplete" from="DialogueCanvasLayer/DialogueRunner" to="Character" method="Leave"]
-
-[editable path="Character"]
-[editable path="DialogueCanvasLayer"]
+[editable path="Cherry"]

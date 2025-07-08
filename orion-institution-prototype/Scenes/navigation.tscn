@@ -1,0 +1,135 @@
+[gd_scene load_steps=2 format=3 uid="uid://frlebr2m3f0d"]
+
+[ext_resource type="Script" uid="uid://j6xlmbp73a0i" path="res://Scripts/navigation.gd" id="1_chlvn"]
+
+[node name="Navigation" type="CanvasLayer" node_paths=PackedStringArray("current_location", "left_button", "left_label", "right_button", "right_label", "top_button", "top_label", "bottom_button", "bottom_label")]
+script = ExtResource("1_chlvn")
+current_location = NodePath("")
+left_button = NodePath("Left")
+left_label = NodePath("Left/Label")
+right_button = NodePath("Right")
+right_label = NodePath("Right/Label")
+top_button = NodePath("Top")
+top_label = NodePath("Top/Label")
+bottom_button = NodePath("Bottom")
+bottom_label = NodePath("Bottom/Label")
+
+[node name="Left" type="Button" parent="."]
+visible = false
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_left = 24.0
+offset_top = 456.0
+offset_right = 96.0
+offset_bottom = -505.0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 81
+text = "<"
+
+[node name="Label" type="Label" parent="Left"]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = 40.0
+offset_right = 242.0
+offset_bottom = -37.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 30
+text = "LEFT LOCATION"
+
+[node name="Right" type="Button" parent="."]
+visible = false
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -96.0
+offset_top = 456.0
+offset_right = -24.0
+offset_bottom = -505.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 81
+text = ">"
+
+[node name="Label" type="Label" parent="Right"]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -328.0
+offset_top = 40.0
+offset_right = -102.0
+offset_bottom = -37.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 30
+text = "RIGHT LOCATION"
+horizontal_alignment = 2
+
+[node name="Top" type="Button" parent="."]
+visible = false
+anchors_preset = -1
+anchor_right = 1.0
+offset_left = 952.0
+offset_top = 24.0
+offset_right = -896.0
+offset_bottom = 143.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 81
+text = "^"
+
+[node name="Label" type="Label" parent="Top"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -96.0
+offset_top = 25.0
+offset_right = 82.0
+offset_bottom = 67.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 30
+text = "TOP LOCATION"
+horizontal_alignment = 1
+
+[node name="Bottom" type="Button" parent="."]
+visible = false
+anchors_preset = -1
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 952.0
+offset_top = -152.0
+offset_right = -896.0
+offset_bottom = -33.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 81
+text = "v"
+
+[node name="Label" type="Label" parent="Bottom"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = -96.0
+offset_top = -64.0
+offset_right = 82.0
+offset_bottom = -22.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 30
+text = "BOTTOM LOCATION"
+horizontal_alignment = 1
+
+[connection signal="pressed" from="Left" to="." method="_on_left_pressed"]
+[connection signal="pressed" from="Right" to="." method="_on_right_pressed"]
+[connection signal="pressed" from="Top" to="." method="_on_top_pressed"]
+[connection signal="pressed" from="Bottom" to="." method="_on_bottom_pressed"]

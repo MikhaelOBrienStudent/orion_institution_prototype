@@ -9,10 +9,10 @@ public partial class PlayerInputHandler : Node
 
 	//public string PlayerName = "Placeholder"
 
-	[YarnFunction("SetPlayerName")]
-	public static string SetPlayerName()
-	{
-		return "Placeholder Name";
-	}
+	//[YarnFunction("SetPlayerName")]
+	//public static string SetPlayerName()
+	//{
+	//	return "Placeholder Name";
+	//}
 
 }

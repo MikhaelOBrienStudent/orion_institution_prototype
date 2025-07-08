@@ -34,12 +34,11 @@ visible = false
 current_location = NodePath("../Locations/Cell")
 character_manager = NodePath("../Characters")
 
-[node name="Characters" type="Node" parent="." node_paths=PackedStringArray("character_nodes")]
+[node name="Characters" type="Node" parent="." node_paths=PackedStringArray("Character_Array")]
 script = ExtResource("7_d1ilt")
-character_nodes = [NodePath("Cherry"), NodePath("Scarlet")]
+Character_Array = [NodePath("Cherry"), NodePath("Scarlet")]
 
 [node name="Cherry" parent="Characters" instance=ExtResource("7_hptm8")]
-visible = false
 character_name = "Cherry"
 
 [node name="Scarlet" parent="Characters" instance=ExtResource("8_d1ilt")]
@@ -60,13 +59,5 @@ current_character = "Scarlet"
 visible = false
 current_character = "Cherry"
 
-[connection signal="EnableNavigationSignal" from="DialogueCanvasLayer/DialogueSignals" to="DialogueCanvasLayer/SignalReceiver" method="_on_dialogue_signals_enable_navigation_signal"]
-[connection signal="StartDialogueSignal" from="DialogueCanvasLayer/DialogueSignals" to="DialogueCanvasLayer/SignalReceiver" method="_on_dialogue_signals_start_dialogue_signal"]
-[connection signal="EnableNavigation" from="DialogueCanvasLayer/SignalReceiver" to="SceneManager" method="EnableNavigation"]
-[connection signal="StartDialogue" from="DialogueCanvasLayer/SignalReceiver" to="SceneManager" method="EnableDialogue"]
-[connection signal="ChangeRoom" from="Navigation" to="Audio/SFX_Clips" method="change_room_sound"]
-[connection signal="StartDialogue" from="Navigation" to="SceneManager" method="EnableDialogue"]
-
-[editable path="Audio"]
 [editable path="DialogueCanvasLayer"]
 [editable path="Locations"]

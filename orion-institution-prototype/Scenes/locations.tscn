@@ -1,0 +1,45 @@
+[gd_scene load_steps=5 format=3 uid="uid://3vnbb1aftlgl"]
+
+[ext_resource type="Script" uid="uid://ldo4ct6oqy35" path="res://Scripts/location.gd" id="1_wsf7f"]
+[ext_resource type="Texture2D" uid="uid://cs8d5ohsglv8g" path="res://Assets/Backgrounds/CAP_A1_Env_1.png" id="2_ynn5r"]
+[ext_resource type="Texture2D" uid="uid://bucasu4t1o8ty" path="res://Assets/Backgrounds/CAP_A1_Env_2.png" id="3_ibxhk"]
+[ext_resource type="Texture2D" uid="uid://d4ei4cgokc1v5" path="res://Assets/Backgrounds/CAP_A1_Env_3.png" id="4_6uftb"]
+
+[node name="Locations" type="Node2D"]
+z_index = -1
+
+[node name="Monitor_Room" type="Node2D" parent="." node_paths=PackedStringArray("right_location")]
+visible = false
+script = ExtResource("1_wsf7f")
+location_name = "Monitor Room"
+right_location = NodePath("../Hallway")
+metadata/_custom_type_script = "uid://ldo4ct6oqy35"
+
+[node name="Sprite2D" type="Sprite2D" parent="Monitor_Room"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_ynn5r")
+centered = false
+
+[node name="Hallway" type="Node2D" parent="." node_paths=PackedStringArray("top_location", "bottom_location")]
+visible = false
+script = ExtResource("1_wsf7f")
+location_name = "Hallway"
+top_location = NodePath("../Cell")
+bottom_location = NodePath("../Monitor_Room")
+metadata/_custom_type_script = "uid://ldo4ct6oqy35"
+
+[node name="Sprite2D" type="Sprite2D" parent="Hallway"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_ibxhk")
+centered = false
+
+[node name="Cell" type="Node2D" parent="." node_paths=PackedStringArray("bottom_location")]
+script = ExtResource("1_wsf7f")
+location_name = "Cell"
+bottom_location = NodePath("../Hallway")
+metadata/_custom_type_script = "uid://ldo4ct6oqy35"
+
+[node name="Sprite2D" type="Sprite2D" parent="Cell"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_6uftb")
+centered = false
