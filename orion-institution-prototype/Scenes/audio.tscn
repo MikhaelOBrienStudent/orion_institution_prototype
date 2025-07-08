@@ -1,18 +1,26 @@
-[gd_scene load_steps=3 format=3 uid="uid://byi28peg3cmv"]
+[gd_scene load_steps=7 format=3 uid="uid://byi28peg3cmv"]
 
 [ext_resource type="Script" uid="uid://bprab8s6rqnbp" path="res://Scripts/Audio Scripts/sfx_clips.gd" id="1_y8l05"]
 [ext_resource type="Script" uid="uid://dxixduaf12wvm" path="res://Scripts/Audio Scripts/ambience.gd" id="2_c8j57"]
+[ext_resource type="AudioStream" uid="uid://brymommi6k158" path="res://Assets/Audio/SFX Clips/Button Hover.wav" id="2_wdljl"]
+[ext_resource type="AudioStream" uid="uid://dqh51huf75vq8" path="res://Assets/Audio/SFX Clips/Button Select.wav" id="3_dl6it"]
+[ext_resource type="AudioStream" uid="uid://rlgaad5ta3e8" path="res://Assets/Audio/SFX Clips/Text Proceed.wav" id="4_8kkbo"]
+[ext_resource type="AudioStream" uid="uid://7t80k8b5vlbk" path="res://Assets/Audio/SFX Clips/Ventilation Ambience.mp3" id="6_dl6it"]
 
 [node name="Audio" type="Node"]
 
 [node name="SFX_Clips" type="Node" parent="."]
 script = ExtResource("1_y8l05")
+button_hover_clip = ExtResource("2_wdljl")
+button_press_clip = ExtResource("3_dl6it")
+continue_clip = ExtResource("4_8kkbo")
 
 [node name="Ambience" type="Node" parent="." node_paths=PackedStringArray("audio_player_1")]
 script = ExtResource("2_c8j57")
 audio_player_1 = NodePath("AudioStreamPlayer_1")
 
 [node name="AudioStreamPlayer_1" type="AudioStreamPlayer" parent="Ambience"]
+stream = ExtResource("6_dl6it")
 bus = &"Ambience"
 
 [node name="AudioStreamPlayer_2" type="AudioStreamPlayer" parent="Ambience"]
