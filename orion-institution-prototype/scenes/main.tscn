@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://rskqyvn1oq28" path="res://Templates/DialogueSystem.tscn" id="2_8gbba"]
 [ext_resource type="PackedScene" uid="uid://37soojyye5eb" path="res://Scenes/gui.tscn" id="2_kry3j"]
 [ext_resource type="PackedScene" uid="uid://byi28peg3cmv" path="res://Scenes/audio.tscn" id="4_jjvhh"]
-[ext_resource type="Resource" uid="uid://l4ehu44v1t3b" path="res://Narrative/Prototype.yarnproject" id="5_6bp64"]
+[ext_resource type="Resource" uid="uid://l4ehu44v1t3b" path="res://Narrative/YarnProject/OrionInstitution.yarnproject" id="5_6bp64"]
 [ext_resource type="PackedScene" uid="uid://frlebr2m3f0d" path="res://Scenes/navigation.tscn" id="6_ynf5e"]
 [ext_resource type="Script" uid="uid://bqstnch2uehlr" path="res://Scripts/Game Management/scene_manager.gd" id="7_344ge"]
 [ext_resource type="Script" uid="uid://cx8xav6jtt1f5" path="res://Scripts/characters.gd" id="7_d1ilt"]
@@ -25,6 +25,7 @@ layer = 2
 
 [node name="DialogueRunner" parent="DialogueCanvasLayer" index="0"]
 yarnProject = ExtResource("5_6bp64")
+startNode = "DayTwoCherry"
 
 [node name="ContinueButton" parent="DialogueCanvasLayer/LinePresenter/PresenterControl" index="2" node_paths=PackedStringArray("character_manager")]
 character_manager = NodePath("../../../../Characters")

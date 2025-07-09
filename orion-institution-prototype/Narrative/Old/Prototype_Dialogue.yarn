@@ -1,8 +1,8 @@
 title: Start
 ---
 //MC
-<<declare $friendship = 0>>
-<<declare $name = "">>
+//<<declare $friendship = 0>>
+//<<declare $name = "">>
 
 What is your name?
 <<GetPlayerName DialogueSignals>>

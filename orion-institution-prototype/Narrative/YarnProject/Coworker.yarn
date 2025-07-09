@@ -1,0 +1,69 @@
+title: Coworker
+---
+
+//Coworker
+Scarlet:Hey {$name}! How's it going?!
+
+//MC
+{$name}:Oh hey Scarlet.
+{$name}:I'm doing okay. Can't wait for lunch though. You?
+
+//Coworker
+Scarlet:Ugh, tell me about it. Heard the canteens selling some sort of 'pasta surprise' today. Me personally? I'll stick with bringing my own food.
+
+//MC
+{$name}:Oh yeah, for sure. Screw that 'surprise' nonsense, we all know it's last weeks leftovers.
+
+//Coworker
+Scarlet:Speaking of leftovers, heard you got last pick for shifts this week. Working the Spice ward? Yikes!
+
+//MC
+{$name}:Yeah, but it's not been too bad so far. A bit of a slow week, actually.
+
+//Coworker
+Scarlet:Have you met the new one? C-50-093? That freaky ass pink chick?
+
+//MC
+{$name}:Who, Cherry?
+
+//Coworker
+Scarlet:Cherry?! It has a name!?
+
+//MC
+{$name}:It? I'm pretty sure she's a she!
+
+//Coworker
+Scarlet:Damn. Well I guess that means you've met it, or her, or whatever. What's she like?
+
+//MC
+-> Truth
+    {$name}:She's kinda cool. She's not super friendly or anything, but at least she actually talks to me. Most of the others just growl or scream or whatever. She's quite... chill, comparatively.
+-> Lie
+    {$name}:Ugh. She's so annoying and hard to talk to. I wouldn't recommend talking to her, at all.
+
+//Coworker
+Scarlet:Wack. How are you not, like, fully scared of her? I would be petrified, especially since she killed all those people.
+
+//MC
+{$name}:Wait, what? What people?
+
+//Coworker
+Scarlet:The Dark Matter explosion? Like a week ago?
+
+//MC
+{$name}:That was her??
+
+//Coworker
+Scarlet:Uh, yeah? Did you not realise? Dumbass
+
+//MC
+{$name}:Woah. Well, guess I've got something to talk about next time I see her.
+
+//Coworker
+Scarlet:Guess so. Shoot, better get back to my rounds before I get yelled at. See you at lunch?
+
+//MC
+{$name}:Yeah. See you.
+
+<<EnableNavigation DialogueSignals>>
+===
