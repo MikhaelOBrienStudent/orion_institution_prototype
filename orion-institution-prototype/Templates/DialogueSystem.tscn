@@ -1,10 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://rskqyvn1oq28"]
+[gd_scene load_steps=15 format=3 uid="uid://rskqyvn1oq28"]
 
 [ext_resource type="Script" uid="uid://budnld4qd513n" path="res://addons/YarnSpinner-Godot/Runtime/DialogueRunner.cs" id="1_j0g8m"]
 [ext_resource type="Script" uid="uid://b8nsxur6opm4k" path="res://addons/YarnSpinner-Godot/Runtime/Async/LinePresenter.cs" id="2_gatye"]
 [ext_resource type="Script" uid="uid://ba6k2ox6e4qg" path="res://addons/YarnSpinner-Godot/Runtime/Async/OptionsPresenter.cs" id="3_d8i44"]
 [ext_resource type="Theme" uid="uid://iw676ro4ts35" path="res://UI/Themes/dialogue_theme.tres" id="3_je7ng"]
-[ext_resource type="StyleBox" uid="uid://c0ptmisyv7bhs" path="res://UI/Themes/character_name_panel.tres" id="4_2b8sj"]
+[ext_resource type="Texture2D" uid="uid://dlxhthjfv4nc5" path="res://Assets/UI/Character_name.png" id="4_l1c31"]
 [ext_resource type="PackedScene" uid="uid://b56ngcrq31nc5" path="res://Templates/OptionItem.tscn" id="4_lsd04"]
 [ext_resource type="FontFile" uid="uid://dq6rrp5fxbh42" path="res://UI/Fonts/ricasso/Ricasso-Regular.ttf" id="4_uuqvp"]
 [ext_resource type="Script" uid="uid://b1o5xpu22evvx" path="res://addons/YarnSpinner-Godot/Runtime/InMemoryVariableStorage.cs" id="5_1g5fu"]
@@ -13,6 +13,12 @@
 [ext_resource type="Script" uid="uid://cqmiirewaboot" path="res://Narrative/Commands/DialogueSignals.cs" id="11_t56k8"]
 [ext_resource type="Script" uid="uid://c1rcau3kbyn28" path="res://Scripts/signal_receiver.gd" id="12_ry6ui"]
 [ext_resource type="PackedScene" uid="uid://ccwppukwl520n" path="res://UI/player_text_input.tscn" id="13_6tvmo"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cgkmr"]
+texture = ExtResource("4_l1c31")
+texture_margin_left = 30.0
+texture_margin_top = 30.0
+texture_margin_right = 30.0
 
 [node name="DialogueCanvasLayer" type="CanvasLayer"]
 
@@ -93,7 +99,7 @@ offset_bottom = -342.0
 grow_horizontal = 2
 grow_vertical = 0
 theme = ExtResource("3_je7ng")
-theme_override_styles/panel = ExtResource("4_2b8sj")
+theme_override_styles/panel = SubResource("StyleBoxTexture_cgkmr")
 
 [node name="CharacterNameText" type="RichTextLabel" parent="LinePresenter/PresenterControl/NameBox"]
 self_modulate = Color(0, 0, 0, 1)
@@ -206,7 +212,7 @@ offset_bottom = -342.0
 grow_horizontal = 2
 grow_vertical = 0
 theme = ExtResource("3_je7ng")
-theme_override_styles/panel = ExtResource("4_2b8sj")
+theme_override_styles/panel = SubResource("StyleBoxTexture_cgkmr")
 
 [node name="LastLineCharacterNameText" type="RichTextLabel" parent="OptionsPresenter/PresenterControl/LastLineNameBox"]
 self_modulate = Color(0, 0, 0, 1)

@@ -1,14 +1,29 @@
-[gd_resource type="Theme" load_steps=11 format=3 uid="uid://iw676ro4ts35"]
+[gd_resource type="Theme" load_steps=16 format=3 uid="uid://iw676ro4ts35"]
 
 [ext_resource type="FontFile" uid="uid://dq6rrp5fxbh42" path="res://UI/Fonts/ricasso/Ricasso-Regular.ttf" id="1_ltvyw"]
-[ext_resource type="StyleBox" uid="uid://day233adg2oec" path="res://UI/Themes/button_panel_disabled.tres" id="2_4f0h6"]
+[ext_resource type="Texture2D" uid="uid://dcxcrthny55ob" path="res://Assets/UI/Next_Button_Hover.png" id="3_nqere"]
 [ext_resource type="StyleBox" uid="uid://dw5uw4ck2qndm" path="res://UI/Themes/button_panel_normal.tres" id="3_r7she"]
-[ext_resource type="StyleBox" uid="uid://b4m7t34gmorff" path="res://UI/Themes/button_panel_hover.tres" id="4_nqere"]
-[ext_resource type="StyleBox" uid="uid://bkvwk2g3l8n6k" path="res://UI/Themes/button_panel_pressedr.tres" id="5_fwi1k"]
-[ext_resource type="StyleBox" uid="uid://biopt4colbmyi" path="res://UI/Themes/Dialogue_Panel.tres" id="6_sex63"]
+[ext_resource type="Texture2D" uid="uid://c7s1kmf1y0jes" path="res://Assets/UI/Next_Button_Unpressed.png" id="4_fwi1k"]
+[ext_resource type="Texture2D" uid="uid://cvddjk628v67n" path="res://Assets/UI/Next_Button_Pressed.png" id="5_sex63"]
+[ext_resource type="Texture2D" uid="uid://j2hdjglkhlwi" path="res://Assets/UI/Dialogue_Box.png" id="6_pc5e3"]
 [ext_resource type="FontFile" uid="uid://bkus4862uk5n6" path="res://UI/Fonts/Industrial/Italic/Industrial-Italic.TTF" id="7_4f0h6"]
 [ext_resource type="FontFile" uid="uid://yni7qjimcu7o" path="res://UI/Fonts/0xa000/0xA000-Squareish-Bold.ttf" id="7_r7she"]
 [ext_resource type="FontFile" uid="uid://cx8sucjhrqkya" path="res://UI/Fonts/0xa000/0xA000-Regular.ttf" id="9_nqere"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_eq3lk"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_aeki8"]
+texture = ExtResource("3_nqere")
+expand_margin_left = 5.0
+expand_margin_top = 5.0
+expand_margin_right = 5.0
+expand_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3khhn"]
+texture = ExtResource("4_fwi1k")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jcnwt"]
+texture = ExtResource("5_sex63")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r7she"]
 content_margin_left = 40.0
@@ -26,21 +41,28 @@ corner_radius_bottom_right = 24
 corner_detail = 1
 anti_aliasing = false
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5ml3a"]
+content_margin_left = 40.0
+content_margin_top = 40.0
+content_margin_right = 40.0
+content_margin_bottom = 40.0
+texture = ExtResource("6_pc5e3")
+
 [resource]
 Button/colors/font_color = Color(0, 0, 0, 1)
 Button/colors/font_disabled_color = Color(0.875, 0.875, 0.875, 0.5)
 Button/colors/font_hover_color = Color(0, 0, 0, 1)
 Button/colors/font_pressed_color = Color(1, 1, 1, 1)
 Button/fonts/font = ExtResource("1_ltvyw")
-Button/styles/disabled = ExtResource("2_4f0h6")
+Button/styles/disabled = SubResource("StyleBoxTexture_eq3lk")
 Button/styles/focus = ExtResource("3_r7she")
-Button/styles/hover = ExtResource("4_nqere")
-Button/styles/hover_pressed = ExtResource("5_fwi1k")
-Button/styles/normal = ExtResource("3_r7she")
-Button/styles/pressed = ExtResource("5_fwi1k")
+Button/styles/hover = SubResource("StyleBoxTexture_aeki8")
+Button/styles/hover_pressed = SubResource("StyleBoxTexture_aeki8")
+Button/styles/normal = SubResource("StyleBoxTexture_3khhn")
+Button/styles/pressed = SubResource("StyleBoxTexture_jcnwt")
 LineEdit/fonts/font = ExtResource("1_ltvyw")
 LineEdit/styles/normal = SubResource("StyleBoxFlat_r7she")
-PanelContainer/styles/panel = ExtResource("6_sex63")
+PanelContainer/styles/panel = SubResource("StyleBoxTexture_5ml3a")
 RichTextLabel/colors/default_color = Color(1, 1, 1, 1)
 RichTextLabel/font_sizes/bold_font_size = 50
 RichTextLabel/font_sizes/bold_italics_font_size = 50

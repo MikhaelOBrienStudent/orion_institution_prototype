@@ -4,16 +4,16 @@ signal ChangeRoom
 
 @export var current_location: Location
 
-@export var left_button: Button
+@export var left_button: TextureButton
 @export var left_label: Label
 
-@export var right_button: Button
+@export var right_button: TextureButton
 @export var right_label: Label
 
-@export var top_button: Button
+@export var top_button: TextureButton
 @export var top_label: Label
 
-@export var bottom_button: Button
+@export var bottom_button: TextureButton
 @export var bottom_label: Label
 
 @export var character_manager: Node

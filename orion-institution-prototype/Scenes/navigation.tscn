@@ -1,6 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://frlebr2m3f0d"]
+[gd_scene load_steps=6 format=3 uid="uid://frlebr2m3f0d"]
 
 [ext_resource type="Script" uid="uid://j6xlmbp73a0i" path="res://Scripts/navigation.gd" id="1_chlvn"]
+[ext_resource type="Texture2D" uid="uid://i26jgovdm7nv" path="res://Assets/UI/Arrow_Unpressed.png" id="2_ut0uc"]
+[ext_resource type="Texture2D" uid="uid://bs3yr8irraeft" path="res://Assets/UI/Arrow_Pressed.png" id="3_5pagq"]
+[ext_resource type="FontFile" uid="uid://m8fgs7hont6n" path="res://UI/Fonts/Industrial/Regular/Industrial-Regular.TTF" id="4_wi6jk"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_hoqp4"]
+font = ExtResource("4_wi6jk")
+font_size = 37
 
 [node name="Navigation" type="CanvasLayer" node_paths=PackedStringArray("current_location", "left_button", "left_label", "right_button", "right_label", "top_button", "top_label", "bottom_button", "bottom_label")]
 script = ExtResource("1_chlvn")
@@ -14,8 +21,7 @@ top_label = NodePath("Top/Label")
 bottom_button = NodePath("Bottom")
 bottom_label = NodePath("Bottom/Label")
 
-[node name="Left" type="Button" parent="."]
-visible = false
+[node name="Left" type="TextureButton" parent="."]
 anchors_preset = 9
 anchor_bottom = 1.0
 offset_left = 24.0
@@ -23,8 +29,12 @@ offset_top = 456.0
 offset_right = 96.0
 offset_bottom = -505.0
 grow_vertical = 2
-theme_override_font_sizes/font_size = 81
-text = "<"
+texture_normal = ExtResource("2_ut0uc")
+texture_pressed = ExtResource("3_5pagq")
+texture_hover = ExtResource("3_5pagq")
+ignore_texture_size = true
+stretch_mode = 5
+flip_h = true
 
 [node name="Label" type="Label" parent="Left"]
 layout_mode = 1
@@ -40,9 +50,9 @@ grow_horizontal = 0
 grow_vertical = 2
 theme_override_font_sizes/font_size = 30
 text = "LEFT LOCATION"
+label_settings = SubResource("LabelSettings_hoqp4")
 
-[node name="Right" type="Button" parent="."]
-visible = false
+[node name="Right" type="TextureButton" parent="."]
 anchors_preset = 11
 anchor_left = 1.0
 anchor_right = 1.0
@@ -53,8 +63,11 @@ offset_right = -24.0
 offset_bottom = -505.0
 grow_horizontal = 0
 grow_vertical = 2
-theme_override_font_sizes/font_size = 81
-text = ">"
+texture_normal = ExtResource("2_ut0uc")
+texture_pressed = ExtResource("3_5pagq")
+texture_hover = ExtResource("3_5pagq")
+ignore_texture_size = true
+stretch_mode = 5
 
 [node name="Label" type="Label" parent="Right"]
 layout_mode = 1
@@ -70,20 +83,23 @@ grow_horizontal = 0
 grow_vertical = 2
 theme_override_font_sizes/font_size = 30
 text = "RIGHT LOCATION"
+label_settings = SubResource("LabelSettings_hoqp4")
 horizontal_alignment = 2
 
-[node name="Top" type="Button" parent="."]
-visible = false
-anchors_preset = -1
+[node name="Top" type="TextureButton" parent="."]
+anchors_preset = 10
 anchor_right = 1.0
-offset_left = 952.0
-offset_top = 24.0
-offset_right = -896.0
-offset_bottom = 143.0
-grow_horizontal = 0
-grow_vertical = 2
-theme_override_font_sizes/font_size = 81
-text = "^"
+offset_left = 936.0
+offset_top = 96.0
+offset_right = -912.0
+offset_bottom = 215.0
+grow_horizontal = 2
+rotation = -1.57079
+texture_normal = ExtResource("2_ut0uc")
+texture_pressed = ExtResource("3_5pagq")
+texture_hover = ExtResource("3_5pagq")
+ignore_texture_size = true
+stretch_mode = 5
 
 [node name="Label" type="Label" parent="Top"]
 layout_mode = 1
@@ -91,42 +107,49 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -96.0
-offset_top = 25.0
-offset_right = 82.0
-offset_bottom = 67.0
+offset_left = -48.0001
+offset_top = -183.0
+offset_right = 130.0
+offset_bottom = -141.0
 grow_horizontal = 2
 grow_vertical = 0
+rotation = 1.57079
 theme_override_font_sizes/font_size = 30
 text = "TOP LOCATION"
+label_settings = SubResource("LabelSettings_hoqp4")
 horizontal_alignment = 1
 
-[node name="Bottom" type="Button" parent="."]
-visible = false
-anchors_preset = -1
+[node name="Bottom" type="TextureButton" parent="."]
+anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 952.0
+offset_left = 1056.0
 offset_top = -152.0
-offset_right = -896.0
+offset_right = -792.0
 offset_bottom = -33.0
-grow_horizontal = 0
-grow_vertical = 2
-theme_override_font_sizes/font_size = 81
-text = "v"
+grow_horizontal = 2
+grow_vertical = 0
+rotation = 1.57079
+texture_normal = ExtResource("2_ut0uc")
+texture_pressed = ExtResource("3_5pagq")
+texture_hover = ExtResource("3_5pagq")
+ignore_texture_size = true
+stretch_mode = 5
 
 [node name="Label" type="Label" parent="Bottom"]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
-offset_left = -96.0
-offset_top = -64.0
-offset_right = 82.0
-offset_bottom = -22.0
+offset_left = -96.5006
+offset_top = 184.0
+offset_right = 82.4995
+offset_bottom = 226.0
 grow_horizontal = 2
+rotation = -1.57079
 theme_override_font_sizes/font_size = 30
 text = "BOTTOM LOCATION"
+label_settings = SubResource("LabelSettings_hoqp4")
 horizontal_alignment = 1
 
 [connection signal="pressed" from="Left" to="." method="_on_left_pressed"]

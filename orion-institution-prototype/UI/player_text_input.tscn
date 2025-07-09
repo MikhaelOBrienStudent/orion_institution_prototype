@@ -1,8 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://ccwppukwl520n"]
+[gd_scene load_steps=6 format=3 uid="uid://ccwppukwl520n"]
 
-[ext_resource type="Theme" uid="uid://iw676ro4ts35" path="res://UI/Themes/dialogue_theme.tres" id="1_eqald"]
 [ext_resource type="Script" uid="uid://bjwo7mdwq08df" path="res://Scripts/player_text_input.gd" id="1_wftmq"]
 [ext_resource type="FontFile" uid="uid://coy4a7cny5xwr" path="res://UI/Fonts/ricasso/Ricasso-Regular.woff" id="2_0y8l1"]
+[ext_resource type="Texture2D" uid="uid://bwvob3owm3bem" path="res://Assets/UI/Name_Input_Box.png" id="2_wftmq"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rx52i"]
+texture = ExtResource("2_wftmq")
 
 [sub_resource type="LabelSettings" id="LabelSettings_wftmq"]
 font = ExtResource("2_0y8l1")
@@ -27,8 +30,10 @@ offset_left = -512.0
 offset_top = -388.0
 offset_right = 512.0
 offset_bottom = -276.0
-theme = ExtResource("1_eqald")
+theme_override_fonts/font = ExtResource("2_0y8l1")
 theme_override_font_sizes/font_size = 66
+theme_override_styles/focus = SubResource("StyleBoxTexture_rx52i")
+theme_override_styles/normal = SubResource("StyleBoxTexture_rx52i")
 alignment = 1
 emoji_menu_enabled = false
 

@@ -1,7 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://b56ngcrq31nc5"]
+[gd_scene load_steps=12 format=3 uid="uid://b56ngcrq31nc5"]
 
 [ext_resource type="Script" uid="uid://e8endtpbxsql" path="res://addons/YarnSpinner-Godot/Runtime/Async/OptionItem.cs" id="1_lld20"]
 [ext_resource type="Theme" uid="uid://iw676ro4ts35" path="res://UI/Themes/dialogue_theme.tres" id="2_4wijh"]
+[ext_resource type="Texture2D" uid="uid://cf2bg2s0g18xx" path="res://Assets/UI/Dialogue_Choice_Small_Pressed.png" id="2_p4p3o"]
+[ext_resource type="Texture2D" uid="uid://b5lid1v2nji5j" path="res://Assets/UI/Dialogue_Choice_Small_Unpressed.png" id="3_jtttc"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4wijh"]
 content_margin_left = 10.0
@@ -9,11 +11,38 @@ content_margin_top = 10.0
 content_margin_right = 10.0
 content_margin_bottom = 10.0
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_p4p3o"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_p4p3o"]
+texture = ExtResource("2_p4p3o")
+texture_margin_left = 30.0
+texture_margin_top = 30.0
+texture_margin_right = 30.0
+texture_margin_bottom = 30.0
+expand_margin_left = 5.0
+expand_margin_top = 5.0
+expand_margin_right = 5.0
+expand_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0fkis"]
+texture = ExtResource("2_p4p3o")
+texture_margin_left = 30.0
+texture_margin_top = 30.0
+texture_margin_right = 30.0
+texture_margin_bottom = 30.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qycob"]
+texture = ExtResource("3_jtttc")
+texture_margin_left = 30.0
+texture_margin_top = 30.0
+texture_margin_right = 30.0
+texture_margin_bottom = 30.0
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_alv4h"]
-content_margin_left = 10.0
-content_margin_top = 10.0
-content_margin_right = 10.0
-content_margin_bottom = 10.0
+content_margin_left = 15.0
+content_margin_top = 20.0
+content_margin_right = 15.0
+content_margin_bottom = 20.0
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pe0aq"]
 content_margin_left = 7.0
@@ -42,7 +71,10 @@ button = NodePath("Button")
 
 [node name="Button" type="Button" parent="."]
 layout_mode = 2
-theme = ExtResource("2_4wijh")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_p4p3o")
+theme_override_styles/hover = SubResource("StyleBoxTexture_p4p3o")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_0fkis")
+theme_override_styles/normal = SubResource("StyleBoxTexture_qycob")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 2
