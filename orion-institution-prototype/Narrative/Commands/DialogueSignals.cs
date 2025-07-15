@@ -12,7 +12,13 @@ public partial class DialogueSignals : Node
 	
 	//To be used for playing sfx from the dialogue script. The sound name should be the name of the file to be used
 	[Signal]
-	public delegate void PlaySoundSignalEventHandler(string sound_name);
+	public delegate void PlaySoundSignalEventHandler(string sfx_name, float sfx_volume);
+	[YarnCommand("PlaySound")]
+	public void PlayWorldSFX(string sfx_name, float sfx_volume = 1.0f)
+	{
+		EmitSignal(SignalName.PlaySoundSignal, sfx_name, sfx_volume);
+	}
+	
 
 
 	//The Get Name command will tell the other scripts to bring up the input and have the player put in their name, while the set name function is responsible for providing the name back to the dialogue script

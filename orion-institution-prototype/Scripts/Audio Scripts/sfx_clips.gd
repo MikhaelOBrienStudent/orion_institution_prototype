@@ -24,15 +24,12 @@ func _ready() -> void:
 	
 	var check_child = func(node) -> void:
 		if node is Button:
-			print("Found Button")
 			node.mouse_entered.connect(button_hover_sound)
 			node.pressed.connect(button_press_sound)
 		if node is ContinueButton:
-			print("Found continue Button")
 			node.pressed.connect(continue_dialogue_sound)
 	
 	var starting_nodes = find_parent("Main").find_children("*")
-	print(starting_nodes)
 	for node in starting_nodes:
 		check_child.call(node)
 

@@ -19,7 +19,7 @@ Cherry:Ah. Good morning {$name}
 -> {$name}:Hello
 -> {$name}:(say nothing)
     <<set $friendship -=1>>
-    
+
 //MC
 {$name}:So, how are you?
 

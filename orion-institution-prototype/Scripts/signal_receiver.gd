@@ -32,3 +32,7 @@ func _on_dialogue_signals_enable_navigation_signal() -> void:
 
 func _on_dialogue_signals_start_dialogue_signal() -> void:
 	StartDialogue.emit()
+
+
+func _on_dialogue_signals_play_sound_signal(sfx_name: String, sfx_volume: float) -> void:
+	SfxPlayer.PlaySound(null, sfx_volume, SfxPlayer.sfx_type.WORLD, sfx_name)

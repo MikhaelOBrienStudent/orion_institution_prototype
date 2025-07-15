@@ -9,9 +9,8 @@
 font = ExtResource("4_wi6jk")
 font_size = 37
 
-[node name="Navigation" type="CanvasLayer" node_paths=PackedStringArray("current_location", "left_button", "left_label", "right_button", "right_label", "top_button", "top_label", "bottom_button", "bottom_label")]
+[node name="Navigation" type="CanvasLayer" node_paths=PackedStringArray("left_button", "left_label", "right_button", "right_label", "top_button", "top_label", "bottom_button", "bottom_label")]
 script = ExtResource("1_chlvn")
-current_location = NodePath("")
 left_button = NodePath("Left")
 left_label = NodePath("Left/Label")
 right_button = NodePath("Right")

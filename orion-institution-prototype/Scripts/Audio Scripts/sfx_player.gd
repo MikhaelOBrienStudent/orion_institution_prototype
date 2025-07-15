@@ -12,13 +12,13 @@ enum sfx_type {
 }
 
 func _init() -> void:
-	pass#get_sound_files()
+	get_sound_files()
 
 
 
 ##Depreciated, used initially for the method where the name of the file was added instead of the file itself. 
 func get_sound_files():# -> Array[AudioStream]:
-	var path = "res://Audio/SFX Clips"
+	var path = "res://Assets/Audio/SFX Clips"
 	var audio_files: PackedStringArray = DirAccess.get_files_at(path)
 	
 	for file_path in audio_files:
@@ -30,8 +30,9 @@ func get_sound_files():# -> Array[AudioStream]:
 			sound_clip_names.append(audio_name)
 
 
-func PlaySound(clip: AudioStream, volume: float, bus:sfx_type):
-	#var clip: AudioStream = sound_clips[sound_clip_names.find(clip_name)]
+func PlaySound(clip: AudioStream, volume: float, bus:sfx_type, clip_name: String = ""):
+	if clip_name != "":
+		clip = sound_clips[sound_clip_names.find(clip_name)]
 	var sound = AudioStreamPlayer.new()
 	sound.stream = clip
 	sound.volume_linear = volume
