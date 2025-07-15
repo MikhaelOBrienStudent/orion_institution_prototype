@@ -3,6 +3,10 @@ title: DayTwoCherry
 <<declare $friendship = 3>>
 <<declare $name = "">>
 
+//Setting up the scene
+<<SetCharacterLocation DialogueSignals "Cherry" "Cell">>
+<<SetCharacterLocation DialogueSignals "Scarlet" "Hallway">>
+
 What is your name?
 <<GetPlayerName DialogueSignals>>
     -> Submit
@@ -36,6 +40,7 @@ Cherry:I'm doing perfectly well, thank you very much. What a lovely place for me
 
 title: improvement
 ---
+
 //MC
 {$name}:Well maybe we can help each other out? Is there something I can do to improve your... living area?
 
@@ -149,6 +154,7 @@ Cherry:Person will do. It's interesting talking to you too, {$name}. I suppose I
 Cherry:Goodbye.
 
 <<EnableNavigation DialogueSignals>>
+<<RemoveCharacter DialogueSignals "Cherry">>
 <<jump Coworker>>
 
 ===

@@ -8,7 +8,30 @@ public partial class DialogueSignals : Node
 	
 	//Placeholder for if there needs to be any signals sent- otherwise, an external script will notify the dialogue when to begin
 	[Signal]
-	public delegate void StartDialogueSignalEventHandler();	
+	public delegate void StartDialogueSignalEventHandler();
+
+	//Signals relating to setting up the scene
+
+	//Update where a character is
+	[Signal]
+	public delegate void SetCharacterLocationSignalEventHandler(string character_name, string character_location);
+	[YarnCommand("SetCharacterLocation")]
+	public void SetCharacterLocation(string character_name, string character_location)
+	{
+		EmitSignal(SignalName.SetCharacterLocationSignal, character_name, character_location);
+	}
+
+	//Remove a character from all locations
+	[Signal]
+	public delegate void RemoveCharacterSignalEventHandler(string character_name);
+	[YarnCommand("RemoveCharacter")]
+	public void RemoveCharacter(string character_name)
+	{
+		EmitSignal(SignalName.RemoveCharacterSignal, character_name);
+	}
+
+
+
 	
 	//To be used for playing sfx from the dialogue script. The sound name should be the name of the file to be used
 	[Signal]

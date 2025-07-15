@@ -2,6 +2,9 @@ extends Node
 signal StartDialogue
 signal EnableNavigation
 
+signal SetCharacterLocation(char_name: String, char_loc: String)
+signal RemoveCharacter(char_name: String)
+
 @onready var dialogue_signals: Node = $"../DialogueSignals"
 
 @export var dialogue_nodes: Array[Node]
@@ -36,3 +39,11 @@ func _on_dialogue_signals_start_dialogue_signal() -> void:
 
 func _on_dialogue_signals_play_sound_signal(sfx_name: String, sfx_volume: float) -> void:
 	SfxPlayer.PlaySound(null, sfx_volume, SfxPlayer.sfx_type.WORLD, sfx_name)
+
+
+func _on_dialogue_signals_set_character_location_signal(character_name: String, character_location: String) -> void:
+	SetCharacterLocation.emit(character_name, character_location)
+
+
+func _on_dialogue_signals_remove_character_signal(character_name: String) -> void:
+	RemoveCharacter.emit(character_name)

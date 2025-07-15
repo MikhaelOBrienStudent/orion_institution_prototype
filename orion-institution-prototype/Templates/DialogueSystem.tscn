@@ -249,4 +249,6 @@ visible = false
 [connection signal="GetNameSignal" from="DialogueSignals" to="SignalReceiver" method="GetPlayerName"]
 [connection signal="HidePlayerInputSignal" from="DialogueSignals" to="SignalReceiver" method="HideInput"]
 [connection signal="PlaySoundSignal" from="DialogueSignals" to="SignalReceiver" method="_on_dialogue_signals_play_sound_signal"]
+[connection signal="RemoveCharacterSignal" from="DialogueSignals" to="SignalReceiver" method="_on_dialogue_signals_remove_character_signal"]
+[connection signal="SetCharacterLocationSignal" from="DialogueSignals" to="SignalReceiver" method="_on_dialogue_signals_set_character_location_signal"]
 [connection signal="InputReceived" from="PlayerTextInput" to="SignalReceiver" method="_on_player_text_input_input_received"]

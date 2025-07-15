@@ -65,5 +65,6 @@ Scarlet:Guess so. Shoot, better get back to my rounds before I get yelled at. Se
 //MC
 {$name}:Yeah. See you.
 
+<<RemoveCharacter DialogueSignals "Scarlet">>
 <<EnableNavigation DialogueSignals>>
 ===
