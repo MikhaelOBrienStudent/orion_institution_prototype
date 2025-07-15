@@ -2,6 +2,7 @@ extends CanvasLayer
 signal StartDialogue
 signal ChangeRoom
 
+@export var location_manager: Node2D
 @export var current_location: Location
 
 @export var left_button: TextureButton
@@ -19,30 +20,31 @@ signal ChangeRoom
 @export var character_manager: Node
 
 func _ready() -> void:
-	current_location.Arrive()
-	
-	var direction_check = func(loc: Location) -> bool:
-		if loc:
-			return true
-		return false
-	
-	left_button.visible = direction_check.call(current_location.left_location)
-	if current_location.left_location:
-		left_label.text = current_location.left_location.location_name
-	
-	right_button.visible = direction_check.call(current_location.right_location)
-	if current_location.right_location:
-		right_label.text = current_location.right_location.location_name
-	
-	top_button.visible = direction_check.call(current_location.top_location)
-	if current_location.top_location:
-		top_label.text = current_location.top_location.location_name
-	
-	bottom_button.visible = direction_check.call(current_location.bottom_location)
-	if current_location.bottom_location:
-		bottom_label.text = current_location.bottom_location.location_name
-	
-	character_manager.ChangeCharacter(current_location.current_character)
+	pass
+	#current_location.Arrive()
+	#
+	#var direction_check = func(loc: Location) -> bool:
+		#if loc:
+			#return true
+		#return false
+	#
+	#left_button.visible = direction_check.call(current_location.left_location)
+	#if current_location.left_location:
+		#left_label.text = current_location.left_location.location_name
+	#
+	#right_button.visible = direction_check.call(current_location.right_location)
+	#if current_location.right_location:
+		#right_label.text = current_location.right_location.location_name
+	#
+	#top_button.visible = direction_check.call(current_location.top_location)
+	#if current_location.top_location:
+		#top_label.text = current_location.top_location.location_name
+	#
+	#bottom_button.visible = direction_check.call(current_location.bottom_location)
+	#if current_location.bottom_location:
+		#bottom_label.text = current_location.bottom_location.location_name
+	#
+	#character_manager.ChangeCharacter(current_location.current_character)
 
 func ChangeLocation(direction: String) -> Location:
 	var new_location: Location
@@ -99,3 +101,36 @@ func _on_top_pressed() -> void:
 
 func _on_bottom_pressed() -> void:
 	current_location = ChangeLocation("BOTTOM")
+
+
+func _on_signal_receiver_change_location(location_name: String) -> void:
+	var new_location: Location = location_manager.SetLocation(location_name)
+	
+	var direction_check = func(loc: Location) -> bool:
+		if loc:
+			return true
+		return false
+	
+	left_button.visible = direction_check.call(new_location.left_location)
+	if new_location.left_location:
+		left_label.text = new_location.left_location.location_name
+	
+	right_button.visible = direction_check.call(new_location.right_location)
+	if new_location.right_location:
+		right_label.text = new_location.right_location.location_name
+	
+	top_button.visible = direction_check.call(new_location.top_location)
+	if new_location.top_location:
+		top_label.text = new_location.top_location.location_name
+	
+	bottom_button.visible = direction_check.call(new_location.bottom_location)
+	if new_location.bottom_location:
+		bottom_label.text = new_location.bottom_location.location_name
+	
+	if current_location:
+		current_location.Leave()
+	current_location = new_location
+	current_location.Arrive()
+	character_manager.ChangeCharacter(new_location.current_character)
+	if new_location.current_character:
+		StartDialogue.emit()

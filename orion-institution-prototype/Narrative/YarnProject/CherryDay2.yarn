@@ -4,14 +4,16 @@ title: DayTwoCherry
 <<declare $name = "">>
 
 //Setting up the scene
+<<ChangeLocation DialogueSignals "Monitor Room">>
 <<SetCharacterLocation DialogueSignals "Cherry" "Cell">>
-<<SetCharacterLocation DialogueSignals "Scarlet" "Hallway">>
 
 What is your name?
 <<GetPlayerName DialogueSignals>>
     -> Submit
         <<set $name = SetPlayerName()>>
         <<HidePlayerInput DialogueSignals>>
+
+<<EnableNavigation DialogueSignals>>
 
 
 //Cherry
@@ -40,6 +42,7 @@ Cherry:I'm doing perfectly well, thank you very much. What a lovely place for me
 
 title: improvement
 ---
+
 
 //MC
 {$name}:Well maybe we can help each other out? Is there something I can do to improve your... living area?
@@ -155,6 +158,7 @@ Cherry:Goodbye.
 
 <<EnableNavigation DialogueSignals>>
 <<RemoveCharacter DialogueSignals "Cherry">>
+<<SetCharacterLocation DialogueSignals "Scarlet" "Hallway">>
 <<jump Coworker>>
 
 ===

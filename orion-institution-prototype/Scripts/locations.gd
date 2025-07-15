@@ -22,3 +22,9 @@ func RemoveCharacterFromAllLocations(character_name:String) -> void:
 	for location:Location in all_locations:
 		if location.current_character == character_name:
 			location.current_character = ""
+
+func SetLocation(location_name: String) -> Location:
+	for location: Location in all_locations:
+		if location.location_name == location_name:
+			return location
+	return null

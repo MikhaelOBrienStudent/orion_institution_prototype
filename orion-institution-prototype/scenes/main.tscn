@@ -31,9 +31,9 @@ startNode = "DayTwoCherry"
 [node name="ContinueButton" parent="DialogueCanvasLayer/LinePresenter/PresenterControl" index="2" node_paths=PackedStringArray("character_manager")]
 character_manager = NodePath("../../../../Characters")
 
-[node name="Navigation" parent="." node_paths=PackedStringArray("current_location", "character_manager") instance=ExtResource("6_ynf5e")]
+[node name="Navigation" parent="." node_paths=PackedStringArray("location_manager", "character_manager") instance=ExtResource("6_ynf5e")]
 visible = false
-current_location = NodePath("../Locations/Cell")
+location_manager = NodePath("../Locations")
 character_manager = NodePath("../Characters")
 
 [node name="Characters" type="Node" parent="." node_paths=PackedStringArray("character_nodes")]
@@ -63,6 +63,7 @@ visible = false
 
 [connection signal="EnableNavigationSignal" from="DialogueCanvasLayer/DialogueSignals" to="DialogueCanvasLayer/SignalReceiver" method="_on_dialogue_signals_enable_navigation_signal"]
 [connection signal="StartDialogueSignal" from="DialogueCanvasLayer/DialogueSignals" to="DialogueCanvasLayer/SignalReceiver" method="_on_dialogue_signals_start_dialogue_signal"]
+[connection signal="ChangeLocation" from="DialogueCanvasLayer/SignalReceiver" to="Navigation" method="_on_signal_receiver_change_location"]
 [connection signal="EnableNavigation" from="DialogueCanvasLayer/SignalReceiver" to="SceneManager" method="EnableNavigation"]
 [connection signal="RemoveCharacter" from="DialogueCanvasLayer/SignalReceiver" to="SceneManager" method="ClearCharacterLocation"]
 [connection signal="SetCharacterLocation" from="DialogueCanvasLayer/SignalReceiver" to="SceneManager" method="SetCharacterLocation"]

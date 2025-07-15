@@ -30,6 +30,14 @@ public partial class DialogueSignals : Node
 		EmitSignal(SignalName.RemoveCharacterSignal, character_name);
 	}
 
+	[Signal]
+	public delegate void ChangePlayerLocationSignalEventHandler(string location_name);
+	[YarnCommand("ChangeLocation")]
+	public void ChangePlayerLocation(string location_name)
+	{
+		EmitSignal(SignalName.ChangePlayerLocationSignal, location_name);
+	}
+
 
 
 	

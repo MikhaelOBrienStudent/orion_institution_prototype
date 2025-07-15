@@ -246,6 +246,7 @@ visible = false
 
 [connection signal="onUnhandledCommand" from="DialogueRunner" to="SignalReceiver" method="_on_dialogue_runner_on_unhandled_command"]
 [connection signal="pressed" from="LinePresenter/PresenterControl/ContinueButton" to="LinePresenter/PresenterControl/ContinueButton" method="_on_pressed"]
+[connection signal="ChangePlayerLocationSignal" from="DialogueSignals" to="SignalReceiver" method="_on_dialogue_signals_change_player_location_signal"]
 [connection signal="GetNameSignal" from="DialogueSignals" to="SignalReceiver" method="GetPlayerName"]
 [connection signal="HidePlayerInputSignal" from="DialogueSignals" to="SignalReceiver" method="HideInput"]
 [connection signal="PlaySoundSignal" from="DialogueSignals" to="SignalReceiver" method="_on_dialogue_signals_play_sound_signal"]

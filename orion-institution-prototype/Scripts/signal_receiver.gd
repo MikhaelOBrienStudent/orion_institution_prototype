@@ -5,6 +5,8 @@ signal EnableNavigation
 signal SetCharacterLocation(char_name: String, char_loc: String)
 signal RemoveCharacter(char_name: String)
 
+signal ChangeLocation(location_name: String)
+
 @onready var dialogue_signals: Node = $"../DialogueSignals"
 
 @export var dialogue_nodes: Array[Node]
@@ -47,3 +49,7 @@ func _on_dialogue_signals_set_character_location_signal(character_name: String, 
 
 func _on_dialogue_signals_remove_character_signal(character_name: String) -> void:
 	RemoveCharacter.emit(character_name)
+
+
+func _on_dialogue_signals_change_player_location_signal(location_name: String) -> void:
+	ChangeLocation.emit(location_name)
