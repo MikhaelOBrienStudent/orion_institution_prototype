@@ -31,9 +31,19 @@ startNode = "DayTwoCherry"
 [node name="ContinueButton" parent="DialogueCanvasLayer/LinePresenter/PresenterControl" index="2" node_paths=PackedStringArray("character_manager")]
 character_manager = NodePath("../../../../Characters")
 
-[node name="Navigation" parent="." node_paths=PackedStringArray("location_manager", "character_manager") instance=ExtResource("6_ynf5e")]
+[node name="InMemoryVariableStorage" parent="DialogueCanvasLayer" index="4" node_paths=PackedStringArray("debugTextView")]
+showDebug = true
+debugTextView = NodePath("RichTextLabel")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="DialogueCanvasLayer/InMemoryVariableStorage" index="0"]
+offset_right = 336.0
+offset_bottom = 632.0
+theme_override_font_sizes/normal_font_size = 25
+
+[node name="Navigation" parent="." node_paths=PackedStringArray("location_manager", "dialogue_memory", "character_manager") instance=ExtResource("6_ynf5e")]
 visible = false
 location_manager = NodePath("../Locations")
+dialogue_memory = NodePath("../DialogueCanvasLayer/InMemoryVariableStorage")
 character_manager = NodePath("../Characters")
 
 [node name="Characters" type="Node" parent="." node_paths=PackedStringArray("character_nodes")]
@@ -48,18 +58,16 @@ character_name = "Cherry"
 visible = false
 character_name = "Scarlet"
 
-[node name="SceneManager" type="Node" parent="." node_paths=PackedStringArray("dialogue_runner", "navigation", "location_manager", "character_manager")]
+[node name="SceneManager" type="Node" parent="." node_paths=PackedStringArray("dialogue_runner_canvas", "dialogue_runner", "navigation", "location_manager", "character_manager")]
 script = ExtResource("7_344ge")
-dialogue_runner = NodePath("../DialogueCanvasLayer")
+dialogue_runner_canvas = NodePath("../DialogueCanvasLayer")
+dialogue_runner = NodePath("../DialogueCanvasLayer/DialogueRunner")
 navigation = NodePath("../Navigation")
 location_manager = NodePath("../Locations")
 character_manager = NodePath("../Characters")
 
 [node name="Locations" parent="." instance=ExtResource("9_hptm8")]
 script = ExtResource("12_6iyac")
-
-[node name="Cell" parent="Locations" index="2"]
-visible = false
 
 [connection signal="EnableNavigationSignal" from="DialogueCanvasLayer/DialogueSignals" to="DialogueCanvasLayer/SignalReceiver" method="_on_dialogue_signals_enable_navigation_signal"]
 [connection signal="StartDialogueSignal" from="DialogueCanvasLayer/DialogueSignals" to="DialogueCanvasLayer/SignalReceiver" method="_on_dialogue_signals_start_dialogue_signal"]

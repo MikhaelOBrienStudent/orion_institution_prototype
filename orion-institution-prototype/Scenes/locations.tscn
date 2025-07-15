@@ -33,13 +33,28 @@ scale = Vector2(0.5, 0.5)
 texture = ExtResource("3_ibxhk")
 centered = false
 
-[node name="Cell" type="Node2D" parent="." node_paths=PackedStringArray("bottom_location")]
+[node name="Cell" type="Node2D" parent="." node_paths=PackedStringArray("right_location", "bottom_location")]
+visible = false
 script = ExtResource("1_wsf7f")
 location_name = "Cell"
+right_location = NodePath("../Cell2")
 bottom_location = NodePath("../Hallway")
 metadata/_custom_type_script = "uid://ldo4ct6oqy35"
 
 [node name="Sprite2D" type="Sprite2D" parent="Cell"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_6uftb")
+centered = false
+
+[node name="Cell2" type="Node2D" parent="." node_paths=PackedStringArray("left_location")]
+visible = false
+modulate = Color(1, 0.376471, 0.631373, 1)
+script = ExtResource("1_wsf7f")
+location_name = "Cell2"
+left_location = NodePath("../Cell")
+metadata/_custom_type_script = "uid://ldo4ct6oqy35"
+
+[node name="Sprite2D" type="Sprite2D" parent="Cell2"]
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("4_6uftb")
 centered = false

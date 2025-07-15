@@ -2,9 +2,12 @@ title: DayTwoCherry
 ---
 <<declare $friendship = 3>>
 <<declare $name = "">>
+<<declare $current_location = "">>
+
 
 //Setting up the scene
-<<ChangeLocation DialogueSignals "Monitor Room">>
+<<ChangeLocation DialogueSignals "Cell">>
+
 <<SetCharacterLocation DialogueSignals "Cherry" "Cell">>
 
 What is your name?
@@ -12,8 +15,6 @@ What is your name?
     -> Submit
         <<set $name = SetPlayerName()>>
         <<HidePlayerInput DialogueSignals>>
-
-<<EnableNavigation DialogueSignals>>
 
 
 //Cherry
@@ -156,9 +157,24 @@ Cherry:Person will do. It's interesting talking to you too, {$name}. I suppose I
 //Cherry
 Cherry:Goodbye.
 
-<<EnableNavigation DialogueSignals>>
-<<RemoveCharacter DialogueSignals "Cherry">>
+
+<<SetCharacterLocation DialogueSignals "Cherry" "Cell2">>
 <<SetCharacterLocation DialogueSignals "Scarlet" "Hallway">>
+<<EnableNavigation DialogueSignals>>
+<<jump Navigation1>>
+
+===
+
+title: Navigation1
+---
+Navigating....
+
+<<if $current_location == "Cell2">>
+<<jump Cellmate>>
+<<endif>>
+
+<<if $current_location == "Hallway">>
 <<jump Coworker>>
+<<endif>>
 
 ===

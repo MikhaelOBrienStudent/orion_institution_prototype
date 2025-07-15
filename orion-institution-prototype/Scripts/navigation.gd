@@ -5,6 +5,8 @@ signal ChangeRoom
 @export var location_manager: Node2D
 @export var current_location: Location
 
+@export var dialogue_memory: InMemoryVariableStorage
+
 @export var left_button: TextureButton
 @export var left_label: Label
 
@@ -88,6 +90,8 @@ func ChangeLocation(direction: String) -> Location:
 		StartDialogue.emit()
 	if direction != "HERE":
 		ChangeRoom.emit()
+	
+	dialogue_memory.SetValue("$current_location", new_location.location_name)
 	return new_location
 
 func _on_left_pressed() -> void:

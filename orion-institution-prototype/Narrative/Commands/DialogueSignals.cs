@@ -5,10 +5,16 @@ using System;
 public partial class DialogueSignals : Node
 {
 	[Export] public DialogueRunner dialogueRunner;
+	[Export] public InMemoryVariableStorage memoryStorage;
 	
 	//Placeholder for if there needs to be any signals sent- otherwise, an external script will notify the dialogue when to begin
 	[Signal]
 	public delegate void StartDialogueSignalEventHandler();
+
+	public void EndNavigation()
+	{
+		dialogueRunner.RequestNextLine();
+	}
 
 	//Signals relating to setting up the scene
 
@@ -35,6 +41,7 @@ public partial class DialogueSignals : Node
 	[YarnCommand("ChangeLocation")]
 	public void ChangePlayerLocation(string location_name)
 	{
+		memoryStorage.SetValue("$current_location", location_name);
 		EmitSignal(SignalName.ChangePlayerLocationSignal, location_name);
 	}
 

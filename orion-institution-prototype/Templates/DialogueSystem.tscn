@@ -232,9 +232,10 @@ script = ExtResource("5_1g5fu")
 [node name="TextLineProvider" type="Node2D" parent="."]
 script = ExtResource("6_8jeg3")
 
-[node name="DialogueSignals" type="Node" parent="." node_paths=PackedStringArray("dialogueRunner")]
+[node name="DialogueSignals" type="Node" parent="." node_paths=PackedStringArray("dialogueRunner", "memoryStorage")]
 script = ExtResource("11_t56k8")
 dialogueRunner = NodePath("../DialogueRunner")
+memoryStorage = NodePath("../InMemoryVariableStorage")
 
 [node name="SignalReceiver" type="Node" parent="." node_paths=PackedStringArray("dialogue_nodes", "player_input_ui")]
 script = ExtResource("12_ry6ui")

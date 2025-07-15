@@ -1,17 +1,19 @@
 extends Node
 
-@export var dialogue_runner: Node
+@export var dialogue_runner_canvas: Node
+@export var dialogue_runner: DialogueRunner
 @export var navigation: Node
 @export var location_manager: Node
 @export var character_manager: Node
 
 
 func EnableDialogue() -> void:
-	dialogue_runner.visible = true
+	dialogue_runner_canvas.visible = true
 	navigation.visible = false
+	dialogue_runner.RequestNextLine()
 
 func EnableNavigation() -> void:
-	dialogue_runner.visible = false
+	dialogue_runner_canvas.visible = false
 	navigation.visible = true
 	
 	#navigation.current_location.current_character = ""
