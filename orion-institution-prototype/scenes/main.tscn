@@ -2,15 +2,15 @@
 
 [ext_resource type="Script" uid="uid://bsukakrub6e60" path="res://Scripts/Game Management/main.gd" id="1_d1ilt"]
 [ext_resource type="PackedScene" uid="uid://rskqyvn1oq28" path="res://Templates/DialogueSystem.tscn" id="2_8gbba"]
-[ext_resource type="PackedScene" uid="uid://37soojyye5eb" path="res://Scenes/gui.tscn" id="2_kry3j"]
-[ext_resource type="PackedScene" uid="uid://byi28peg3cmv" path="res://Scenes/audio.tscn" id="4_jjvhh"]
-[ext_resource type="Resource" uid="uid://l4ehu44v1t3b" path="res://Narrative/YarnProject/OrionInstitution.yarnproject" id="5_6bp64"]
-[ext_resource type="PackedScene" uid="uid://frlebr2m3f0d" path="res://Scenes/navigation.tscn" id="6_ynf5e"]
+[ext_resource type="PackedScene" uid="uid://37soojyye5eb" path="res://scenes/gui.tscn" id="2_kry3j"]
+[ext_resource type="PackedScene" uid="uid://byi28peg3cmv" path="res://scenes/audio.tscn" id="4_jjvhh"]
+[ext_resource type="Resource" uid="uid://l4ehu44v1t3b" path="res://Narrative/YarnProject/OrionInstitution.yarnproject" id="5_eb6dy"]
+[ext_resource type="PackedScene" uid="uid://frlebr2m3f0d" path="res://scenes/navigation.tscn" id="6_ynf5e"]
 [ext_resource type="Script" uid="uid://bqstnch2uehlr" path="res://Scripts/Game Management/scene_manager.gd" id="7_344ge"]
 [ext_resource type="Script" uid="uid://cx8xav6jtt1f5" path="res://Scripts/characters.gd" id="7_d1ilt"]
-[ext_resource type="PackedScene" uid="uid://d3uqi3oqnn4mj" path="res://Scenes/Characters/Cherry.tscn" id="7_hptm8"]
-[ext_resource type="PackedScene" uid="uid://bqm8pww0wodvf" path="res://Scenes/Characters/Scarlet.tscn" id="8_d1ilt"]
-[ext_resource type="PackedScene" uid="uid://3vnbb1aftlgl" path="res://Scenes/locations.tscn" id="9_hptm8"]
+[ext_resource type="PackedScene" uid="uid://d3uqi3oqnn4mj" path="res://scenes/Characters/Cherry.tscn" id="7_hptm8"]
+[ext_resource type="PackedScene" uid="uid://bqm8pww0wodvf" path="res://scenes/Characters/Scarlet.tscn" id="8_d1ilt"]
+[ext_resource type="PackedScene" uid="uid://3vnbb1aftlgl" path="res://scenes/locations.tscn" id="9_hptm8"]
 [ext_resource type="Script" uid="uid://d20h7y3toqcr6" path="res://Scripts/locations.gd" id="12_6iyac"]
 
 [node name="Main" type="Node" node_paths=PackedStringArray("gui")]
@@ -25,7 +25,7 @@ layer = 2
 [node name="DialogueCanvasLayer" parent="." instance=ExtResource("2_8gbba")]
 
 [node name="DialogueRunner" parent="DialogueCanvasLayer" index="0"]
-yarnProject = ExtResource("5_6bp64")
+yarnProject = ExtResource("5_eb6dy")
 startNode = "DayTwoCherry"
 
 [node name="ContinueButton" parent="DialogueCanvasLayer/LinePresenter/PresenterControl" index="2" node_paths=PackedStringArray("character_manager")]
@@ -76,8 +76,6 @@ script = ExtResource("12_6iyac")
 [connection signal="RemoveCharacter" from="DialogueCanvasLayer/SignalReceiver" to="SceneManager" method="ClearCharacterLocation"]
 [connection signal="SetCharacterLocation" from="DialogueCanvasLayer/SignalReceiver" to="SceneManager" method="SetCharacterLocation"]
 [connection signal="StartDialogue" from="DialogueCanvasLayer/SignalReceiver" to="SceneManager" method="EnableDialogue"]
-[connection signal="ChangeRoom" from="Navigation" to="Audio/SFX_Clips" method="change_room_sound"]
-[connection signal="StartDialogue" from="Navigation" to="SceneManager" method="EnableDialogue"]
 
 [editable path="Audio"]
 [editable path="DialogueCanvasLayer"]
