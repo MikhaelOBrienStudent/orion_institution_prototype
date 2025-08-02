@@ -1,17 +1,22 @@
-[gd_scene load_steps=13 format=3 uid="uid://c0ag56dv7yy35"]
+[gd_scene load_steps=18 format=3 uid="uid://c0ag56dv7yy35"]
 
 [ext_resource type="Script" uid="uid://bsukakrub6e60" path="res://Scripts/Game Management/main.gd" id="1_d1ilt"]
 [ext_resource type="PackedScene" uid="uid://rskqyvn1oq28" path="res://Templates/DialogueSystem.tscn" id="2_8gbba"]
-[ext_resource type="PackedScene" uid="uid://37soojyye5eb" path="res://scenes/gui.tscn" id="2_kry3j"]
-[ext_resource type="PackedScene" uid="uid://byi28peg3cmv" path="res://scenes/audio.tscn" id="4_jjvhh"]
+[ext_resource type="PackedScene" uid="uid://37soojyye5eb" path="res://Scenes/gui.tscn" id="2_kry3j"]
+[ext_resource type="PackedScene" uid="uid://byi28peg3cmv" path="res://Scenes/audio.tscn" id="4_jjvhh"]
 [ext_resource type="Resource" uid="uid://l4ehu44v1t3b" path="res://Narrative/YarnProject/OrionInstitution.yarnproject" id="5_eb6dy"]
-[ext_resource type="PackedScene" uid="uid://frlebr2m3f0d" path="res://scenes/navigation.tscn" id="6_ynf5e"]
+[ext_resource type="PackedScene" uid="uid://frlebr2m3f0d" path="res://Scenes/navigation.tscn" id="6_ynf5e"]
 [ext_resource type="Script" uid="uid://bqstnch2uehlr" path="res://Scripts/Game Management/scene_manager.gd" id="7_344ge"]
 [ext_resource type="Script" uid="uid://cx8xav6jtt1f5" path="res://Scripts/characters.gd" id="7_d1ilt"]
-[ext_resource type="PackedScene" uid="uid://d3uqi3oqnn4mj" path="res://scenes/Characters/Cherry.tscn" id="7_hptm8"]
-[ext_resource type="PackedScene" uid="uid://bqm8pww0wodvf" path="res://scenes/Characters/Scarlet.tscn" id="8_d1ilt"]
-[ext_resource type="PackedScene" uid="uid://3vnbb1aftlgl" path="res://scenes/locations.tscn" id="9_hptm8"]
+[ext_resource type="PackedScene" uid="uid://d3uqi3oqnn4mj" path="res://Scenes/Characters/Cherry.tscn" id="7_hptm8"]
+[ext_resource type="PackedScene" uid="uid://bqm8pww0wodvf" path="res://Scenes/Characters/Scarlet.tscn" id="8_d1ilt"]
+[ext_resource type="PackedScene" uid="uid://3vnbb1aftlgl" path="res://Scenes/locations.tscn" id="9_hptm8"]
+[ext_resource type="Script" uid="uid://c02nyfnhmn2ri" path="res://Scripts/Character/face.gd" id="9_jkdf5"]
+[ext_resource type="Texture2D" uid="uid://dod8qlilv3ctm" path="res://Assets/Characters/REFSPRITE.png" id="10_h1bgf"]
+[ext_resource type="Script" uid="uid://bn65klsg2o1w" path="res://Scripts/Character/pose.gd" id="10_wsu2k"]
 [ext_resource type="Script" uid="uid://d20h7y3toqcr6" path="res://Scripts/locations.gd" id="12_6iyac"]
+[ext_resource type="Texture2D" uid="uid://bpdfdmortbgmx" path="res://Assets/Characters/placeholder.png" id="12_b3802"]
+[ext_resource type="Texture2D" uid="uid://dr4gladfba44p" path="res://Assets/Characters/scarlet.png" id="14_fevyy"]
 
 [node name="Main" type="Node" node_paths=PackedStringArray("gui")]
 script = ExtResource("1_d1ilt")
@@ -54,9 +59,42 @@ character_nodes = [NodePath("Cherry"), NodePath("Scarlet")]
 visible = false
 character_name = "Cherry"
 
+[node name="Poses" type="Node" parent="Characters/Cherry"]
+
+[node name="default" type="Node" parent="Characters/Cherry/Poses"]
+script = ExtResource("10_wsu2k")
+pose_sprite = ExtResource("10_h1bgf")
+metadata/_custom_type_script = "uid://bn65klsg2o1w"
+
+[node name="Expressions" type="Node" parent="Characters/Cherry"]
+
+[node name="default" type="Node" parent="Characters/Cherry/Expressions"]
+script = ExtResource("9_jkdf5")
+face_sprite = ExtResource("10_h1bgf")
+metadata/_custom_type_script = "uid://c02nyfnhmn2ri"
+
+[node name="ARDEN" type="Node" parent="Characters/Cherry/Expressions"]
+script = ExtResource("9_jkdf5")
+face_sprite = ExtResource("12_b3802")
+metadata/_custom_type_script = "uid://c02nyfnhmn2ri"
+
 [node name="Scarlet" parent="Characters" instance=ExtResource("8_d1ilt")]
 visible = false
 character_name = "Scarlet"
+
+[node name="Poses" type="Node" parent="Characters/Scarlet"]
+
+[node name="default" type="Node" parent="Characters/Scarlet/Poses"]
+script = ExtResource("10_wsu2k")
+pose_sprite = ExtResource("14_fevyy")
+metadata/_custom_type_script = "uid://bn65klsg2o1w"
+
+[node name="Expressions" type="Node" parent="Characters/Scarlet"]
+
+[node name="default" type="Node" parent="Characters/Scarlet/Expressions"]
+script = ExtResource("9_jkdf5")
+face_sprite = ExtResource("14_fevyy")
+metadata/_custom_type_script = "uid://c02nyfnhmn2ri"
 
 [node name="SceneManager" type="Node" parent="." node_paths=PackedStringArray("dialogue_runner_canvas", "dialogue_runner", "navigation", "location_manager", "character_manager")]
 script = ExtResource("7_344ge")
@@ -69,6 +107,7 @@ character_manager = NodePath("../Characters")
 [node name="Locations" parent="." instance=ExtResource("9_hptm8")]
 script = ExtResource("12_6iyac")
 
+[connection signal="CharacterName" from="DialogueCanvasLayer/LinePresenter" to="DialogueCanvasLayer/SignalReceiver" method="_on_line_presenter_character_name"]
 [connection signal="EnableNavigationSignal" from="DialogueCanvasLayer/DialogueSignals" to="DialogueCanvasLayer/SignalReceiver" method="_on_dialogue_signals_enable_navigation_signal"]
 [connection signal="StartDialogueSignal" from="DialogueCanvasLayer/DialogueSignals" to="DialogueCanvasLayer/SignalReceiver" method="_on_dialogue_signals_start_dialogue_signal"]
 [connection signal="ChangeLocation" from="DialogueCanvasLayer/SignalReceiver" to="Navigation" method="_on_signal_receiver_change_location"]
@@ -76,6 +115,10 @@ script = ExtResource("12_6iyac")
 [connection signal="RemoveCharacter" from="DialogueCanvasLayer/SignalReceiver" to="SceneManager" method="ClearCharacterLocation"]
 [connection signal="SetCharacterLocation" from="DialogueCanvasLayer/SignalReceiver" to="SceneManager" method="SetCharacterLocation"]
 [connection signal="StartDialogue" from="DialogueCanvasLayer/SignalReceiver" to="SceneManager" method="EnableDialogue"]
+[connection signal="TalkingCharacterName" from="DialogueCanvasLayer/SignalReceiver" to="Characters" method="_on_signal_receiver_talking_character_name"]
+[connection signal="UpdateCharacterSprite" from="DialogueCanvasLayer/SignalReceiver" to="Characters" method="UpdateCharacterSprite"]
+[connection signal="ChangeRoom" from="Navigation" to="Audio/SFX_Clips" method="change_room_sound"]
+[connection signal="StartDialogue" from="Navigation" to="SceneManager" method="EnableDialogue"]
 
 [editable path="Audio"]
 [editable path="DialogueCanvasLayer"]

@@ -8,7 +8,6 @@ title: DayTwoCherry
 //Setting up the scene
 <<ChangeLocation DialogueSignals "Cell">>
 
-<<SetCharacterLocation DialogueSignals "Cherry" "Cell">>
 
 What is your name?
 <<GetPlayerName DialogueSignals>>
@@ -16,6 +15,7 @@ What is your name?
         <<set $name = SetPlayerName()>>
         <<HidePlayerInput DialogueSignals>>
 
+<<SetCharacterLocation DialogueSignals "Cherry" "Cell">>
 
 //Cherry
 Cherry:Ah. Good morning {$name}

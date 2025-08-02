@@ -282,6 +282,12 @@ public partial class LinePresenter : Node, DialoguePresenterBase
 			}
 		}
 	}
+	
+	[Signal]
+	public delegate void onNewMetadataEventHandler();
+	
+	[Signal]
+	public delegate void CharacterNameEventHandler();
 
 	/// <summary>Presents a line using the configured text view.</summary>
 	/// <inheritdoc cref="DialoguePresenterBase.RunLineAsync(LocalizedLine, LineCancellationToken)" path="/param"/>
@@ -323,7 +329,13 @@ public partial class LinePresenter : Node, DialoguePresenterBase
 
 			text = line.Text;
 		}
-
+		
+		if (line.Metadata != null)
+		{
+			EmitSignal(SignalName.onNewMetadata, line.Metadata);
+		}
+		EmitSignal(SignalName.CharacterName, line.CharacterName);
+		
 		lineText.Text = text.Text;
 		ConvertHTMLToBBCodeIfConfigured();
 		var continueHandler = Callable.From(OnContinuePressed);

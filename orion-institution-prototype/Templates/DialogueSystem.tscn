@@ -237,8 +237,9 @@ script = ExtResource("11_t56k8")
 dialogueRunner = NodePath("../DialogueRunner")
 memoryStorage = NodePath("../InMemoryVariableStorage")
 
-[node name="SignalReceiver" type="Node" parent="." node_paths=PackedStringArray("dialogue_nodes", "player_input_ui")]
+[node name="SignalReceiver" type="Node" parent="." node_paths=PackedStringArray("dialogue_runner", "dialogue_nodes", "player_input_ui")]
 script = ExtResource("12_ry6ui")
+dialogue_runner = NodePath("../DialogueRunner")
 dialogue_nodes = [NodePath("../LinePresenter"), NodePath("../OptionsPresenter")]
 player_input_ui = NodePath("../PlayerTextInput")
 
@@ -246,6 +247,7 @@ player_input_ui = NodePath("../PlayerTextInput")
 visible = false
 
 [connection signal="onUnhandledCommand" from="DialogueRunner" to="SignalReceiver" method="_on_dialogue_runner_on_unhandled_command"]
+[connection signal="onNewMetadata" from="LinePresenter" to="SignalReceiver" method="_on_line_presenter_on_new_metadata"]
 [connection signal="pressed" from="LinePresenter/PresenterControl/ContinueButton" to="LinePresenter/PresenterControl/ContinueButton" method="_on_pressed"]
 [connection signal="ChangePlayerLocationSignal" from="DialogueSignals" to="SignalReceiver" method="_on_dialogue_signals_change_player_location_signal"]
 [connection signal="GetNameSignal" from="DialogueSignals" to="SignalReceiver" method="GetPlayerName"]

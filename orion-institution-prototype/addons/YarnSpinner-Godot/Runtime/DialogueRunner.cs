@@ -626,7 +626,7 @@ public partial class DialogueRunner : Godot.Node
 		var localisedLine =
 			await LineProvider.GetLocalizedLineAsync(line,
 				dialogueCancellationSource?.Token ?? CancellationToken.None);
-
+		
 		if (localisedLine == LocalizedLine.InvalidLine)
 		{
 			GD.PushError($"Failed to get a localised line for {line.ID}!");

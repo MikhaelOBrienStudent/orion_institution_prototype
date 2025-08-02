@@ -7,7 +7,12 @@ signal RemoveCharacter(char_name: String)
 
 signal ChangeLocation(location_name: String)
 
+signal UpdateCharacterSprite(sprite_type: String, sprite_name: String)
+signal TalkingCharacterName(character_name: String)
+
 @onready var dialogue_signals: Node = $"../DialogueSignals"
+
+@export var dialogue_runner: DialogueRunner
 
 @export var dialogue_nodes: Array[Node]
 
@@ -18,6 +23,7 @@ signal ChangeLocation(location_name: String)
 func GetPlayerName() -> void:
 	print("Getting player name...")
 	player_input_ui.visible = true
+
 
 func HideInput() -> void:
 	player_input_ui.visible = false
@@ -53,3 +59,16 @@ func _on_dialogue_signals_remove_character_signal(character_name: String) -> voi
 
 func _on_dialogue_signals_change_player_location_signal(location_name: String) -> void:
 	ChangeLocation.emit(location_name)
+
+func _on_line_presenter_on_new_metadata(metadata) -> void:
+	for data in metadata:
+		if data is String:
+			var tag_data = data.split(":")
+			if tag_data.size() == 2:
+				if tag_data[0] == "pose" || "expression":
+					UpdateCharacterSprite.emit(tag_data[0], tag_data[1])
+			
+
+
+func _on_line_presenter_character_name(character_name: String) -> void:
+	TalkingCharacterName.emit(character_name)
