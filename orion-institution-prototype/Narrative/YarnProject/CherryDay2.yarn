@@ -17,9 +17,9 @@ What is your name?
 
 <<SetCharacterLocation DialogueSignals "Cherry" "Cell">>
 
-#expression:happy
+
 //Cherry
-Cherry:Ah. Good morning {$name}
+Cherry:Ah. Good morning {$name}#expression:happy
 
 //MC
 -> {$name}:Good morning Cherry!
@@ -37,10 +37,10 @@ Cherry:Honestly? I've been better. I won't lie, this isn't the most comfortable 
 <<jump improvement>>
 <<endif>>
 <<if $friendship <4>>//Changed to less than 4, because the first option already covers if it equals 4
-Cherry:I'm doing perfectly well, thank you very much. What a lovely place for me to be staying in.
+Cherry:I'm doing perfectly well, thank you very much. What a lovely place for me to be staying in.#expression:neutral
 <<jump improvement>>
 <<endif>>
-#expression:neutral
+
 ===
 
 title: improvement
@@ -60,21 +60,19 @@ Cherry:Well in that case... A new outfit would be nice. If you like.
 
 //MC
 -> Accept
-    #expression: happy
     <<set $friendship +=1>>
-    {$name}:I'm sure I can figure something like that out for you.
+    {$name}:I'm sure I can figure something like that out for you.#expression:happy
     //Cherry
     Cherry:Thankyou, it is much appreciated. If I think of something worth sharing, you'll be the first I tell.
 -> Decline
-    #expression: sad
     <<set $friendship -=1>>
     //Cherry
-    Cherry:Well. I see how it is then.
-#expression:neutral
+    Cherry:Well. I see how it is then.#expression:sad
+
 
 <<if $friendship >=6>>
 //Cherry
-Cherry:So... I've kind of heard others talking about what this place is. But like... what (do) you do?
+Cherry:So... I've kind of heard others talking about what this place is. But like... what (do) you do?#expression:neutral
 //MC
 {$name}:I'm security?
 //Cherry
@@ -97,9 +95,9 @@ Cherry:So, who runs this place? Who will, eventually, have the pleasure of inter
 -> (avoid)
     {$name}:Who, Magnus? He's no one, don't even worry about it.
 -> (lie)
-    {$name}:HA, Magnus will eat you alive
+    {$name}:HA, Magnus will eat you alive 
     <<set $friendship -=1>>
-#expression:pensive sad
+
 
 //Cherry
 Cherry:Magnus... now why does that name ring a bell?
@@ -113,11 +111,10 @@ Cherry:Hm. Maybe.
 ...
 
 //MC
-#expression:happy
 {$name}:Can I ask you something?
 
 //Cherry
-Cherry:Shoot.
+Cherry:Shoot.#expression:happy
 
 -> Name
     <<jump name>>
@@ -130,8 +127,7 @@ Cherry:Shoot.
 title: name
 ---
 //MC
-{$name}:Cherry. Is that a nickname?
-#expression:pensive sad
+{$name}:Cherry. Is that a nickname?#expression:sad
 //Cherry
 Cherry:Uh. I... I don't know. I think so?
 Cherry:I can't quite remember.
@@ -142,12 +138,12 @@ Cherry:I can't quite remember.
 
 title: arrival
 ---
-#expression:neutral
+
 //MC
 {$name}:Do you remember much of how you got here? Or the day you arrived?
 
 //Cherry
-Cherry:Um. The day I arrived. I, uh, I don't remember. I think... I don't know. That's weird.
+Cherry:Um. The day I arrived. I, uh, I don't remember. I think... I don't know. That's weird.#expression:neutral
 
 //MC
 {$name}:Huh. Yeah, very weird.
@@ -158,9 +154,9 @@ title: goodbye
 ---
 //MC
 {$name}:Well, it was good to talk to you again. You're a very interesting... person?
-#expression:happy
+
 //Cherry
-Cherry:Person will do. It's interesting talking to you too, {$name}. I suppose I will be seeing you again sometime soon.
+Cherry:Person will do. It's interesting talking to you too, {$name}. I suppose I will be seeing you again sometime soon.#expression:happy
 //MC
 {$name}:Goodbye Cherry.
 //Cherry
