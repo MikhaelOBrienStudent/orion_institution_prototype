@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dod8qlilv3ctm"
-path="res://.godot/imported/REFSPRITE.png-0fc0ed79018dc72d61b116dc0258f757.ctex"
+uid="uid://dr4gladfba44p"
+path="res://.godot/imported/scarlet.png-c0e642057213a085d9a16fc067ec180d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Characters/REFSPRITE.png"
-dest_files=["res://.godot/imported/REFSPRITE.png-0fc0ed79018dc72d61b116dc0258f757.ctex"]
+source_file="res://Assets/Characters/Scarlet/scarlet.png"
+dest_files=["res://.godot/imported/scarlet.png-c0e642057213a085d9a16fc067ec180d.ctex"]
 
 [params]
 

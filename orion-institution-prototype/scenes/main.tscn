@@ -12,11 +12,11 @@
 [ext_resource type="PackedScene" uid="uid://bqm8pww0wodvf" path="res://Scenes/Characters/Scarlet.tscn" id="8_d1ilt"]
 [ext_resource type="PackedScene" uid="uid://3vnbb1aftlgl" path="res://Scenes/locations.tscn" id="9_hptm8"]
 [ext_resource type="Script" uid="uid://c02nyfnhmn2ri" path="res://Scripts/Character/face.gd" id="9_jkdf5"]
-[ext_resource type="Texture2D" uid="uid://dod8qlilv3ctm" path="res://Assets/Characters/REFSPRITE.png" id="10_h1bgf"]
+[ext_resource type="Texture2D" uid="uid://dod8qlilv3ctm" path="res://Assets/Characters/Cherry/REFSPRITE.png" id="10_h1bgf"]
 [ext_resource type="Script" uid="uid://bn65klsg2o1w" path="res://Scripts/Character/pose.gd" id="10_wsu2k"]
 [ext_resource type="Script" uid="uid://d20h7y3toqcr6" path="res://Scripts/locations.gd" id="12_6iyac"]
 [ext_resource type="Texture2D" uid="uid://bpdfdmortbgmx" path="res://Assets/Characters/placeholder.png" id="12_b3802"]
-[ext_resource type="Texture2D" uid="uid://dr4gladfba44p" path="res://Assets/Characters/scarlet.png" id="14_fevyy"]
+[ext_resource type="Texture2D" uid="uid://dr4gladfba44p" path="res://Assets/Characters/Scarlet/scarlet.png" id="14_fevyy"]
 
 [node name="Main" type="Node" node_paths=PackedStringArray("gui")]
 script = ExtResource("1_d1ilt")
