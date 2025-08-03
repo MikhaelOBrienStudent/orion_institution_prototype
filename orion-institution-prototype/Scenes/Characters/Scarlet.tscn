@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://bqm8pww0wodvf"]
 
 [ext_resource type="Script" uid="uid://cslr2rxets1xq" path="res://Scripts/Character/character.gd" id="1_dfp88"]
-[ext_resource type="Texture2D" uid="uid://dr4gladfba44p" path="res://Assets/Characters/scarlet.png" id="2_dfp88"]
+[ext_resource type="Texture2D" uid="uid://dr4gladfba44p" path="res://Assets/Characters/Scarlet/scarlet.png" id="2_dfp88"]
 [ext_resource type="Animation" uid="uid://cc3hvbwpriugy" path="res://Assets/Characters/CharacterAnimations/talk_jump.res" id="3_jstnl"]
 
 [sub_resource type="Animation" id="Animation_7kdcx"]
