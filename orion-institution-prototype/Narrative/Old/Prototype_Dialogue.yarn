@@ -10,6 +10,8 @@ What is your name?
         <<set $name = SetPlayerName()>>
         <<HidePlayerInput DialogueSignals>>
 
+
+#expression: annoyed
 //MC
 -> {$name}:Hello there. Welcome to the Orion Institute.
     <<set $friendship +=1>>
@@ -35,6 +37,7 @@ Who are you?
     //Cherry
     Cherry:Well I'm Cherry. Good to make your acquaintance, I guess.
 
+#expression: neutral
 //MC
 {$name}:Do you know why you're here?
 
@@ -74,6 +77,7 @@ Cherry:Uh huh. Sure.
 ===
 title: GoodEng
 ---
+#expression: happy
 //Cherry
 Cherry:If you must know, yes it is. Most of us learn English from a young age, as we often interact with you humans.
 //MC
@@ -82,6 +86,7 @@ Cherry:If you must know, yes it is. Most of us learn English from a young age, a
 ===
 title: BadEng
 ---
+#expression: annoyed
 //Cherry
 Cherry:Why do I? Why do you? I wouldn't expect someone as... stupid as you to be eloquent.
 //MC
@@ -90,6 +95,7 @@ Cherry:Why do I? Why do you? I wouldn't expect someone as... stupid as you to be
 ===
 title: Species
 ---
+#expression: neutral
 //MC
 -> {$name}:So tell me about... your type.
     <<set $friendship -=1>>
@@ -119,12 +125,14 @@ Cherry:I don't see how thats any of your business. Why should you know more abou
 
 title: BadChoice
 ---
+#expression: annoyed
 //Cherry
 Cherry:How. DARE YOU! What do you think gives you the right to question me like this? Do you not think pink is the perfect colour to match who I am? Do you think of me as some sort of borish prude? God, you humans are all the same.
     <<jump InMates>>
 ===
 
 title: Clothes
+#expression: happy
 ---
 //Cherry
 Cherry:Oh, you like? Why thank you. I was going for... stylish yet still meaning business, you know? I'm glad you find it... appealing.
@@ -145,6 +153,7 @@ title: Choices
 
 title: InMates
 ---
+#expression: sad
 //Cherry
 Cherry:I've heard voices, and sounds coming from the rooms around me. I presume I'm not the only one who's been... captured? I did hear a bit of music one night.
 -> (Truth)
@@ -164,6 +173,7 @@ Cherry:I've heard voices, and sounds coming from the rooms around me. I presume 
     Well, never hurts to ask, I guess.
 
 <<if $friendship ==6>>
+#expression: neutral
 //Cherry
 Cherry:Can I ask, why do you do this job? You seem less... arrogant, and rude, then others I've heard stories about. This line of work isn't what I'd envision for you.
 //MC
@@ -177,11 +187,13 @@ Cherry:What a refreshing mindset.
     {$name}:Do you have any family? Or anyone that would maybe miss you while you're here?
     //Cherry
     <<if $friendship >=3>>
+    #expression: pensive sad
     Cherry:I... I don't want to talk about that right now.
     <<jump Goodbye>>
     <<endif>>
     //Cherry
     <<if $friendship <=2>>
+    #expression: pensive sad
     Cherry:I don't see how that's any of your business
     <<jump Goodbye>>
     <<endif>>
@@ -190,6 +202,7 @@ Cherry:What a refreshing mindset.
 ===
 
 title: Goodbye
+#expression neutral
 ---
 -> {$name}:Thank you for today.
     //MC

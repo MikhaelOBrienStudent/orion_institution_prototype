@@ -17,6 +17,7 @@ What is your name?
 
 <<SetCharacterLocation DialogueSignals "Cherry" "Cell">>
 
+#expression: happy
 //Cherry
 Cherry:Ah. Good morning {$name}
 
@@ -43,7 +44,7 @@ Cherry:I'm doing perfectly well, thank you very much. What a lovely place for me
 
 title: improvement
 ---
-
+#expression: neutral
 
 //MC
 {$name}:Well maybe we can help each other out? Is there something I can do to improve your... living area?
@@ -59,17 +60,20 @@ Cherry:Well in that case... A new outfit would be nice. If you like.
 
 //MC
 -> Accept
+    #expression: happy
     <<set $friendship +=1>>
     {$name}:I'm sure I can figure something like that out for you.
     //Cherry
     Cherry:Thankyou, it is much appreciated. If I think of something worth sharing, you'll be the first I tell.
 -> Decline
+    #expression: sad
     <<set $friendship -=1>>
     //Cherry
     Cherry:Well. I see how it is then.
 
 <<if $friendship >=6>>
 //Cherry
+#expression: neutral
 Cherry:So... I've kind of heard others talking about what this place is. But like... what (do) you do?
 //MC
 {$name}:I'm security?
@@ -97,6 +101,7 @@ Cherry:So, who runs this place? Who will, eventually, have the pleasure of inter
     <<set $friendship -=1>>
 
 //Cherry
+#expression: pensive sad
 Cherry:Magnus... now why does that name ring a bell?
 
 //MC
@@ -108,6 +113,7 @@ Cherry:Hm. Maybe.
 ...
 
 //MC
+#expression: happy
 {$name}:Can I ask you something?
 
 //Cherry
@@ -126,6 +132,7 @@ title: name
 //MC
 {$name}:Cherry. Is that a nickname?
 //Cherry
+#expression: pensive sad
 Cherry:Uh. I... I don't know. I think so?
 Cherry:I can't quite remember.
 //MC
@@ -135,6 +142,7 @@ Cherry:I can't quite remember.
 
 title: arrival
 ---
+#expression: neutral
 //MC
 {$name}:Do you remember much of how you got here? Or the day you arrived?
 
@@ -151,6 +159,7 @@ title: goodbye
 //MC
 {$name}:Well, it was good to talk to you again. You're a very interesting... person?
 //Cherry
+#expression: happy
 Cherry:Person will do. It's interesting talking to you too, {$name}. I suppose I will be seeing you again sometime soon.
 //MC
 {$name}:Goodbye Cherry.
