@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://c0ag56dv7yy35"]
+[gd_scene load_steps=26 format=3 uid="uid://c0ag56dv7yy35"]
 
 [ext_resource type="Script" uid="uid://bsukakrub6e60" path="res://Scripts/Game Management/main.gd" id="1_d1ilt"]
 [ext_resource type="PackedScene" uid="uid://rskqyvn1oq28" path="res://Templates/DialogueSystem.tscn" id="2_8gbba"]
@@ -18,12 +18,13 @@
 [ext_resource type="Texture2D" uid="uid://wo88ovdom36q" path="res://Assets/Characters/Cherry/Poses/pose_sad.png" id="11_gqmmt"]
 [ext_resource type="Texture2D" uid="uid://cxpjajxb5qp6o" path="res://Assets/Characters/Cherry/Expressions/expression_neutral.png" id="12_0ld40"]
 [ext_resource type="Script" uid="uid://d20h7y3toqcr6" path="res://Scripts/locations.gd" id="12_6iyac"]
-[ext_resource type="Texture2D" uid="uid://bpdfdmortbgmx" path="res://Assets/Characters/placeholder.png" id="12_b3802"]
 [ext_resource type="Texture2D" uid="uid://dr4gladfba44p" path="res://Assets/Characters/Scarlet/scarlet.png" id="14_fevyy"]
 [ext_resource type="Texture2D" uid="uid://bvoa8ltddi1h3" path="res://Assets/Characters/Cherry/Expressions/expression_happy.png" id="14_yc10j"]
 [ext_resource type="Texture2D" uid="uid://bx0hw4e56ihtp" path="res://Assets/Characters/Cherry/Expressions/expression_annoyed.png" id="15_pm3ni"]
 [ext_resource type="Texture2D" uid="uid://2jh5uhfque24" path="res://Assets/Characters/Cherry/Expressions/expression_sad.png" id="16_y6deb"]
 [ext_resource type="Texture2D" uid="uid://cukwg5j32nu73" path="res://Assets/Characters/Cherry/Expressions/expression_pensive.png" id="17_og1vs"]
+[ext_resource type="PackedScene" uid="uid://qqgoryldvogf" path="res://Templates/character.tscn" id="21_u50mg"]
+[ext_resource type="Texture2D" uid="uid://bpdfdmortbgmx" path="res://Assets/Characters/placeholder.png" id="22_cbgmd"]
 
 [node name="Main" type="Node" node_paths=PackedStringArray("gui")]
 script = ExtResource("1_d1ilt")
@@ -58,9 +59,10 @@ location_manager = NodePath("../Locations")
 dialogue_memory = NodePath("../DialogueCanvasLayer/InMemoryVariableStorage")
 character_manager = NodePath("../Characters")
 
-[node name="Characters" type="Node" parent="." node_paths=PackedStringArray("character_nodes")]
+[node name="Characters" type="Node" parent="." node_paths=PackedStringArray("main", "character_nodes")]
 script = ExtResource("7_d1ilt")
-character_nodes = [NodePath("Cherry"), NodePath("Scarlet")]
+main = NodePath("..")
+character_nodes = [NodePath("Cherry"), NodePath("Scarlet"), NodePath("Arden")]
 
 [node name="Cherry" parent="Characters" instance=ExtResource("7_hptm8")]
 visible = false
@@ -88,11 +90,6 @@ metadata/_custom_type_script = "uid://bn65klsg2o1w"
 [node name="default" type="Node" parent="Characters/Cherry/Expressions"]
 script = ExtResource("9_jkdf5")
 face_sprite = ExtResource("10_h1bgf")
-metadata/_custom_type_script = "uid://c02nyfnhmn2ri"
-
-[node name="ARDEN" type="Node" parent="Characters/Cherry/Expressions"]
-script = ExtResource("9_jkdf5")
-face_sprite = ExtResource("12_b3802")
 metadata/_custom_type_script = "uid://c02nyfnhmn2ri"
 
 [node name="neutral" type="Node" parent="Characters/Cherry/Expressions"]
@@ -138,6 +135,24 @@ script = ExtResource("9_jkdf5")
 face_sprite = ExtResource("14_fevyy")
 metadata/_custom_type_script = "uid://c02nyfnhmn2ri"
 
+[node name="Arden" parent="Characters" instance=ExtResource("21_u50mg")]
+visible = false
+character_name = "Arden"
+
+[node name="Poses" type="Node" parent="Characters/Arden"]
+
+[node name="default" type="Node" parent="Characters/Arden/Poses"]
+script = ExtResource("10_wsu2k")
+pose_sprite = ExtResource("22_cbgmd")
+metadata/_custom_type_script = "uid://bn65klsg2o1w"
+
+[node name="Expressions" type="Node" parent="Characters/Arden"]
+
+[node name="default" type="Node" parent="Characters/Arden/Expressions"]
+script = ExtResource("9_jkdf5")
+face_sprite = ExtResource("22_cbgmd")
+metadata/_custom_type_script = "uid://c02nyfnhmn2ri"
+
 [node name="SceneManager" type="Node" parent="." node_paths=PackedStringArray("dialogue_runner_canvas", "dialogue_runner", "navigation", "location_manager", "character_manager")]
 script = ExtResource("7_344ge")
 dialogue_runner_canvas = NodePath("../DialogueCanvasLayer")
@@ -158,7 +173,7 @@ script = ExtResource("12_6iyac")
 [connection signal="SetCharacterLocation" from="DialogueCanvasLayer/SignalReceiver" to="SceneManager" method="SetCharacterLocation"]
 [connection signal="StartDialogue" from="DialogueCanvasLayer/SignalReceiver" to="SceneManager" method="EnableDialogue"]
 [connection signal="TalkingCharacterName" from="DialogueCanvasLayer/SignalReceiver" to="Characters" method="_on_signal_receiver_talking_character_name"]
-[connection signal="UpdateCharacterSprite" from="DialogueCanvasLayer/SignalReceiver" to="Characters" method="UpdateCharacterSprite"]
+[connection signal="UpdateCharacterSprite" from="DialogueCanvasLayer/SignalReceiver" to="Characters" method="UpdateCharacterSprite" flags=3]
 [connection signal="ChangeRoom" from="Navigation" to="Audio/SFX_Clips" method="change_room_sound"]
 [connection signal="StartDialogue" from="Navigation" to="SceneManager" method="EnableDialogue"]
 

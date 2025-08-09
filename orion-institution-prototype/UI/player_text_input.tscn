@@ -13,7 +13,7 @@ font_size = 25
 outline_size = 14
 outline_color = Color(0, 0, 0, 1)
 
-[node name="PlayerTextInput" type="Control"]
+[node name="PlayerTextInput" type="Control" node_paths=PackedStringArray("line_edit", "label")]
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -23,6 +23,8 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_wftmq")
+line_edit = NodePath("LineEdit")
+label = NodePath("Label")
 
 [node name="LineEdit" type="LineEdit" parent="."]
 layout_mode = 0
@@ -34,6 +36,7 @@ theme_override_fonts/font = ExtResource("2_0y8l1")
 theme_override_font_sizes/font_size = 66
 theme_override_styles/focus = SubResource("StyleBoxTexture_rx52i")
 theme_override_styles/normal = SubResource("StyleBoxTexture_rx52i")
+text = "Placeholder"
 alignment = 1
 emoji_menu_enabled = false
 

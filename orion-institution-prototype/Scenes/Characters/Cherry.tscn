@@ -27,16 +27,17 @@ _data = {
 }
 
 [node name="Cherry" type="Node2D" node_paths=PackedStringArray("animation_player")]
-position = Vector2(0, 384)
 script = ExtResource("1_eu1pv")
 animation_player = NodePath("AnimationPlayer")
 
 [node name="Pose" type="Sprite2D" parent="."]
-position = Vector2(946, 1152)
+position = Vector2(0, 1080)
+scale = Vector2(0.6, 0.6)
 texture = ExtResource("2_gjx1y")
 
 [node name="Expression" type="Sprite2D" parent="."]
-position = Vector2(946, 1152)
+position = Vector2(0, 1080)
+scale = Vector2(0.6, 0.6)
 texture = ExtResource("3_8sib8")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
