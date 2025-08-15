@@ -6,6 +6,9 @@ signal InputReceived
 
 var input_value
 
+func _ready() -> void:
+	input_value = line_edit.text
+
 func _on_line_edit_text_submitted(new_text: String) -> void:
 	input_value = new_text
 	InputReceived.emit()

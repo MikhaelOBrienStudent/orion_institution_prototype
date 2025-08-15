@@ -30,11 +30,11 @@ script = ExtResource("1_dfp88")
 animation_player = NodePath("AnimationPlayer")
 
 [node name="Pose" type="Sprite2D" parent="."]
-position = Vector2(946, 1032)
+position = Vector2(0, 1080)
 texture = ExtResource("2_dfp88")
 
 [node name="Expression" type="Sprite2D" parent="."]
-position = Vector2(946, 1032)
+position = Vector2(0, 1080)
 texture = ExtResource("2_dfp88")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

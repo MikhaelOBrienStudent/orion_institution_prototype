@@ -10,18 +10,17 @@ func _ready() -> void:
 		all_locations.append(location)
 		all_location_names.append(location.location_name)
 
+
 func UpdateCharacterLocation(character_name: String, character_location: String) -> void:
 	for location: Location in all_locations:
-		if location.location_name == character_location:
-			location.current_character = character_name
+		if location.location_name == character_location && not location.current_characters.has(character_name):
+			location.current_characters.append(character_name)
 		else:
-			if location.current_character == character_name:
-				location.current_character = ""
+			location.current_characters.erase(character_name)
 
 func RemoveCharacterFromAllLocations(character_name:String) -> void:
 	for location:Location in all_locations:
-		if location.current_character == character_name:
-			location.current_character = ""
+		location.current_characters.erase(character_name)
 
 func SetLocation(location_name: String) -> Location:
 	for location: Location in all_locations:

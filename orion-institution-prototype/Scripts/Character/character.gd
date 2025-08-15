@@ -24,13 +24,40 @@ func _ready() -> void:
 	
 	expression_sprite.reparent(pose_sprite)
 
-func _process(delta: float) -> void:
-	expression_sprite.offset = pose_sprite.offset
+func _physics_process(delta: float) -> void:
+	pass#expression_sprite.offset = pose_sprite.offset
 
 func Talk() -> void:
-	animation_player.play("talk_jump")
+	var jump_tween = self.create_tween()
+	jump_tween.set_parallel()
+	jump_tween.tween_property(pose_sprite, "offset", Vector2(0,-30), 0.2).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SINE)
+	jump_tween.tween_property(expression_sprite, "offset", Vector2(0,-30), 0.2).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SINE)
+	await jump_tween.finished
+	
+	
+	var jump_tween_2 = self.create_tween()
+	jump_tween_2.set_parallel()
+	jump_tween_2.tween_property(pose_sprite, "offset", Vector2(0,0), 0.075).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_SINE)
+	jump_tween_2.tween_property(expression_sprite, "offset", Vector2(0,0), 0.075).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_SINE)
+	#animation_player.play("talk_jump")
+
+func Highlight(talking:bool = true) -> void:
+	if talking:
+		self.z_index = 1
+		scale = Vector2(1.1,1.1)
+		position.y = -60
+		modulate.a = 1
+		return
+	self.z_index = 0
+	scale = Vector2(1,1)
+	position.y = 0
+	modulate.a = 0.95
+	
 
 func Leave() -> void:
+	var leave_tween = create_tween()
+	leave_tween.tween_property(self, "position:x", -1920, 0.75)
+	await leave_tween.finished
 	self.visible = false
 
 func UpdatePose(pose_name: String) -> void:

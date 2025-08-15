@@ -7,7 +7,7 @@ class_name Location
 @export var top_location: Location
 @export var bottom_location: Location
 
-@export var current_character: String
+@export var current_characters: Array[String]
 
 func Arrive() -> void:
 	visible = true

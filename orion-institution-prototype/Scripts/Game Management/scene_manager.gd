@@ -19,14 +19,17 @@ func EnableNavigation() -> void:
 	#navigation.current_location.current_character = ""
 	#navigation.ChangeLocation("HERE")
 
+
 func SetCharacterLocation(character_name: String, character_location: String) -> void:
-	if navigation.current_location.current_character == character_name:
-		character_manager.ChangeCharacter("")
+	#if navigation.current_location.current_character == character_name:
+		#character_manager.ChangeCharacter("")
+		
 	location_manager.UpdateCharacterLocation(character_name, character_location)
-	if character_location == navigation.current_location.location_name:
-		character_manager.ChangeCharacter(character_name)
+	character_manager.ChangeCharacter(navigation.current_location.current_characters)
 
 func ClearCharacterLocation(character_name:String) -> void:
-	if navigation.current_location.current_character == character_name:
-		character_manager.ChangeCharacter("")
+	#if navigation.current_location.current_characters.has(character_name):
+		#character_manager.ChangeCharacter("")
 	location_manager.RemoveCharacterFromAllLocations(character_name)
+	character_manager.ChangeCharacter(navigation.current_location.current_characters)
+	

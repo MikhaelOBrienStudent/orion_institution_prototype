@@ -19,7 +19,6 @@ signal TalkingCharacterName(character_name: String)
 @export var player_input_ui: Control
 
 
-
 func GetPlayerName() -> void:
 	print("Getting player name...")
 	player_input_ui.visible = true
@@ -27,6 +26,8 @@ func GetPlayerName() -> void:
 
 func HideInput() -> void:
 	player_input_ui.visible = false
+	var main = get_node("/root/Main")
+	main.PlayerName = player_input_ui.input_value
 
 
 func _on_dialogue_runner_on_unhandled_command(commandText: String) -> void:
