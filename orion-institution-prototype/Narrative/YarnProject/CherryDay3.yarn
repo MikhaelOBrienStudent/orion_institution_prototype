@@ -1,0 +1,174 @@
+title: Day3
+---
+
+<<declare $name = "">>
+<<declare $current_location = "">>
+
+
+//Setting up the scene
+<<ChangeLocation DialogueSignals "Cell">>
+
+<<SetCharacterLocation DialogueSignals "Cherry" "Cell">>
+
+
+Cherry: Hello (name)! How are you?
+
+//MC
+-> {$name}:Say hi
+    <<set $friendship +=1>>
+    <<jump hello>>
+-> {$name}:(say nothing)
+    <<set $friendship -=1>>
+    <<jump wrong>>
+===
+
+title: hello
+---
+{$name}: Hello Cherry. I'm okay, how are you?
+
+Cherry: Ah, same old, same old. Glad to talk to you though, as always!
+
+{$name}: Ah. Yeah, same.
+
+Cherry: You're being weird. What's up with you?
+-> answer gently
+<<jump answer>>
+-> answer harshly
+<<jump answer_harsh>> 
+
+===
+title: wrong
+---
+Cherry: What's wrong with you? Why are you being so silent and grumpy??
+-> answer gently
+<<jump answer>>
+-> answer harshly
+<<jump answer_harsh>>
+===
+title: answer
+---
+{$name}: Well... I was told something about you yesterday. Something about the day you arrived here.
+Cherry: The day I arrived? What did you hear? I don't remember that day very clearly.
+{$name}: You don't? That's a relief.
+Cherry: A relief?! What are you on about?
+{$name}: You killing a whole bunch of people? The massive Dark Matter explosion you caused? Ringing any bells?
+<<jump surprise>>
+===
+title: answer_harsh
+---
+{$name}: What's wrong with me?! What's wrong with you!? Why did you kill all those people?!
+Cherry: What!?
+{$name}: The Dark Matter explosion? That was you!
+<<jump surprise>>
+===
+title: surprise
+---
+Cherry: Wait what? What on earth are you on about?
+{$name}: Don't pretend you don't know! You've been here, acting all coy and cheery, when you killed half a dozen people! Some of them were my friends, you know.
+Cherry: Really, {$name}, I swear. I don't know what you're talking about. I don't remember the day I got here, at all. 
+{$name}: Oh really.
+Cherry: Truly. It was... dark. And cold. I remember feeling frozen. And lonely. 
+Cherry: Then it wasn't dark, it was black. And there was a loud sound.
+{$name}: The explosion.
+Cherry: I really don't remember it. I swear. You have to believe me!
+-> {$name}: I do (truth)
+        <<set $friendship +=3>>
+        <<jump believe>>
+-> {$name}: I do (lie)
+        <<set $friendship -=1>>
+        <<jump lie>>
+-> {$name}: I don't
+        <<set $friendship -=3>>
+        <<jump dont>>
+===
+title: believe
+---
+Cherry: Thank you. Truly, thank you. I swear it's the truth.
+{$name}: I know.
+Cherry: ...But no one else does. Is that why no one else will talk to me? Or even look at me?
+{$name}: It must be. There must be something connecting you to the explosion. Why else would everyone assume it's you?
+Cherry: I don't know. I don't know why people think it's me. 
+Cherry: Please, {$name}, please understand. I would never ever hurt people like that.
+-> reassure
+        <<set $friendship +=1>>
+        {$name}: Hey it's going to be okay. I believe you.
+-> say nothing
+Cherry: So, what do we do now?
+-> investigate
+        <<jump investigate>>
+-> stay calm
+        <<jump calm>>
+-> nothing
+        <<jump nothing>>
+===
+title: lie
+---
+Cherry: Oh {$name}, I figured you'd learnt by now - I know when you're lying. 
+{$name}: I'm not!
+Cherry: You are, and you're making it worse. If you don't believe me, then that's fine. Whatever.
+{$name}: I'm... sorry?
+Cherry: Yeah. Sure.
+Cherry: ...
+Cherry: So, what now?
+-> investigate
+        <<jump investigate>>
+-> stay calm
+        <<jump calm>>
+-> nothing
+        <<jump nothing>>
+===
+title: dont
+---
+Cherry: At least you're honest, I suppose. I swear I'm telling the truth, I just don't know how to prove it.
+{$name}: Look it's not that personal. Even you've got to admit it's kinda suspicious - a massive Dark Matter explosion happening, and you show up in the rubble?
+Cherry: Okay, I get how that seems. But I swear it's a coincidence. 
+{$name}: Sure, if you say so.
+Cherry: Well, now what? What do we do?
+-> investigate
+        <<jump investigate>>
+-> stay calm
+        <<jump calm>>
+-> nothing
+        <<jump nothing>>
+===
+title: investigate
+---
+{$name}: We investigate. We look into the explosion and figure out what happened. I can look into things out here, and ask around, and you can try and find out anything from anyone who comes to talk to you.
+Cherry: That's... quite clever. If we can figure out why the explosion happened, maybe we can figure out why I was there.
+{$name}: And why you don't remember anything.
+Cherry: And maybe... maybe then they'll let me go?
+{$name}: We can try, I suppose.
+Cherry: Thank you {$name}. It means a lot that you're willing to help me.
+{$name}: Let's just see how this goes before we start thanking anybody.
+Cherry: Still...
+{$name}: Look, I'd better go, I gotta get back to work. I'll come back tomorrow, and let you know anything I find.
+Cherry: Sounds like a plan! Wow, it's almost like we're undercover or something.
+{$name}: Sure Cherry, sure. I'll see you tomorrow.
+Cherry: See ya {$name}! We'll chat tomorrow.
+===
+title: calm
+---
+{$name}: Well, for starters, we stay calm. There's no need to panic or freak out.
+Cherry: I'm not freaking out! But I'd like to see how you'd react to being told you apparently killed a bunch of people.
+{$name}: ... good point. Still. Guilty or not, there has to be an explanation. So we chill out, maybe ask around a bit, see what happens.
+Cherry: Ask around? You think someone saw something, or knows something?
+{$name}: I think it doesn't hurt to ask. 
+Cherry: Hm.
+{$name}: Look, I gotta go, before I get in trouble. I'll probably come back tomorrow, kay?
+Cherry: Okay. I'll see you tomorrow then, {$name}.
+{$name}: Goodbye Cherry.
+===
+title: nothing
+---
+{$name}: We do nothing.
+Cherry: Nothing?!
+{$name}: Well what would we do? There's nothing we can do. Guilty or innocent, you're still in a cell, and I have no way of knowing the truth!
+Cherry: You could still look into it! Just because you don't know, doesn't mean that no one does!
+{$name}: I mean I guess, but still. That seems like a very complicated issue to broach, and it might not even help you.
+Cherry: You can still ask around!
+{$name}: Yeah. Maybe. I'll see I guess.
+Cherry: You'll see?
+{$name}: Look, I gotta go. I'll talk to you some other time.
+Cherry: Fine. Goodbye, I guess.
+
+===

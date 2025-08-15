@@ -1,0 +1,14 @@
+[remap]
+
+importer="yarnscript"
+type="Resource"
+uid="uid://d231jk1ypnby6"
+path="res://.godot/imported/ScarlettDay3.yarn-684a18a5868c528c628e386655d1234a.tres"
+
+[deps]
+
+source_file="res://Narrative/YarnProject/ScarlettDay3.yarn"
+dest_files=["res://.godot/imported/ScarlettDay3.yarn-684a18a5868c528c628e386655d1234a.tres"]
+
+[params]
+

@@ -1,0 +1,14 @@
+[remap]
+
+importer="yarnscript"
+type="Resource"
+uid="uid://d3eu8a8m61itt"
+path="res://.godot/imported/CherryDay3.yarn-ff993c35143f4ee0a0053112f3f3ec16.tres"
+
+[deps]
+
+source_file="res://Narrative/YarnProject/CherryDay3.yarn"
+dest_files=["res://.godot/imported/CherryDay3.yarn-ff993c35143f4ee0a0053112f3f3ec16.tres"]
+
+[params]
+
