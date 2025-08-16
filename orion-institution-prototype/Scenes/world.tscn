@@ -1,0 +1,210 @@
+[gd_scene load_steps=25 format=3 uid="uid://bngaerxb3wqsl"]
+
+[ext_resource type="PackedScene" uid="uid://37soojyye5eb" path="res://Scenes/gui.tscn" id="1_xbk3s"]
+[ext_resource type="PackedScene" uid="uid://rskqyvn1oq28" path="res://Templates/DialogueSystem.tscn" id="2_i4fjy"]
+[ext_resource type="Resource" uid="uid://l4ehu44v1t3b" path="res://Narrative/YarnProject/OrionInstitution.yarnproject" id="3_pt3ps"]
+[ext_resource type="PackedScene" uid="uid://frlebr2m3f0d" path="res://Scenes/navigation.tscn" id="4_hmc15"]
+[ext_resource type="Script" uid="uid://cx8xav6jtt1f5" path="res://Scripts/characters.gd" id="5_dt0r1"]
+[ext_resource type="PackedScene" uid="uid://d3uqi3oqnn4mj" path="res://Scenes/Characters/Cherry.tscn" id="6_qebug"]
+[ext_resource type="Script" uid="uid://bn65klsg2o1w" path="res://Scripts/Character/pose.gd" id="7_o2rbt"]
+[ext_resource type="Texture2D" uid="uid://dod8qlilv3ctm" path="res://Assets/Characters/Cherry/REFSPRITE.png" id="8_1vso6"]
+[ext_resource type="Texture2D" uid="uid://bcfh8o4na0sgq" path="res://Assets/Characters/Cherry/Poses/pose_neutral.png" id="9_3ua1v"]
+[ext_resource type="Texture2D" uid="uid://wo88ovdom36q" path="res://Assets/Characters/Cherry/Poses/pose_sad.png" id="10_r0ikl"]
+[ext_resource type="Script" uid="uid://c02nyfnhmn2ri" path="res://Scripts/Character/face.gd" id="11_opbav"]
+[ext_resource type="Texture2D" uid="uid://cxpjajxb5qp6o" path="res://Assets/Characters/Cherry/Expressions/expression_neutral.png" id="12_coyub"]
+[ext_resource type="Texture2D" uid="uid://bvoa8ltddi1h3" path="res://Assets/Characters/Cherry/Expressions/expression_happy.png" id="13_ochwf"]
+[ext_resource type="Texture2D" uid="uid://bx0hw4e56ihtp" path="res://Assets/Characters/Cherry/Expressions/expression_annoyed.png" id="14_p5wkl"]
+[ext_resource type="Texture2D" uid="uid://2jh5uhfque24" path="res://Assets/Characters/Cherry/Expressions/expression_sad.png" id="15_r74th"]
+[ext_resource type="Texture2D" uid="uid://cukwg5j32nu73" path="res://Assets/Characters/Cherry/Expressions/expression_pensive.png" id="16_04jkj"]
+[ext_resource type="PackedScene" uid="uid://bqm8pww0wodvf" path="res://Scenes/Characters/Scarlet.tscn" id="17_lkcvt"]
+[ext_resource type="Texture2D" uid="uid://dr4gladfba44p" path="res://Assets/Characters/Scarlet/scarlet.png" id="18_atqvy"]
+[ext_resource type="PackedScene" uid="uid://qqgoryldvogf" path="res://Templates/character.tscn" id="19_w5giw"]
+[ext_resource type="Texture2D" uid="uid://bpdfdmortbgmx" path="res://Assets/Characters/placeholder.png" id="20_jwdyn"]
+[ext_resource type="Script" uid="uid://bqstnch2uehlr" path="res://Scripts/Game Management/scene_manager.gd" id="21_t6yt7"]
+[ext_resource type="PackedScene" uid="uid://3vnbb1aftlgl" path="res://Scenes/locations.tscn" id="22_al5m0"]
+[ext_resource type="Script" uid="uid://d20h7y3toqcr6" path="res://Scripts/locations.gd" id="23_6mm6r"]
+[ext_resource type="PackedScene" uid="uid://belgi7sm4wp0g" path="res://Scenes/Location_light.tscn" id="24_xcb5n"]
+
+[node name="World" type="Node"]
+process_mode = 1
+
+[node name="GUI" parent="." instance=ExtResource("1_xbk3s")]
+layer = 2
+
+[node name="DialogueCanvasLayer" parent="." instance=ExtResource("2_i4fjy")]
+
+[node name="DialogueRunner" parent="DialogueCanvasLayer" index="0"]
+yarnProject = ExtResource("3_pt3ps")
+startNode = "DayTwoCherry"
+
+[node name="ContinueButton" parent="DialogueCanvasLayer/LinePresenter/PresenterControl" index="2" node_paths=PackedStringArray("character_manager")]
+character_manager = NodePath("../../../../Characters")
+
+[node name="InMemoryVariableStorage" parent="DialogueCanvasLayer" index="4" node_paths=PackedStringArray("debugTextView")]
+showDebug = true
+debugTextView = NodePath("RichTextLabel")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="DialogueCanvasLayer/InMemoryVariableStorage" index="0"]
+offset_right = 336.0
+offset_bottom = 632.0
+theme_override_font_sizes/normal_font_size = 25
+
+[node name="Navigation" parent="." node_paths=PackedStringArray("location_manager", "dialogue_memory", "character_manager") instance=ExtResource("4_hmc15")]
+visible = false
+location_manager = NodePath("../Locations")
+dialogue_memory = NodePath("../DialogueCanvasLayer/InMemoryVariableStorage")
+character_manager = NodePath("../Characters")
+
+[node name="Characters" type="Node" parent="." node_paths=PackedStringArray("character_nodes")]
+script = ExtResource("5_dt0r1")
+character_nodes = [NodePath("Cherry"), NodePath("Scarlet"), NodePath("Arden")]
+
+[node name="Cherry" parent="Characters" instance=ExtResource("6_qebug")]
+visible = false
+position = Vector2(960, 0)
+character_name = "Cherry"
+
+[node name="Poses" type="Node" parent="Characters/Cherry"]
+
+[node name="default" type="Node" parent="Characters/Cherry/Poses"]
+script = ExtResource("7_o2rbt")
+pose_sprite = ExtResource("8_1vso6")
+metadata/_custom_type_script = "uid://bn65klsg2o1w"
+
+[node name="neutral" type="Node" parent="Characters/Cherry/Poses"]
+script = ExtResource("7_o2rbt")
+pose_sprite = ExtResource("9_3ua1v")
+metadata/_custom_type_script = "uid://bn65klsg2o1w"
+
+[node name="sad" type="Node" parent="Characters/Cherry/Poses"]
+script = ExtResource("7_o2rbt")
+pose_sprite = ExtResource("10_r0ikl")
+metadata/_custom_type_script = "uid://bn65klsg2o1w"
+
+[node name="Expressions" type="Node" parent="Characters/Cherry"]
+
+[node name="default" type="Node" parent="Characters/Cherry/Expressions"]
+script = ExtResource("11_opbav")
+face_sprite = ExtResource("8_1vso6")
+metadata/_custom_type_script = "uid://c02nyfnhmn2ri"
+
+[node name="neutral" type="Node" parent="Characters/Cherry/Expressions"]
+script = ExtResource("11_opbav")
+face_sprite = ExtResource("12_coyub")
+metadata/_custom_type_script = "uid://c02nyfnhmn2ri"
+
+[node name="happy" type="Node" parent="Characters/Cherry/Expressions"]
+script = ExtResource("11_opbav")
+face_sprite = ExtResource("13_ochwf")
+metadata/_custom_type_script = "uid://c02nyfnhmn2ri"
+
+[node name="annoyed" type="Node" parent="Characters/Cherry/Expressions"]
+script = ExtResource("11_opbav")
+face_sprite = ExtResource("14_p5wkl")
+metadata/_custom_type_script = "uid://c02nyfnhmn2ri"
+
+[node name="sad" type="Node" parent="Characters/Cherry/Expressions"]
+script = ExtResource("11_opbav")
+face_sprite = ExtResource("15_r74th")
+metadata/_custom_type_script = "uid://c02nyfnhmn2ri"
+
+[node name="pensive" type="Node" parent="Characters/Cherry/Expressions"]
+script = ExtResource("11_opbav")
+face_sprite = ExtResource("16_04jkj")
+metadata/_custom_type_script = "uid://c02nyfnhmn2ri"
+
+[node name="Scarlet" parent="Characters" instance=ExtResource("17_lkcvt")]
+visible = false
+top_level = true
+z_index = 1
+position = Vector2(960, 0)
+character_name = "Scarlet"
+
+[node name="Poses" type="Node" parent="Characters/Scarlet"]
+
+[node name="default" type="Node" parent="Characters/Scarlet/Poses"]
+script = ExtResource("7_o2rbt")
+pose_sprite = ExtResource("18_atqvy")
+metadata/_custom_type_script = "uid://bn65klsg2o1w"
+
+[node name="Expressions" type="Node" parent="Characters/Scarlet"]
+
+[node name="default" type="Node" parent="Characters/Scarlet/Expressions"]
+script = ExtResource("11_opbav")
+face_sprite = ExtResource("18_atqvy")
+metadata/_custom_type_script = "uid://c02nyfnhmn2ri"
+
+[node name="Arden" parent="Characters" instance=ExtResource("19_w5giw")]
+visible = false
+top_level = true
+z_index = 1
+position = Vector2(960, 0)
+character_name = "Arden"
+
+[node name="Poses" type="Node" parent="Characters/Arden"]
+
+[node name="default" type="Node" parent="Characters/Arden/Poses"]
+script = ExtResource("7_o2rbt")
+pose_sprite = ExtResource("20_jwdyn")
+metadata/_custom_type_script = "uid://bn65klsg2o1w"
+
+[node name="Expressions" type="Node" parent="Characters/Arden"]
+
+[node name="default" type="Node" parent="Characters/Arden/Expressions"]
+script = ExtResource("11_opbav")
+face_sprite = ExtResource("20_jwdyn")
+metadata/_custom_type_script = "uid://c02nyfnhmn2ri"
+
+[node name="SceneManager" type="Node" parent="." node_paths=PackedStringArray("dialogue_runner_canvas", "dialogue_runner", "navigation", "location_manager", "character_manager")]
+script = ExtResource("21_t6yt7")
+dialogue_runner_canvas = NodePath("../DialogueCanvasLayer")
+dialogue_runner = NodePath("../DialogueCanvasLayer/DialogueRunner")
+navigation = NodePath("../Navigation")
+location_manager = NodePath("../Locations")
+character_manager = NodePath("../Characters")
+
+[node name="Locations" parent="." instance=ExtResource("22_al5m0")]
+script = ExtResource("23_6mm6r")
+
+[node name="Monitor_Room" parent="Locations" index="0"]
+shade_tint = Color(0.403674, 0.691936, 0.607631, 1)
+light_tint = Color(0.121298, 0.641748, 0.61607, 1)
+
+[node name="Hallway" parent="Locations" index="1"]
+shade_tint = Color(0.846641, 0.857355, 0.872361, 1)
+light_tint = Color(0.201527, 0.201527, 0.201527, 1)
+
+[node name="Cell" parent="Locations" index="2"]
+light_tint = Color(0.12098, 0.194205, 0.20883, 1)
+
+[node name="Cell2" parent="Locations" index="3"]
+shade_tint = Color(0.999821, 0.761262, 0.810387, 1)
+light_tint = Color(0.40503, 1.3236e-07, 0.20141, 1)
+
+[node name="Sprite2D" parent="Locations/Cell2" index="0"]
+modulate = Color(1, 0.482353, 0.623529, 1)
+
+[node name="VISUAL TESTING" type="Node2D" parent="."]
+visible = false
+
+[node name="PointLight2D" parent="VISUAL TESTING" instance=ExtResource("24_xcb5n")]
+color = Color(0.121298, 0.641748, 0.61607, 1)
+energy = 0.55
+
+[node name="CanvasModulate" type="CanvasModulate" parent="VISUAL TESTING"]
+color = Color(0.403674, 0.691936, 0.607631, 1)
+
+[connection signal="CharacterName" from="DialogueCanvasLayer/LinePresenter" to="DialogueCanvasLayer/SignalReceiver" method="_on_line_presenter_character_name"]
+[connection signal="EnableNavigationSignal" from="DialogueCanvasLayer/DialogueSignals" to="DialogueCanvasLayer/SignalReceiver" method="_on_dialogue_signals_enable_navigation_signal"]
+[connection signal="StartDialogueSignal" from="DialogueCanvasLayer/DialogueSignals" to="DialogueCanvasLayer/SignalReceiver" method="_on_dialogue_signals_start_dialogue_signal"]
+[connection signal="ChangeLocation" from="DialogueCanvasLayer/SignalReceiver" to="Navigation" method="_on_signal_receiver_change_location"]
+[connection signal="EnableNavigation" from="DialogueCanvasLayer/SignalReceiver" to="SceneManager" method="EnableNavigation"]
+[connection signal="RemoveCharacter" from="DialogueCanvasLayer/SignalReceiver" to="SceneManager" method="ClearCharacterLocation"]
+[connection signal="SetCharacterLocation" from="DialogueCanvasLayer/SignalReceiver" to="SceneManager" method="SetCharacterLocation"]
+[connection signal="StartDialogue" from="DialogueCanvasLayer/SignalReceiver" to="SceneManager" method="EnableDialogue"]
+[connection signal="TalkingCharacterName" from="DialogueCanvasLayer/SignalReceiver" to="Characters" method="_on_signal_receiver_talking_character_name"]
+[connection signal="UpdateCharacterSprite" from="DialogueCanvasLayer/SignalReceiver" to="Characters" method="UpdateCharacterSprite" flags=3]
+[connection signal="StartDialogue" from="Navigation" to="SceneManager" method="EnableDialogue"]
+
+[editable path="DialogueCanvasLayer"]
+[editable path="Locations"]

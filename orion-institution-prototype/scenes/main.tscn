@@ -1,219 +1,255 @@
-[gd_scene load_steps=27 format=3 uid="uid://c0ag56dv7yy35"]
+[gd_scene load_steps=12 format=3 uid="uid://c0ag56dv7yy35"]
 
 [ext_resource type="Script" uid="uid://bsukakrub6e60" path="res://Scripts/Game Management/main.gd" id="1_d1ilt"]
-[ext_resource type="PackedScene" uid="uid://rskqyvn1oq28" path="res://Templates/DialogueSystem.tscn" id="2_8gbba"]
-[ext_resource type="PackedScene" uid="uid://37soojyye5eb" path="res://Scenes/gui.tscn" id="2_kry3j"]
+[ext_resource type="PackedScene" uid="uid://bngaerxb3wqsl" path="res://Scenes/world.tscn" id="3_ynf5e"]
 [ext_resource type="PackedScene" uid="uid://byi28peg3cmv" path="res://Scenes/audio.tscn" id="4_jjvhh"]
-[ext_resource type="Resource" uid="uid://l4ehu44v1t3b" path="res://Narrative/YarnProject/OrionInstitution.yarnproject" id="5_eb6dy"]
-[ext_resource type="PackedScene" uid="uid://frlebr2m3f0d" path="res://Scenes/navigation.tscn" id="6_ynf5e"]
-[ext_resource type="Script" uid="uid://bqstnch2uehlr" path="res://Scripts/Game Management/scene_manager.gd" id="7_344ge"]
-[ext_resource type="Script" uid="uid://cx8xav6jtt1f5" path="res://Scripts/characters.gd" id="7_d1ilt"]
-[ext_resource type="PackedScene" uid="uid://d3uqi3oqnn4mj" path="res://Scenes/Characters/Cherry.tscn" id="7_hptm8"]
-[ext_resource type="PackedScene" uid="uid://bqm8pww0wodvf" path="res://Scenes/Characters/Scarlet.tscn" id="8_d1ilt"]
-[ext_resource type="PackedScene" uid="uid://3vnbb1aftlgl" path="res://Scenes/locations.tscn" id="9_hptm8"]
-[ext_resource type="Script" uid="uid://c02nyfnhmn2ri" path="res://Scripts/Character/face.gd" id="9_jkdf5"]
-[ext_resource type="Texture2D" uid="uid://bcfh8o4na0sgq" path="res://Assets/Characters/Cherry/Poses/pose_neutral.png" id="10_dp3eg"]
-[ext_resource type="Texture2D" uid="uid://dod8qlilv3ctm" path="res://Assets/Characters/Cherry/REFSPRITE.png" id="10_h1bgf"]
-[ext_resource type="Script" uid="uid://bn65klsg2o1w" path="res://Scripts/Character/pose.gd" id="10_wsu2k"]
-[ext_resource type="Texture2D" uid="uid://wo88ovdom36q" path="res://Assets/Characters/Cherry/Poses/pose_sad.png" id="11_gqmmt"]
-[ext_resource type="Texture2D" uid="uid://cxpjajxb5qp6o" path="res://Assets/Characters/Cherry/Expressions/expression_neutral.png" id="12_0ld40"]
-[ext_resource type="Script" uid="uid://d20h7y3toqcr6" path="res://Scripts/locations.gd" id="12_6iyac"]
-[ext_resource type="Texture2D" uid="uid://dr4gladfba44p" path="res://Assets/Characters/Scarlet/scarlet.png" id="14_fevyy"]
-[ext_resource type="Texture2D" uid="uid://bvoa8ltddi1h3" path="res://Assets/Characters/Cherry/Expressions/expression_happy.png" id="14_yc10j"]
-[ext_resource type="Texture2D" uid="uid://bx0hw4e56ihtp" path="res://Assets/Characters/Cherry/Expressions/expression_annoyed.png" id="15_pm3ni"]
-[ext_resource type="Texture2D" uid="uid://2jh5uhfque24" path="res://Assets/Characters/Cherry/Expressions/expression_sad.png" id="16_y6deb"]
-[ext_resource type="Texture2D" uid="uid://cukwg5j32nu73" path="res://Assets/Characters/Cherry/Expressions/expression_pensive.png" id="17_og1vs"]
-[ext_resource type="PackedScene" uid="uid://qqgoryldvogf" path="res://Templates/character.tscn" id="21_u50mg"]
-[ext_resource type="Texture2D" uid="uid://bpdfdmortbgmx" path="res://Assets/Characters/placeholder.png" id="22_cbgmd"]
-[ext_resource type="PackedScene" uid="uid://belgi7sm4wp0g" path="res://Scenes/Location_light.tscn" id="26_cbgmd"]
+[ext_resource type="FontFile" uid="uid://bnyne8ygte2ui" path="res://UI/Fonts/ricasso/Ricasso-Regular.otf" id="27_kltya"]
+[ext_resource type="StyleBox" uid="uid://day233adg2oec" path="res://UI/Themes/button_panel_disabled.tres" id="28_e08e2"]
+[ext_resource type="StyleBox" uid="uid://bkvwk2g3l8n6k" path="res://UI/Themes/button_panel_pressedr.tres" id="29_neg2b"]
+[ext_resource type="StyleBox" uid="uid://b4m7t34gmorff" path="res://UI/Themes/button_panel_hover.tres" id="30_r33sp"]
+[ext_resource type="StyleBox" uid="uid://dw5uw4ck2qndm" path="res://UI/Themes/button_panel_normal.tres" id="31_hdf80"]
+[ext_resource type="FontFile" uid="uid://yni7qjimcu7o" path="res://UI/Fonts/0xa000/0xA000-Squareish-Bold.ttf" id="32_jwpg7"]
 
-[node name="Main" type="Node" node_paths=PackedStringArray("gui")]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cbgmd"]
+bg_color = Color(0.15, 0.175833, 0.2, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_k2e45"]
+font = ExtResource("32_jwpg7")
+font_size = 146
+
+[node name="Main" type="Node" node_paths=PackedStringArray("start_menu", "pause_menu")]
+process_mode = 3
 script = ExtResource("1_d1ilt")
-gui = NodePath("GUI")
+start_menu = NodePath("StartMenu")
+pause_menu = NodePath("PauseMenu")
+world_scene = ExtResource("3_ynf5e")
 
 [node name="Audio" parent="." instance=ExtResource("4_jjvhh")]
 
-[node name="GUI" parent="." instance=ExtResource("2_kry3j")]
-layer = 2
+[node name="StartMenu" type="CanvasLayer" parent="."]
+layer = 3
 
-[node name="DialogueCanvasLayer" parent="." instance=ExtResource("2_8gbba")]
+[node name="Panel" type="Panel" parent="StartMenu"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_cbgmd")
 
-[node name="DialogueRunner" parent="DialogueCanvasLayer" index="0"]
-yarnProject = ExtResource("5_eb6dy")
-startNode = "DayTwoCherry"
+[node name="VBoxContainer" type="VBoxContainer" parent="StartMenu"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -320.0
+offset_top = -132.0
+offset_right = 320.0
+offset_bottom = 314.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
 
-[node name="ContinueButton" parent="DialogueCanvasLayer/LinePresenter/PresenterControl" index="2" node_paths=PackedStringArray("character_manager")]
-character_manager = NodePath("../../../../Characters")
+[node name="play_button" type="Button" parent="StartMenu/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 2
+theme_override_colors/font_disabled_color = Color(0.577008, 0.577008, 0.577008, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_normal_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("27_kltya")
+theme_override_font_sizes/font_size = 56
+theme_override_styles/disabled = ExtResource("28_e08e2")
+theme_override_styles/hover_pressed = ExtResource("29_neg2b")
+theme_override_styles/hover = ExtResource("30_r33sp")
+theme_override_styles/pressed = ExtResource("29_neg2b")
+theme_override_styles/normal = ExtResource("31_hdf80")
+text = "PLAY"
 
-[node name="InMemoryVariableStorage" parent="DialogueCanvasLayer" index="4" node_paths=PackedStringArray("debugTextView")]
-showDebug = true
-debugTextView = NodePath("RichTextLabel")
+[node name="settings_button" type="Button" parent="StartMenu/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 2
+theme_override_colors/font_disabled_color = Color(0.577008, 0.577008, 0.577008, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_normal_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("27_kltya")
+theme_override_font_sizes/font_size = 56
+theme_override_styles/disabled = ExtResource("28_e08e2")
+theme_override_styles/hover_pressed = ExtResource("29_neg2b")
+theme_override_styles/hover = ExtResource("30_r33sp")
+theme_override_styles/pressed = ExtResource("29_neg2b")
+theme_override_styles/normal = ExtResource("31_hdf80")
+disabled = true
+text = "SETTINGS"
 
-[node name="RichTextLabel" type="RichTextLabel" parent="DialogueCanvasLayer/InMemoryVariableStorage" index="0"]
-offset_right = 336.0
-offset_bottom = 632.0
-theme_override_font_sizes/normal_font_size = 25
+[node name="quit_button" type="Button" parent="StartMenu/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 2
+theme_override_colors/font_disabled_color = Color(0.577008, 0.577008, 0.577008, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_normal_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("27_kltya")
+theme_override_font_sizes/font_size = 56
+theme_override_styles/disabled = ExtResource("28_e08e2")
+theme_override_styles/hover_pressed = ExtResource("29_neg2b")
+theme_override_styles/hover = ExtResource("30_r33sp")
+theme_override_styles/pressed = ExtResource("29_neg2b")
+theme_override_styles/normal = ExtResource("31_hdf80")
+text = "QUIT"
 
-[node name="Navigation" parent="." node_paths=PackedStringArray("location_manager", "dialogue_memory", "character_manager") instance=ExtResource("6_ynf5e")]
-visible = false
-location_manager = NodePath("../Locations")
-dialogue_memory = NodePath("../DialogueCanvasLayer/InMemoryVariableStorage")
-character_manager = NodePath("../Characters")
+[node name="Label" type="Label" parent="StartMenu"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -832.0
+offset_top = 216.0
+offset_right = 853.0
+offset_bottom = 657.0
+grow_horizontal = 2
+size_flags_horizontal = 3
+text = "ORION INSTITUTION
+"
+label_settings = SubResource("LabelSettings_k2e45")
+horizontal_alignment = 1
+vertical_alignment = 3
+uppercase = true
 
-[node name="Characters" type="Node" parent="." node_paths=PackedStringArray("main", "character_nodes")]
-script = ExtResource("7_d1ilt")
-main = NodePath("..")
-character_nodes = [NodePath("Cherry"), NodePath("Scarlet"), NodePath("Arden")]
-
-[node name="Cherry" parent="Characters" instance=ExtResource("7_hptm8")]
-visible = false
-position = Vector2(960, 0)
-character_name = "Cherry"
-
-[node name="Poses" type="Node" parent="Characters/Cherry"]
-
-[node name="default" type="Node" parent="Characters/Cherry/Poses"]
-script = ExtResource("10_wsu2k")
-pose_sprite = ExtResource("10_h1bgf")
-metadata/_custom_type_script = "uid://bn65klsg2o1w"
-
-[node name="neutral" type="Node" parent="Characters/Cherry/Poses"]
-script = ExtResource("10_wsu2k")
-pose_sprite = ExtResource("10_dp3eg")
-metadata/_custom_type_script = "uid://bn65klsg2o1w"
-
-[node name="sad" type="Node" parent="Characters/Cherry/Poses"]
-script = ExtResource("10_wsu2k")
-pose_sprite = ExtResource("11_gqmmt")
-metadata/_custom_type_script = "uid://bn65klsg2o1w"
-
-[node name="Expressions" type="Node" parent="Characters/Cherry"]
-
-[node name="default" type="Node" parent="Characters/Cherry/Expressions"]
-script = ExtResource("9_jkdf5")
-face_sprite = ExtResource("10_h1bgf")
-metadata/_custom_type_script = "uid://c02nyfnhmn2ri"
-
-[node name="neutral" type="Node" parent="Characters/Cherry/Expressions"]
-script = ExtResource("9_jkdf5")
-face_sprite = ExtResource("12_0ld40")
-metadata/_custom_type_script = "uid://c02nyfnhmn2ri"
-
-[node name="happy" type="Node" parent="Characters/Cherry/Expressions"]
-script = ExtResource("9_jkdf5")
-face_sprite = ExtResource("14_yc10j")
-metadata/_custom_type_script = "uid://c02nyfnhmn2ri"
-
-[node name="annoyed" type="Node" parent="Characters/Cherry/Expressions"]
-script = ExtResource("9_jkdf5")
-face_sprite = ExtResource("15_pm3ni")
-metadata/_custom_type_script = "uid://c02nyfnhmn2ri"
-
-[node name="sad" type="Node" parent="Characters/Cherry/Expressions"]
-script = ExtResource("9_jkdf5")
-face_sprite = ExtResource("16_y6deb")
-metadata/_custom_type_script = "uid://c02nyfnhmn2ri"
-
-[node name="pensive" type="Node" parent="Characters/Cherry/Expressions"]
-script = ExtResource("9_jkdf5")
-face_sprite = ExtResource("17_og1vs")
-metadata/_custom_type_script = "uid://c02nyfnhmn2ri"
-
-[node name="Scarlet" parent="Characters" instance=ExtResource("8_d1ilt")]
-visible = false
-top_level = true
-z_index = 1
-position = Vector2(960, 0)
-character_name = "Scarlet"
-
-[node name="Poses" type="Node" parent="Characters/Scarlet"]
-
-[node name="default" type="Node" parent="Characters/Scarlet/Poses"]
-script = ExtResource("10_wsu2k")
-pose_sprite = ExtResource("14_fevyy")
-metadata/_custom_type_script = "uid://bn65klsg2o1w"
-
-[node name="Expressions" type="Node" parent="Characters/Scarlet"]
-
-[node name="default" type="Node" parent="Characters/Scarlet/Expressions"]
-script = ExtResource("9_jkdf5")
-face_sprite = ExtResource("14_fevyy")
-metadata/_custom_type_script = "uid://c02nyfnhmn2ri"
-
-[node name="Arden" parent="Characters" instance=ExtResource("21_u50mg")]
-visible = false
-top_level = true
-z_index = 1
-position = Vector2(960, 0)
-character_name = "Arden"
-
-[node name="Poses" type="Node" parent="Characters/Arden"]
-
-[node name="default" type="Node" parent="Characters/Arden/Poses"]
-script = ExtResource("10_wsu2k")
-pose_sprite = ExtResource("22_cbgmd")
-metadata/_custom_type_script = "uid://bn65klsg2o1w"
-
-[node name="Expressions" type="Node" parent="Characters/Arden"]
-
-[node name="default" type="Node" parent="Characters/Arden/Expressions"]
-script = ExtResource("9_jkdf5")
-face_sprite = ExtResource("22_cbgmd")
-metadata/_custom_type_script = "uid://c02nyfnhmn2ri"
-
-[node name="SceneManager" type="Node" parent="." node_paths=PackedStringArray("dialogue_runner_canvas", "dialogue_runner", "navigation", "location_manager", "character_manager")]
-script = ExtResource("7_344ge")
-dialogue_runner_canvas = NodePath("../DialogueCanvasLayer")
-dialogue_runner = NodePath("../DialogueCanvasLayer/DialogueRunner")
-navigation = NodePath("../Navigation")
-location_manager = NodePath("../Locations")
-character_manager = NodePath("../Characters")
-
-[node name="Locations" parent="." instance=ExtResource("9_hptm8")]
-script = ExtResource("12_6iyac")
-
-[node name="Monitor_Room" parent="Locations" index="0"]
-shade_tint = Color(0.403674, 0.691936, 0.607631, 1)
-light_tint = Color(0.121298, 0.641748, 0.61607, 1)
-
-[node name="Hallway" parent="Locations" index="1"]
-shade_tint = Color(0.846641, 0.857355, 0.872361, 1)
-light_tint = Color(0.201527, 0.201527, 0.201527, 1)
-
-[node name="Cell" parent="Locations" index="2"]
-shade_tint = Color(0.895879, 0.939595, 0.950079, 1)
-light_tint = Color(0.12098, 0.194205, 0.20883, 1)
-
-[node name="Cell2" parent="Locations" index="3"]
-shade_tint = Color(0.999821, 0.761262, 0.810387, 1)
-light_tint = Color(0.40503, 1.3236e-07, 0.20141, 1)
-
-[node name="Sprite2D" parent="Locations/Cell2" index="0"]
-modulate = Color(1, 0.482353, 0.623529, 1)
-
-[node name="VISUAL TESTING" type="Node2D" parent="."]
+[node name="PauseMenu" type="CanvasLayer" parent="."]
+process_mode = 2
+layer = 4
 visible = false
 
-[node name="PointLight2D" parent="VISUAL TESTING" instance=ExtResource("26_cbgmd")]
-color = Color(0.121298, 0.641748, 0.61607, 1)
-energy = 0.55
+[node name="Panel" type="Panel" parent="PauseMenu"]
+self_modulate = Color(1, 1, 1, 0.607843)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_cbgmd")
 
-[node name="CanvasModulate" type="CanvasModulate" parent="VISUAL TESTING"]
-color = Color(0.403674, 0.691936, 0.607631, 1)
+[node name="VBoxContainer" type="VBoxContainer" parent="PauseMenu"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -320.0
+offset_top = -143.0
+offset_right = 320.0
+offset_bottom = 421.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
 
-[connection signal="CharacterName" from="DialogueCanvasLayer/LinePresenter" to="DialogueCanvasLayer/SignalReceiver" method="_on_line_presenter_character_name"]
-[connection signal="EnableNavigationSignal" from="DialogueCanvasLayer/DialogueSignals" to="DialogueCanvasLayer/SignalReceiver" method="_on_dialogue_signals_enable_navigation_signal"]
-[connection signal="StartDialogueSignal" from="DialogueCanvasLayer/DialogueSignals" to="DialogueCanvasLayer/SignalReceiver" method="_on_dialogue_signals_start_dialogue_signal"]
-[connection signal="ChangeLocation" from="DialogueCanvasLayer/SignalReceiver" to="Navigation" method="_on_signal_receiver_change_location"]
-[connection signal="EnableNavigation" from="DialogueCanvasLayer/SignalReceiver" to="SceneManager" method="EnableNavigation"]
-[connection signal="RemoveCharacter" from="DialogueCanvasLayer/SignalReceiver" to="SceneManager" method="ClearCharacterLocation"]
-[connection signal="SetCharacterLocation" from="DialogueCanvasLayer/SignalReceiver" to="SceneManager" method="SetCharacterLocation"]
-[connection signal="StartDialogue" from="DialogueCanvasLayer/SignalReceiver" to="SceneManager" method="EnableDialogue"]
-[connection signal="TalkingCharacterName" from="DialogueCanvasLayer/SignalReceiver" to="Characters" method="_on_signal_receiver_talking_character_name"]
-[connection signal="UpdateCharacterSprite" from="DialogueCanvasLayer/SignalReceiver" to="Characters" method="UpdateCharacterSprite" flags=3]
-[connection signal="ChangeRoom" from="Navigation" to="Audio/SFX_Clips" method="change_room_sound"]
-[connection signal="StartDialogue" from="Navigation" to="SceneManager" method="EnableDialogue"]
+[node name="resume_button" type="Button" parent="PauseMenu/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 2
+theme_override_colors/font_disabled_color = Color(0.577008, 0.577008, 0.577008, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_normal_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("27_kltya")
+theme_override_font_sizes/font_size = 56
+theme_override_styles/disabled = ExtResource("28_e08e2")
+theme_override_styles/hover_pressed = ExtResource("29_neg2b")
+theme_override_styles/hover = ExtResource("30_r33sp")
+theme_override_styles/pressed = ExtResource("29_neg2b")
+theme_override_styles/normal = ExtResource("31_hdf80")
+text = "RESUME"
+
+[node name="settings_button" type="Button" parent="PauseMenu/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 2
+theme_override_colors/font_disabled_color = Color(0.577008, 0.577008, 0.577008, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_normal_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("27_kltya")
+theme_override_font_sizes/font_size = 56
+theme_override_styles/disabled = ExtResource("28_e08e2")
+theme_override_styles/hover_pressed = ExtResource("29_neg2b")
+theme_override_styles/hover = ExtResource("30_r33sp")
+theme_override_styles/pressed = ExtResource("29_neg2b")
+theme_override_styles/normal = ExtResource("31_hdf80")
+disabled = true
+text = "SETTINGS"
+
+[node name="menu_button" type="Button" parent="PauseMenu/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 2
+theme_override_colors/font_disabled_color = Color(0.577008, 0.577008, 0.577008, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_normal_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("27_kltya")
+theme_override_font_sizes/font_size = 56
+theme_override_styles/disabled = ExtResource("28_e08e2")
+theme_override_styles/hover_pressed = ExtResource("29_neg2b")
+theme_override_styles/hover = ExtResource("30_r33sp")
+theme_override_styles/pressed = ExtResource("29_neg2b")
+theme_override_styles/normal = ExtResource("31_hdf80")
+text = "MAIN MENU
+"
+
+[node name="quit_button" type="Button" parent="PauseMenu/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 2
+theme_override_colors/font_disabled_color = Color(0.577008, 0.577008, 0.577008, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_normal_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("27_kltya")
+theme_override_font_sizes/font_size = 56
+theme_override_styles/disabled = ExtResource("28_e08e2")
+theme_override_styles/hover_pressed = ExtResource("29_neg2b")
+theme_override_styles/hover = ExtResource("30_r33sp")
+theme_override_styles/pressed = ExtResource("29_neg2b")
+theme_override_styles/normal = ExtResource("31_hdf80")
+text = "QUIT"
+
+[node name="Label" type="Label" parent="PauseMenu"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -832.0
+offset_top = 216.0
+offset_right = 853.0
+offset_bottom = 657.0
+grow_horizontal = 2
+size_flags_horizontal = 3
+text = "PAUSED
+"
+label_settings = SubResource("LabelSettings_k2e45")
+horizontal_alignment = 1
+vertical_alignment = 3
+uppercase = true
+
+[connection signal="pressed" from="StartMenu/VBoxContainer/play_button" to="." method="start_game"]
+[connection signal="pressed" from="StartMenu/VBoxContainer/quit_button" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="PauseMenu/VBoxContainer/resume_button" to="." method="pause_game" binds= [false]]
+[connection signal="pressed" from="PauseMenu/VBoxContainer/menu_button" to="." method="go_to_menu"]
+[connection signal="pressed" from="PauseMenu/VBoxContainer/quit_button" to="." method="_on_quit_button_pressed"]
 
 [editable path="Audio"]
-[editable path="DialogueCanvasLayer"]
-[editable path="Locations"]

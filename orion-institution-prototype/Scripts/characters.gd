@@ -1,6 +1,6 @@
 extends Node
 
-@export var main: Node
+@onready var main: Node = get_node("/root/Main")
 
 @export var character_nodes: Array[Character]
 

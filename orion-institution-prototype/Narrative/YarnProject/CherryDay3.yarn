@@ -1,10 +1,6 @@
 title: Day3
 ---
 
-<<declare $name = "">>
-<<declare $current_location = "">>
-
-
 //Setting up the scene
 <<ChangeLocation DialogueSignals "Cell">>
 
