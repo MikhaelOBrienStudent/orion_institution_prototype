@@ -16,8 +16,8 @@ func ChangeCharacter(character_names: Array[String]) -> void:
 	current_characters.clear()
 	for character in character_nodes:
 		if character_names.has(character.character_name):
-			character.visible = true
-			character.position.x = 0
+			character.Arrive()
+			#character.position.x = 0
 			current_characters.append(character)
 		else:
 			if character.visible:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://c0ag56dv7yy35"]
+[gd_scene load_steps=27 format=3 uid="uid://c0ag56dv7yy35"]
 
 [ext_resource type="Script" uid="uid://bsukakrub6e60" path="res://Scripts/Game Management/main.gd" id="1_d1ilt"]
 [ext_resource type="PackedScene" uid="uid://rskqyvn1oq28" path="res://Templates/DialogueSystem.tscn" id="2_8gbba"]
@@ -25,6 +25,7 @@
 [ext_resource type="Texture2D" uid="uid://cukwg5j32nu73" path="res://Assets/Characters/Cherry/Expressions/expression_pensive.png" id="17_og1vs"]
 [ext_resource type="PackedScene" uid="uid://qqgoryldvogf" path="res://Templates/character.tscn" id="21_u50mg"]
 [ext_resource type="Texture2D" uid="uid://bpdfdmortbgmx" path="res://Assets/Characters/placeholder.png" id="22_cbgmd"]
+[ext_resource type="PackedScene" uid="uid://belgi7sm4wp0g" path="res://Scenes/Location_light.tscn" id="26_cbgmd"]
 
 [node name="Main" type="Node" node_paths=PackedStringArray("gui")]
 script = ExtResource("1_d1ilt")
@@ -66,6 +67,7 @@ character_nodes = [NodePath("Cherry"), NodePath("Scarlet"), NodePath("Arden")]
 
 [node name="Cherry" parent="Characters" instance=ExtResource("7_hptm8")]
 visible = false
+position = Vector2(960, 0)
 character_name = "Cherry"
 
 [node name="Poses" type="Node" parent="Characters/Cherry"]
@@ -119,6 +121,9 @@ metadata/_custom_type_script = "uid://c02nyfnhmn2ri"
 
 [node name="Scarlet" parent="Characters" instance=ExtResource("8_d1ilt")]
 visible = false
+top_level = true
+z_index = 1
+position = Vector2(960, 0)
 character_name = "Scarlet"
 
 [node name="Poses" type="Node" parent="Characters/Scarlet"]
@@ -137,6 +142,9 @@ metadata/_custom_type_script = "uid://c02nyfnhmn2ri"
 
 [node name="Arden" parent="Characters" instance=ExtResource("21_u50mg")]
 visible = false
+top_level = true
+z_index = 1
+position = Vector2(960, 0)
 character_name = "Arden"
 
 [node name="Poses" type="Node" parent="Characters/Arden"]
@@ -163,6 +171,35 @@ character_manager = NodePath("../Characters")
 
 [node name="Locations" parent="." instance=ExtResource("9_hptm8")]
 script = ExtResource("12_6iyac")
+
+[node name="Monitor_Room" parent="Locations" index="0"]
+shade_tint = Color(0.403674, 0.691936, 0.607631, 1)
+light_tint = Color(0.121298, 0.641748, 0.61607, 1)
+
+[node name="Hallway" parent="Locations" index="1"]
+shade_tint = Color(0.846641, 0.857355, 0.872361, 1)
+light_tint = Color(0.201527, 0.201527, 0.201527, 1)
+
+[node name="Cell" parent="Locations" index="2"]
+shade_tint = Color(0.895879, 0.939595, 0.950079, 1)
+light_tint = Color(0.12098, 0.194205, 0.20883, 1)
+
+[node name="Cell2" parent="Locations" index="3"]
+shade_tint = Color(0.999821, 0.761262, 0.810387, 1)
+light_tint = Color(0.40503, 1.3236e-07, 0.20141, 1)
+
+[node name="Sprite2D" parent="Locations/Cell2" index="0"]
+modulate = Color(1, 0.482353, 0.623529, 1)
+
+[node name="VISUAL TESTING" type="Node2D" parent="."]
+visible = false
+
+[node name="PointLight2D" parent="VISUAL TESTING" instance=ExtResource("26_cbgmd")]
+color = Color(0.121298, 0.641748, 0.61607, 1)
+energy = 0.55
+
+[node name="CanvasModulate" type="CanvasModulate" parent="VISUAL TESTING"]
+color = Color(0.403674, 0.691936, 0.607631, 1)
 
 [connection signal="CharacterName" from="DialogueCanvasLayer/LinePresenter" to="DialogueCanvasLayer/SignalReceiver" method="_on_line_presenter_character_name"]
 [connection signal="EnableNavigationSignal" from="DialogueCanvasLayer/DialogueSignals" to="DialogueCanvasLayer/SignalReceiver" method="_on_dialogue_signals_enable_navigation_signal"]

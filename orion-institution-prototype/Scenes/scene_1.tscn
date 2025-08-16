@@ -1,15 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://cmnb3i3q6kt6g"]
+[gd_scene load_steps=2 format=3 uid="uid://cmnb3i3q6kt6g"]
 
 [ext_resource type="PackedScene" uid="uid://qqgoryldvogf" path="res://Templates/character.tscn" id="2_3pxkc"]
-[ext_resource type="Texture2D" uid="uid://dod8qlilv3ctm" path="res://Assets/Characters/Cherry/REFSPRITE.png" id="3_rxb0p"]
 
 [node name="Scene1" type="Node"]
 
 [node name="Cherry" parent="." instance=ExtResource("2_3pxkc")]
 z_index = 1
-
-[node name="Sprite2D" parent="Cherry" index="0"]
-position = Vector2(946, 1040)
-texture = ExtResource("3_rxb0p")
 
 [editable path="Cherry"]

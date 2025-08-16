@@ -116,7 +116,7 @@ Cherry:Hm. Maybe.
 {$name}:Can I ask you something?
 
 //Cherry
-Cherry:Shoot.#expression:happy
+Cherry:Shoot.#expression:happy #pose:neutral
 
 -> Name
     <<jump name>>
@@ -158,13 +158,14 @@ title: goodbye
 {$name}:Well, it was good to talk to you again. You're a very interesting... person?
 
 //Cherry
-Cherry:Person will do. It's interesting talking to you too, {$name}. I suppose I will be seeing you again sometime soon.#expression:happy #pose:neutral
+Cherry:Person will do. It's interesting talking to you too, {$name}. I suppose I will be seeing you again sometime soon.#expression:happy  #pose:neutral
 //MC
 {$name}:Goodbye Cherry.
 //Cherry
 Cherry:Goodbye.
 
 
+<<SetCharacterLocation DialogueSignals "Arden" "Cell2">>
 <<SetCharacterLocation DialogueSignals "Cherry" "Cell2">>
 <<SetCharacterLocation DialogueSignals "Scarlet" "Hallway">>
 <<EnableNavigation DialogueSignals>>

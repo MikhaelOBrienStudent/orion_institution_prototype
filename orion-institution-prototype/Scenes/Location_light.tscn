@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://belgi7sm4wp0g"]
+
+[sub_resource type="Gradient" id="Gradient_u50mg"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_cbgmd"]
+gradient = SubResource("Gradient_u50mg")
+width = 1920
+height = 1080
+
+[node name="PointLight2D" type="PointLight2D"]
+position = Vector2(960, 540)
+texture = SubResource("GradientTexture2D_cbgmd")

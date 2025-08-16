@@ -138,3 +138,6 @@ func _on_signal_receiver_change_location(location_name: String) -> void:
 	character_manager.ChangeCharacter(new_location.current_characters)
 	if not new_location.current_characters.is_empty():
 		StartDialogue.emit()
+
+func ClearCurrentLocation() -> void:
+	current_location.ClearCharacters()

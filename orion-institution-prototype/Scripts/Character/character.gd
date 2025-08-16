@@ -21,8 +21,11 @@ func _ready() -> void:
 		expression_sprite.position = Vector2(0,0)
 		expression_sprite.name = "Expression"
 		pose_sprite.add_child(expression_sprite)
+		
 	
 	expression_sprite.reparent(pose_sprite)
+	
+	modulate.a = 0
 
 func _physics_process(delta: float) -> void:
 	pass#expression_sprite.offset = pose_sprite.offset
@@ -46,17 +49,22 @@ func Highlight(talking:bool = true) -> void:
 		self.z_index = 1
 		scale = Vector2(1.1,1.1)
 		position.y = -60
-		modulate.a = 1
+		modulate = Color(1, 1, 1, modulate.a)
 		return
 	self.z_index = 0
 	scale = Vector2(1,1)
 	position.y = 0
-	modulate.a = 0.95
-	
+	modulate = Color(0.7, 0.8, 0.9, modulate.a)
+
+func Arrive() -> void:
+	self.visible = true
+	var arrive_tween = create_tween()
+	arrive_tween.tween_property(self, "modulate:a", 1, 0.25)
+	await arrive_tween.finished
 
 func Leave() -> void:
 	var leave_tween = create_tween()
-	leave_tween.tween_property(self, "position:x", -1920, 0.75)
+	leave_tween.tween_property(self, "modulate:a", 0, 0.25)
 	await leave_tween.finished
 	self.visible = false
 

@@ -9,8 +9,32 @@ class_name Location
 
 @export var current_characters: Array[String]
 
+@export var shade_tint: Color = "White"
+@export var light_tint: Color = "Black"
+
+@onready var light_resource = preload("res://Scenes/Location_light.tscn")
+
+var modulator: CanvasModulate
+var light: PointLight2D
+
+func _ready() -> void:
+	for child in get_children():
+		use_parent_material = true
+	
+	modulator = CanvasModulate.new()
+	modulator.color = shade_tint
+	add_child(modulator)
+	
+	light = light_resource.instantiate()
+	light.color = light_tint
+	add_child(light)
+	
+
 func Arrive() -> void:
 	visible = true
 
 func Leave() -> void:
 	visible = false
+
+func ClearCharacters() -> void:
+	current_characters.clear()

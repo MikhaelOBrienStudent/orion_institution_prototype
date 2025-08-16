@@ -16,6 +16,9 @@ func EnableNavigation() -> void:
 	dialogue_runner_canvas.visible = false
 	navigation.visible = true
 	
+	var null_array: Array[String] = [""]
+	character_manager.ChangeCharacter(null_array)
+	navigation.ClearCurrentLocation()
 	#navigation.current_location.current_character = ""
 	#navigation.ChangeLocation("HERE")
 

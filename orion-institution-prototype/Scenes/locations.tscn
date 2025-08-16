@@ -1,60 +1,81 @@
-[gd_scene load_steps=5 format=3 uid="uid://3vnbb1aftlgl"]
+[gd_scene load_steps=6 format=3 uid="uid://3vnbb1aftlgl"]
 
 [ext_resource type="Script" uid="uid://ldo4ct6oqy35" path="res://Scripts/location.gd" id="1_wsf7f"]
 [ext_resource type="Texture2D" uid="uid://cs8d5ohsglv8g" path="res://Assets/Backgrounds/CAP_A1_Env_1.png" id="2_ynn5r"]
 [ext_resource type="Texture2D" uid="uid://bucasu4t1o8ty" path="res://Assets/Backgrounds/CAP_A1_Env_2.png" id="3_ibxhk"]
 [ext_resource type="Texture2D" uid="uid://d4ei4cgokc1v5" path="res://Assets/Backgrounds/CAP_A1_Env_3.png" id="4_6uftb"]
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_wsf7f"]
+light_mode = 1
+
 [node name="Locations" type="Node2D"]
 z_index = -1
+material = SubResource("CanvasItemMaterial_wsf7f")
+use_parent_material = true
 
 [node name="Monitor_Room" type="Node2D" parent="." node_paths=PackedStringArray("right_location")]
 visible = false
+use_parent_material = true
 script = ExtResource("1_wsf7f")
 location_name = "Monitor Room"
 right_location = NodePath("../Hallway")
+shade_tint = Color(0.573669, 0.837575, 0.821557, 1)
+light_tint = Color(0.125005, 0.606537, 0.527994, 1)
 metadata/_custom_type_script = "uid://ldo4ct6oqy35"
 
 [node name="Sprite2D" type="Sprite2D" parent="Monitor_Room"]
+use_parent_material = true
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_ynn5r")
 centered = false
 
 [node name="Hallway" type="Node2D" parent="." node_paths=PackedStringArray("top_location", "bottom_location")]
 visible = false
+use_parent_material = true
 script = ExtResource("1_wsf7f")
 location_name = "Hallway"
 top_location = NodePath("../Cell")
 bottom_location = NodePath("../Monitor_Room")
+shade_tint = Color(0.860265, 0.88955, 0.931252, 1)
+light_tint = Color(0.396426, 0.509448, 0.599682, 1)
 metadata/_custom_type_script = "uid://ldo4ct6oqy35"
 
 [node name="Sprite2D" type="Sprite2D" parent="Hallway"]
+use_parent_material = true
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("3_ibxhk")
 centered = false
 
 [node name="Cell" type="Node2D" parent="." node_paths=PackedStringArray("right_location", "bottom_location")]
 visible = false
+use_parent_material = true
 script = ExtResource("1_wsf7f")
 location_name = "Cell"
 right_location = NodePath("../Cell2")
 bottom_location = NodePath("../Hallway")
+shade_tint = Color(0.895879, 0.939595, 0.950079, 1)
+light_tint = Color(0.356071, 0.629666, 0.685154, 1)
 metadata/_custom_type_script = "uid://ldo4ct6oqy35"
 
 [node name="Sprite2D" type="Sprite2D" parent="Cell"]
+use_parent_material = true
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("4_6uftb")
 centered = false
 
 [node name="Cell2" type="Node2D" parent="." node_paths=PackedStringArray("left_location")]
 visible = false
-modulate = Color(1, 0.376471, 0.631373, 1)
+use_parent_material = true
 script = ExtResource("1_wsf7f")
 location_name = "Cell2"
 left_location = NodePath("../Cell")
+shade_tint = Color(1, 0.850268, 0.888769, 1)
+light_tint = Color(1, 0.45, 0.725, 1)
 metadata/_custom_type_script = "uid://ldo4ct6oqy35"
 
 [node name="Sprite2D" type="Sprite2D" parent="Cell2"]
+modulate = Color(1, 0.561165, 0.682978, 1)
+use_parent_material = true
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("4_6uftb")
 centered = false
