@@ -1,0 +1,14 @@
+[remap]
+
+importer="yarnscript"
+type="Resource"
+uid="uid://cjn8oejc161c"
+path="res://.godot/imported/DayScript.yarn-f68480c4c6c57c34b7500340e427f20e.tres"
+
+[deps]
+
+source_file="res://Narrative/YarnProject/DayScript.yarn"
+dest_files=["res://.godot/imported/DayScript.yarn-f68480c4c6c57c34b7500340e427f20e.tres"]
+
+[params]
+

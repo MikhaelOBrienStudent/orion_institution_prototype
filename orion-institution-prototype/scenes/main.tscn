@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bsukakrub6e60" path="res://Scripts/Game Management/main.gd" id="1_d1ilt"]
 [ext_resource type="PackedScene" uid="uid://bngaerxb3wqsl" path="res://Scenes/world.tscn" id="3_ynf5e"]
-[ext_resource type="Script" uid="uid://dibqanrsjdw57" path="res://Scripts/start_menu.gd" id="4_hptm8"]
+[ext_resource type="Script" path="res://Scripts/start_menu.gd" id="4_hptm8"]
 [ext_resource type="PackedScene" uid="uid://byi28peg3cmv" path="res://Scenes/audio.tscn" id="4_jjvhh"]
 [ext_resource type="FontFile" uid="uid://bnyne8ygte2ui" path="res://UI/Fonts/ricasso/Ricasso-Regular.otf" id="27_kltya"]
 [ext_resource type="StyleBox" uid="uid://day233adg2oec" path="res://UI/Themes/button_panel_disabled.tres" id="28_e08e2"]
@@ -288,11 +288,42 @@ horizontal_alignment = 1
 vertical_alignment = 3
 uppercase = true
 
+[node name="CanvasLayer" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+
+[node name="DayScreen" type="ColorRect" parent="CanvasLayer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0397107, 0.0653714, 0.0745831, 1)
+
+[node name="Label" type="Label" parent="CanvasLayer/DayScreen"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 112.0
+offset_top = 354.0
+offset_right = 1797.0
+offset_bottom = 795.0
+grow_horizontal = 2
+size_flags_horizontal = 3
+text = "DAY
+"
+label_settings = SubResource("LabelSettings_k2e45")
+horizontal_alignment = 1
+vertical_alignment = 3
+uppercase = true
+
 [connection signal="pressed" from="StartMenu/VBoxContainer/play_button" to="." method="start_game"]
 [connection signal="pressed" from="StartMenu/VBoxContainer/resume_button" to="." method="start_game"]
 [connection signal="pressed" from="StartMenu/VBoxContainer/new_game_button" to="." method="new_game"]
 [connection signal="pressed" from="StartMenu/VBoxContainer/quit_button" to="." method="_on_quit_button_pressed"]
-[connection signal="pressed" from="PauseMenu/VBoxContainer/resume_button" to="." method="pause_game" binds= [false]]
 [connection signal="pressed" from="PauseMenu/VBoxContainer/menu_button" to="." method="go_to_menu"]
 [connection signal="pressed" from="PauseMenu/VBoxContainer/quit_button" to="." method="_on_quit_button_pressed"]
 

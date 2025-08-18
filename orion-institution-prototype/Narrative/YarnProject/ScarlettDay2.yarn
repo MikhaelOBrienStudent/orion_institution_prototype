@@ -34,15 +34,5 @@ Scarlet:Guess so. Shoot, better get back to my rounds before I get yelled at. Se
 {$name}:Yeah. See you.
 
 <<RemoveCharacter DialogueSignals "Scarlet">>
-<<EnableNavigation DialogueSignals>>
-<<jump Navigation1>>
-===
-
-title: Cellmate
----
-Cellmate: this is a test for multiple dialogue branches between navigation.
-
-<<EnableNavigation DialogueSignals>>
-<<jump Navigation1>>
-
+<<jump EndDay>>
 ===

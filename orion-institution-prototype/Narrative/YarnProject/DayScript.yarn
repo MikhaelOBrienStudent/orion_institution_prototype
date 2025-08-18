@@ -1,0 +1,29 @@
+title: Days
+---
+
+<<declare $day_number = 1>>
+
+title: EndDay
+---
+End of Day {$day_number}.
+<<run show_day_screen($day_number)>>
+-> NextDay
+===
+
+title: NextDay
+---
+Day {$day_number}
+<<set $day_number = $day_number + 1>>
+-> Continue
+===
+
+title: Continue
+---
+<<if $day_number == 2>>
+    <<jump Day2Start>>
+<<elseif $day_number == 3>>
+    <<jump Day3Start>>
+<<else>>
+    <<jump TheEnd>>
+<<endif>>
+===

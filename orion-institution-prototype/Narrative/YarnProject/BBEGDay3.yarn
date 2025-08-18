@@ -159,4 +159,6 @@ Boss: Be careful of Cherry, and what you tell her. There is much more to her the
 {$name}: Uh, thanks. I'll keep that in mind.
 Boss: Goodbye {$name}. Take care.
 {$name}: You too, ma'am.
+
+<<jump EndDay>>
 ===

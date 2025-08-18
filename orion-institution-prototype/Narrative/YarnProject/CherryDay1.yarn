@@ -177,6 +177,7 @@ title: Goodbye
 -> (say nothing) #expression:annoyed  
     Cherry:Well I'm done. I don't have anything else to say. Come back and torture me some other time.
 
-<<EnableNavigation DialogueSignals>>
+
 <<RemoveCharacter DialogueSignals "Cherry">>
+<<jump EndDay>>
 ===
