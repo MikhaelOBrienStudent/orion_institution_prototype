@@ -14,13 +14,13 @@ title: BBEG
 -> {$name}: No?
         <<jump no>>
         Boss: No? Are you sure? I do make a habit of knowing who my employees are.
-        {$name}: I meant yes, sorry. Yes, that's me. Sorry Mr [BOSS]
+        {$name}: I meant yes, sorry. Yes, that's me. Sorry Ms [BOSS]
         <<jump sit>>
 -> {$name}: Who's asking?
         <<jump intro>>
 -> {$name}: Who's that?
         Boss: Who? It's... you? 
-        {$name}: Uh right. Yes. Sorry, Mr [Boss]. I am {$name}.
+        {$name}: Uh right. Yes. Sorry, Ms [Boss]. I am {$name}.
         <<jump sit>>
 
 ===
@@ -55,7 +55,7 @@ title: stand
 {$name}: I'm all good, uh thanks.
 Boss: Suit yourself.
 {$name}: So like, what can I help you with?
-{$name}: Sir.
+{$name}: Ma'am.
 Boss: You seem quite nervous. Is everything alright?
 -> tell the truth
         <<jump nervous>>
@@ -87,7 +87,7 @@ title: favour
 Boss: I've heard that you've been spending a bit of time talking to our newest, uh, 'guest'.
 {$name}: Who, Cherry?
 Boss: Cherry? Is that her name?
-{$name}: Um, I think so. It might be a nickname, I'm not sure. It's the name she gave.
+{$name}: Um, I think so. It might be a nickname, I'm not sure. It's the name she gave me.
 Boss: How intriguing.
 Boss: She's not been very forthcoming with information so far. I, and a few others, have failed to get any information out of her so far. 
 {$name}: Really?
@@ -132,7 +132,7 @@ Boss: Oh? Such as?
 {$name}: Well, she doesn't remember much. She appears to have almost total amnesia from before she got here.
 Boss: Including the explosion?
 {$name}: Yeah. She just remembers it being cold.
-{$name}: She seems to quite like clothes, but don't mention her hair. That's a touchy subject
+{$name}: She seems to quite like clothes, but don't mention her hair. That's a touchy subject.
 Boss: Interesting. Anything else?
 {$name}: Um. She doesn't seem to know if she has friends or family who would be looking for her.
 Boss: Hm. I wouldn't think she does.
@@ -158,5 +158,5 @@ Boss: A word of advice, {$name}?
 Boss: Be careful of Cherry, and what you tell her. There is much more to her then meets the eye, and I can guarantee she hasn't been entirely honest with you.
 {$name}: Uh, thanks. I'll keep that in mind.
 Boss: Goodbye {$name}. Take care.
-{$name}: You too.
+{$name}: You too, ma'am.
 ===

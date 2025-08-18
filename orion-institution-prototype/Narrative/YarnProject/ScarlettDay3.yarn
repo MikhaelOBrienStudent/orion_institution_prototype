@@ -1,6 +1,7 @@
 title: Day3_Scarlett
 ---
 
+
 //Setting up the scene
 <<ChangeLocation DialogueSignals "Hallway">>
 
@@ -9,29 +10,27 @@ title: Day3_Scarlett
 ===
 title: Convo
 ---
-Scarlett: {$name}! {$name}!
+Scarlett: {$name}! {$name}! #expression:sus_talking
 {$name}: Scarlett? 
 Scarlet: {$name}!!!!!
 {$name}: Chill! I heard you the first time! What's going on, why are you freaking out?!
-Scarlett: It's [BOSS]! He wants to see you!
+Scarlett: It's [BOSS]! She wants to see you!
 {$name}: WHAT?! Like the boss? The big boss?
-Scarlett: Like the big boss, king of the company, he who sees all. Him
+Scarlett: Like the big boss, queen of the company, she who sees all. Her
 {$name}: What for? What did I do? Am in trouble?
-Scarlett: Hey I'm just the messenger, I got no clue. But he doesn't request meetings for just anything.
+Scarlett: Hey I'm just the messenger, I got no clue. But she doesn't request meetings for just anything.
 {$name}: Oh no. Am I getting fired?
 Scarlett: ...maybe a promotion?
 {$name}: ...be for real. No way I've got an impromptu meeting with [BOSS] for a measly security promotion.
-{$name}: I'm so dead. So so dead.
+{$name}: I'm so dead. So so dead. #experssion:neutral_talking
 Scarlett: Maybe... maybe it's about Cherry?
 {$name}: What? What do you mean?
-Scarlett: Well, you're the only one she's really spoken to. Maybe he wants to know what she said?
-{$name}: Or maybe he wants to crucify me for talking to her.
-Scarlett: Well, he's on his way here now. Uh, try not to freak out too much?
+Scarlett: Well, you're the only one she's really spoken to. Maybe she wants to know what she said?
+{$name}: Or maybe she wants to crucify me for talking to her.
+Scarlett: Well, she's on her way here now. Uh, try not to freak out too much?
 {$name}: Glowing advice, thanks. I'll see you at lunch?
-Scarlett: If you live that long... 
+Scarlett: If you live that long... #expression:happy
 Scarlett: Kidding!
 Scarlett: Mostly.
-
-
 
 ===

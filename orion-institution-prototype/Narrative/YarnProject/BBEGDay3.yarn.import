@@ -1,0 +1,14 @@
+[remap]
+
+importer="yarnscript"
+type="Resource"
+uid="uid://d3ajgqgebtgow"
+path="res://.godot/imported/BBEGDay3.yarn-12a89d98fa5176d83de81c17f320216d.tres"
+
+[deps]
+
+source_file="res://Narrative/YarnProject/BBEGDay3.yarn"
+dest_files=["res://.godot/imported/BBEGDay3.yarn-12a89d98fa5176d83de81c17f320216d.tres"]
+
+[params]
+

@@ -1,13 +1,14 @@
 title: Day3
 ---
 
+
 //Setting up the scene
 <<ChangeLocation DialogueSignals "Cell">>
 
 <<SetCharacterLocation DialogueSignals "Cherry" "Cell">>
+#pose:neutral
 
-
-Cherry: Hello (name)! How are you?
+Cherry: Hello {$name}! How are you? #expression:happy
 
 //MC
 -> {$name}:Say hi
@@ -17,16 +18,12 @@ Cherry: Hello (name)! How are you?
     <<set $friendship -=1>>
     <<jump wrong>>
 ===
-
 title: hello
 ---
 {$name}: Hello Cherry. I'm okay, how are you?
-
 Cherry: Ah, same old, same old. Glad to talk to you though, as always!
-
 {$name}: Ah. Yeah, same.
-
-Cherry: You're being weird. What's up with you?
+Cherry: You're being weird. What's up with you? #expression:neutraL
 -> answer gently
 <<jump answer>>
 -> answer harshly
@@ -35,7 +32,7 @@ Cherry: You're being weird. What's up with you?
 ===
 title: wrong
 ---
-Cherry: What's wrong with you? Why are you being so silent and grumpy??
+Cherry: What's wrong with you? Why are you being so silent and grumpy??#expression:sad
 -> answer gently
 <<jump answer>>
 -> answer harshly
@@ -43,16 +40,16 @@ Cherry: What's wrong with you? Why are you being so silent and grumpy??
 ===
 title: answer
 ---
-{$name}: Well... I was told something about you yesterday. Something about the day you arrived here.
+{$name}: Well... I was told something about you yesterday. Something about the day you arrived here. #expression:neutral
 Cherry: The day I arrived? What did you hear? I don't remember that day very clearly.
 {$name}: You don't? That's a relief.
 Cherry: A relief?! What are you on about?
-{$name}: You killing a whole bunch of people? The massive Dark Matter explosion you caused? Ringing any bells?
+{$name}: You killing a whole bunch of people? The massive Dark Matter explosion you caused? Ringing any bells? #expression:annoyed 
 <<jump surprise>>
 ===
 title: answer_harsh
 ---
-{$name}: What's wrong with me?! What's wrong with you!? Why did you kill all those people?!
+{$name}: What's wrong with me?! What's wrong with you!? Why did you kill all those people?! #expression:annoyed
 Cherry: What!?
 {$name}: The Dark Matter explosion? That was you!
 <<jump surprise>>
@@ -67,27 +64,27 @@ Cherry: Truly. It was... dark. And cold. I remember feeling frozen. And lonely.
 Cherry: Then it wasn't dark, it was black. And there was a loud sound.
 {$name}: The explosion.
 Cherry: I really don't remember it. I swear. You have to believe me!
--> {$name}: I do (truth)
+-> {$name}: I do (truth) #expression:neutral
         <<set $friendship +=3>>
         <<jump believe>>
--> {$name}: I do (lie)
+-> {$name}: I do (lie)#expression:pensive #pose:sad
         <<set $friendship -=1>>
         <<jump lie>>
--> {$name}: I don't
+-> {$name}: I don't#expression:pensive #pose:sad
         <<set $friendship -=3>>
         <<jump dont>>
 ===
 title: believe
 ---
-Cherry: Thank you. Truly, thank you. I swear it's the truth.
+Cherry: Thank you. Truly, thank you. I swear it's the truth. 
 {$name}: I know.
 Cherry: ...But no one else does. Is that why no one else will talk to me? Or even look at me?
 {$name}: It must be. There must be something connecting you to the explosion. Why else would everyone assume it's you?
-Cherry: I don't know. I don't know why people think it's me. 
-Cherry: Please, {$name}, please understand. I would never ever hurt people like that.
+Cherry: I don't know. I don't know why people think it's me. #expression:pensive #pose:sad
+Cherry: Please, {$name}, please understand. I would never ever hurt people like that. 
 -> reassure
         <<set $friendship +=1>>
-        {$name}: Hey it's going to be okay. I believe you.
+        {$name}: Hey it's going to be okay. I believe you. #expression:neutral #pose:neutral
 -> say nothing
 Cherry: So, what do we do now?
 -> investigate
@@ -120,11 +117,11 @@ Cherry: At least you're honest, I suppose. I swear I'm telling the truth, I just
 Cherry: Okay, I get how that seems. But I swear it's a coincidence. 
 {$name}: Sure, if you say so.
 Cherry: Well, now what? What do we do?
--> investigate
+-> investigate #expression:neutral #pose:neutral
         <<jump investigate>>
--> stay calm
+-> stay calm #expression:neutral #pose:neutral
         <<jump calm>>
--> nothing
+-> nothing #expression:neutral #pose:neutral
         <<jump nothing>>
 ===
 title: investigate
@@ -133,8 +130,8 @@ title: investigate
 Cherry: That's... quite clever. If we can figure out why the explosion happened, maybe we can figure out why I was there.
 {$name}: And why you don't remember anything.
 Cherry: And maybe... maybe then they'll let me go?
-{$name}: We can try, I suppose.
-Cherry: Thank you {$name}. It means a lot that you're willing to help me.
+{$name}: We can try, I suppose. #expression:happy
+Cherry: Thank you {$name}. It means a lot that you're willing to help me. 
 {$name}: Let's just see how this goes before we start thanking anybody.
 Cherry: Still...
 {$name}: Look, I'd better go, I gotta get back to work. I'll come back tomorrow, and let you know anything I find.
@@ -150,21 +147,39 @@ Cherry: I'm not freaking out! But I'd like to see how you'd react to being told 
 Cherry: Ask around? You think someone saw something, or knows something?
 {$name}: I think it doesn't hurt to ask. 
 Cherry: Hm.
-{$name}: Look, I gotta go, before I get in trouble. I'll probably come back tomorrow, kay?
+{$name}: Look, I gotta go, before I get in trouble. I'll probably come back tomorrow, kay? #expression:happy
 Cherry: Okay. I'll see you tomorrow then, {$name}.
 {$name}: Goodbye Cherry.
 ===
 title: nothing
 ---
-{$name}: We do nothing.
-Cherry: Nothing?!
+{$name}: We do nothing. #expression:annoyed
+Cherry: Nothing?! 
 {$name}: Well what would we do? There's nothing we can do. Guilty or innocent, you're still in a cell, and I have no way of knowing the truth!
 Cherry: You could still look into it! Just because you don't know, doesn't mean that no one does!
 {$name}: I mean I guess, but still. That seems like a very complicated issue to broach, and it might not even help you.
 Cherry: You can still ask around!
 {$name}: Yeah. Maybe. I'll see I guess.
 Cherry: You'll see?
-{$name}: Look, I gotta go. I'll talk to you some other time.
+{$name}: Look, I gotta go. I'll talk to you some other time. #expression:neutral
 Cherry: Fine. Goodbye, I guess.
+
+===
+<<RemoveCharacter DialogueSignals "Scarlet">>
+<<EnableNavigation DialogueSignals>>
+<<jump Navigation1>>
+
+title: Navigation1
+tags: #Navigating
+---
+Navigating....
+
+<<if $current_location == "Cell2">>
+<<jump Cellmate>>
+<<endif>>
+
+<<if $current_location == "Hallway">>
+<<jump ScarlettDay3>>
+<<endif>>
 
 ===
