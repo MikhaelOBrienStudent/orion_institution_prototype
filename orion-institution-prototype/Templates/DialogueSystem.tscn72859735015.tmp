@@ -238,28 +238,22 @@ script = ExtResource("11_t56k8")
 dialogueRunner = NodePath("../DialogueRunner")
 memoryStorage = NodePath("../InMemoryVariableStorage")
 
-[node name="SignalReceiver" type="Node" parent="." node_paths=PackedStringArray("dialogue_runner", "player_input_ui")]
+[node name="SignalReceiver" type="Node" parent="." node_paths=PackedStringArray("dialogue_runner", "dialogue_nodes", "player_input_ui")]
 script = ExtResource("12_ry6ui")
 dialogue_runner = NodePath("../DialogueRunner")
+dialogue_nodes = [NodePath("../LinePresenter"), NodePath("../OptionsPresenter")]
 player_input_ui = NodePath("../PlayerTextInput")
 
 [node name="PlayerTextInput" parent="." instance=ExtResource("13_6tvmo")]
 visible = false
 
 [node name="SaveData" type="Node" parent="." node_paths=PackedStringArray("memory_storage")]
-process_priority = -1
 script = ExtResource("14_l1c31")
 memory_storage = NodePath("../InMemoryVariableStorage")
 
-[connection signal="SendTagValue" from="DialogueRunner" to="SignalReceiver" method="_on_dialogue_runner_send_tag_value"]
-[connection signal="onNodeStart" from="DialogueRunner" to="SignalReceiver" method="_on_dialogue_runner_on_node_start"]
 [connection signal="onUnhandledCommand" from="DialogueRunner" to="SignalReceiver" method="_on_dialogue_runner_on_unhandled_command"]
 [connection signal="onNewMetadata" from="LinePresenter" to="SignalReceiver" method="_on_line_presenter_on_new_metadata"]
 [connection signal="pressed" from="LinePresenter/PresenterControl/ContinueButton" to="LinePresenter/PresenterControl/ContinueButton" method="_on_pressed"]
-[connection signal="SendVariableBool" from="InMemoryVariableStorage" to="SaveData" method="_on_in_memory_variable_storage_send_variable_bool"]
-[connection signal="SendVariableFloat" from="InMemoryVariableStorage" to="SaveData" method="_on_in_memory_variable_storage_send_variable_float"]
-[connection signal="SendVariableKey" from="InMemoryVariableStorage" to="SaveData" method="_on_in_memory_variable_storage_send_variable_key"]
-[connection signal="SendVariableString" from="InMemoryVariableStorage" to="SaveData" method="_on_in_memory_variable_storage_send_variable_string"]
 [connection signal="ChangePlayerLocationSignal" from="DialogueSignals" to="SignalReceiver" method="_on_dialogue_signals_change_player_location_signal"]
 [connection signal="GetNameSignal" from="DialogueSignals" to="SignalReceiver" method="GetPlayerName"]
 [connection signal="HidePlayerInputSignal" from="DialogueSignals" to="SignalReceiver" method="HideInput"]

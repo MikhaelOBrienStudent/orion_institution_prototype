@@ -60,6 +60,7 @@ public partial class InMemoryVariableStorage : VariableStorageBehaviour, IEnumer
 		}
 	}
 
+
 	public string GetDebugList()
 	{
 		var stringBuilder = new System.Text.StringBuilder();
@@ -295,6 +296,41 @@ public partial class InMemoryVariableStorage : VariableStorageBehaviour, IEnumer
 	}
 
 	#region Save/Load
+
+	[Signal] public delegate void SendVariableKeyEventHandler(string variable_key);
+	[Signal] public delegate void SendVariableFloatEventHandler(float variable_float);
+	[Signal] public delegate void SendVariableStringEventHandler(string variable_string);
+	[Signal] public delegate void SendVariableBoolEventHandler(bool variable_bool);
+
+	public void GetSaveData()
+	{
+		foreach (KeyValuePair<string, object> variable in variables)
+		{
+			var type = variableTypes[variable.Key];
+
+			EmitSignal(SignalName.SendVariableKey, variable.Key);
+
+			if (type == typeof(float))
+			{
+				float value = System.Convert.ToSingle(variable.Value);
+				EmitSignal(SignalName.SendVariableFloat, value);
+			}
+			else if (type == typeof(string))
+			{
+				string value = System.Convert.ToString(variable.Value);
+				EmitSignal(SignalName.SendVariableString, value);
+			}
+			else if (type == typeof(bool))
+			{
+				bool value = System.Convert.ToBoolean(variable.Value);
+				EmitSignal(SignalName.SendVariableBool, value);
+			}
+			else
+			{
+				GD.Print($"{variable.Key} is not a valid type");
+			}
+		}
+	}
 
 	public override (Dictionary<string, float>, Dictionary<string, string>, Dictionary<string, bool>) GetAllVariables()
 	{

@@ -1,7 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://c0ag56dv7yy35"]
+[gd_scene load_steps=13 format=3 uid="uid://c0ag56dv7yy35"]
 
 [ext_resource type="Script" uid="uid://bsukakrub6e60" path="res://Scripts/Game Management/main.gd" id="1_d1ilt"]
 [ext_resource type="PackedScene" uid="uid://bngaerxb3wqsl" path="res://Scenes/world.tscn" id="3_ynf5e"]
+[ext_resource type="Script" uid="uid://dibqanrsjdw57" path="res://Scripts/start_menu.gd" id="4_hptm8"]
 [ext_resource type="PackedScene" uid="uid://byi28peg3cmv" path="res://Scenes/audio.tscn" id="4_jjvhh"]
 [ext_resource type="FontFile" uid="uid://bnyne8ygte2ui" path="res://UI/Fonts/ricasso/Ricasso-Regular.otf" id="27_kltya"]
 [ext_resource type="StyleBox" uid="uid://day233adg2oec" path="res://UI/Themes/button_panel_disabled.tres" id="28_e08e2"]
@@ -26,8 +27,12 @@ world_scene = ExtResource("3_ynf5e")
 
 [node name="Audio" parent="." instance=ExtResource("4_jjvhh")]
 
-[node name="StartMenu" type="CanvasLayer" parent="."]
+[node name="StartMenu" type="CanvasLayer" parent="." node_paths=PackedStringArray("play_button", "resume_button", "new_game_button")]
 layer = 3
+script = ExtResource("4_hptm8")
+play_button = NodePath("VBoxContainer/play_button")
+resume_button = NodePath("VBoxContainer/resume_button")
+new_game_button = NodePath("VBoxContainer/new_game_button")
 
 [node name="Panel" type="Panel" parent="StartMenu"]
 anchors_preset = 15
@@ -44,19 +49,20 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -320.0
-offset_top = -132.0
+offset_top = -185.0
 offset_right = 320.0
-offset_bottom = 314.0
+offset_bottom = 401.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme_override_constants/separation = 20
 alignment = 1
 
 [node name="play_button" type="Button" parent="StartMenu/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 5
-size_flags_vertical = 2
+size_flags_vertical = 0
 theme_override_colors/font_disabled_color = Color(0.577008, 0.577008, 0.577008, 1)
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_colors/icon_normal_color = Color(0, 0, 0, 1)
@@ -71,10 +77,46 @@ theme_override_styles/pressed = ExtResource("29_neg2b")
 theme_override_styles/normal = ExtResource("31_hdf80")
 text = "PLAY"
 
+[node name="resume_button" type="Button" parent="StartMenu/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 0
+theme_override_colors/font_disabled_color = Color(0.577008, 0.577008, 0.577008, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_normal_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("27_kltya")
+theme_override_font_sizes/font_size = 56
+theme_override_styles/disabled = ExtResource("28_e08e2")
+theme_override_styles/hover_pressed = ExtResource("29_neg2b")
+theme_override_styles/hover = ExtResource("30_r33sp")
+theme_override_styles/pressed = ExtResource("29_neg2b")
+theme_override_styles/normal = ExtResource("31_hdf80")
+text = "RESUME"
+
+[node name="new_game_button" type="Button" parent="StartMenu/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 0
+theme_override_colors/font_disabled_color = Color(0.577008, 0.577008, 0.577008, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_normal_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("27_kltya")
+theme_override_font_sizes/font_size = 56
+theme_override_styles/disabled = ExtResource("28_e08e2")
+theme_override_styles/hover_pressed = ExtResource("29_neg2b")
+theme_override_styles/hover = ExtResource("30_r33sp")
+theme_override_styles/pressed = ExtResource("29_neg2b")
+theme_override_styles/normal = ExtResource("31_hdf80")
+text = "NEW GAME"
+
 [node name="settings_button" type="Button" parent="StartMenu/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 5
-size_flags_vertical = 2
+size_flags_vertical = 0
 theme_override_colors/font_disabled_color = Color(0.577008, 0.577008, 0.577008, 1)
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_colors/icon_normal_color = Color(0, 0, 0, 1)
@@ -93,7 +135,7 @@ text = "SETTINGS"
 [node name="quit_button" type="Button" parent="StartMenu/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 5
-size_flags_vertical = 2
+size_flags_vertical = 0
 theme_override_colors/font_disabled_color = Color(0.577008, 0.577008, 0.577008, 1)
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_colors/icon_normal_color = Color(0, 0, 0, 1)
@@ -113,9 +155,9 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -832.0
-offset_top = 216.0
+offset_top = 156.0
 offset_right = 853.0
-offset_bottom = 657.0
+offset_bottom = 597.0
 grow_horizontal = 2
 size_flags_horizontal = 3
 text = "ORION INSTITUTION
@@ -247,6 +289,8 @@ vertical_alignment = 3
 uppercase = true
 
 [connection signal="pressed" from="StartMenu/VBoxContainer/play_button" to="." method="start_game"]
+[connection signal="pressed" from="StartMenu/VBoxContainer/resume_button" to="." method="start_game"]
+[connection signal="pressed" from="StartMenu/VBoxContainer/new_game_button" to="." method="new_game"]
 [connection signal="pressed" from="StartMenu/VBoxContainer/quit_button" to="." method="_on_quit_button_pressed"]
 [connection signal="pressed" from="PauseMenu/VBoxContainer/resume_button" to="." method="pause_game" binds= [false]]
 [connection signal="pressed" from="PauseMenu/VBoxContainer/menu_button" to="." method="go_to_menu"]

@@ -993,7 +993,9 @@ public partial class DialogueRunner : Godot.Node
 				this);
 			return;
 		}
-
+		
+		GD.Print("Starting from node: " + nodeName);
+		
 		dialogueCancellationSource?.Dispose();
 
 		dialogueCancellationSource = new CancellationTokenSource();
@@ -1296,5 +1298,12 @@ public partial class DialogueRunner : Godot.Node
 		}
 
 		return castArgs;
+	}
+	
+	[Signal] public delegate void SendTagValueEventHandler(string tag);
+	
+	public void GetNodeTagValue(string nodeName)
+	{
+		EmitSignal(SignalName.SendTagValue, Dialogue.GetHeaderValue(nodeName, "tags"));
 	}
 }

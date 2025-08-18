@@ -135,7 +135,7 @@ func _on_signal_receiver_change_location(location_name: String) -> void:
 		current_location.Leave()
 	current_location = new_location
 	current_location.Arrive()
-	character_manager.ChangeCharacter(new_location.current_characters)
+	character_manager.call_deferred("ChangeCharacter", new_location.current_characters)
 	if not new_location.current_characters.is_empty():
 		StartDialogue.emit()
 

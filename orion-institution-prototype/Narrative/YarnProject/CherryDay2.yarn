@@ -9,6 +9,7 @@ title: DayTwoCherry
 <<ChangeLocation DialogueSignals "Cell">>
 
 
+<<once>>
 What is your name?
 <<GetPlayerName DialogueSignals>>
     -> Submit
@@ -16,7 +17,7 @@ What is your name?
         <<HidePlayerInput DialogueSignals>>
 
 <<SetCharacterLocation DialogueSignals "Cherry" "Cell">>
-
+<<endonce>>
 
 //Cherry
 Cherry:Ah. Good morning {$name} #expression:happy
@@ -174,6 +175,7 @@ Cherry:Goodbye.
 ===
 
 title: Navigation1
+tags: #Navigating
 ---
 Navigating....
 

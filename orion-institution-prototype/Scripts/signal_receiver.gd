@@ -18,6 +18,12 @@ signal TalkingCharacterName(character_name: String)
 
 @export var player_input_ui: Control
 
+func _ready() -> void:
+	if SaveManagement.has_save_file:
+		print("Save found, setting saved start node...")
+		ChangeLocation.emit(SaveManagement.save_data["locations"]["current_location"])
+		dialogue_runner.startNode = SaveManagement.saved_node_name
+	dialogue_runner.StartDialogue(dialogue_runner.startNode)
 
 func GetPlayerName() -> void:
 	print("Getting player name...")
@@ -73,3 +79,17 @@ func _on_line_presenter_on_new_metadata(metadata) -> void:
 
 func _on_line_presenter_character_name(character_name: String) -> void:
 	TalkingCharacterName.emit(character_name)
+
+
+func _on_dialogue_runner_on_node_start(nodeName: String) -> void:
+	dialogue_runner.GetNodeTagValue(nodeName)
+	if nodeName == SaveManagement.saved_node_name || nodeName == "":
+		return
+	print("Changed node: {0}".format([nodeName]))
+	SaveManagement.saved_node_name = nodeName
+	SaveManagement.save_game()
+
+
+func _on_dialogue_runner_send_tag_value(tag: String) -> void:
+	if tag.contains("Navigating"):
+		EnableNavigation.emit()

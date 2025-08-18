@@ -2,7 +2,7 @@ extends Node
 
 @onready var main: Node = get_node("/root/Main")
 
-@export var character_nodes: Array[Character]
+var character_nodes: Array[Character]
 
 var current_characters: Array[Character]
 
@@ -11,8 +11,24 @@ var talking_character: Character = null
 var character_pose: String
 var character_expression: String
 
+func _ready() -> void:
+	for character: Character in get_children():
+		character_nodes.append(character)
+	
+	SaveManagement.SaveGame.connect(Save)
+	SaveManagement.LoadGame.connect(Load)
+
+func Save() -> void:
+	pass
+
+func Load(load_data:Dictionary) -> void:
+	pass
+
+
 ##The function used to set the characters in the current location to visible, and to hide all others
 func ChangeCharacter(character_names: Array[String]) -> void:
+	print("Changing current characters...")
+	print(character_names)
 	current_characters.clear()
 	for character in character_nodes:
 		if character_names.has(character.character_name):
@@ -34,7 +50,9 @@ func CharacterLeaves(character_name: String) -> void:
 	current_characters.remove_at(char_index)
 	UpdateCharacterSpacing()
 
-func UpdateCharacterSprite(sprite_type: String, sprite_name: String) -> void: 
+func UpdateCharacterSprite(sprite_type: String, sprite_name: String) -> void:
+	if not talking_character:
+		return 
 	if sprite_type == "pose":
 		talking_character.UpdatePose(sprite_name)
 	if sprite_type == "expression":

@@ -35,6 +35,7 @@ layer = 2
 
 [node name="DialogueRunner" parent="DialogueCanvasLayer" index="0"]
 yarnProject = ExtResource("3_pt3ps")
+autoStart = false
 startNode = "DayTwoCherry"
 
 [node name="ContinueButton" parent="DialogueCanvasLayer/LinePresenter/PresenterControl" index="2" node_paths=PackedStringArray("character_manager")]
@@ -49,15 +50,17 @@ offset_right = 336.0
 offset_bottom = 632.0
 theme_override_font_sizes/normal_font_size = 25
 
+[node name="SaveData" parent="DialogueCanvasLayer" index="9"]
+process_priority = 0
+
 [node name="Navigation" parent="." node_paths=PackedStringArray("location_manager", "dialogue_memory", "character_manager") instance=ExtResource("4_hmc15")]
 visible = false
 location_manager = NodePath("../Locations")
 dialogue_memory = NodePath("../DialogueCanvasLayer/InMemoryVariableStorage")
 character_manager = NodePath("../Characters")
 
-[node name="Characters" type="Node" parent="." node_paths=PackedStringArray("character_nodes")]
+[node name="Characters" type="Node" parent="."]
 script = ExtResource("5_dt0r1")
-character_nodes = [NodePath("Cherry"), NodePath("Scarlet"), NodePath("Arden")]
 
 [node name="Cherry" parent="Characters" instance=ExtResource("6_qebug")]
 visible = false

@@ -75,7 +75,6 @@ title: Cellmate
 ---
 Cellmate: this is a test for multiple dialogue branches between navigation.
 
-<<SetCharacterLocation DialogueSignals "Cherry" "Monitor Room">>
 <<EnableNavigation DialogueSignals>>
 <<jump Navigation1>>
 

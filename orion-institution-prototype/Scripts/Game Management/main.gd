@@ -17,20 +17,34 @@ func _ready() -> void:
 	pass
 
 func start_game() -> void:
+	SaveManagement.has_save_file = SaveManagement.get_save_file()
+	print("The game should load from the following node: {0}".format([SaveManagement.saved_node_name]))
+	if SaveManagement.has_save_file:
+		PlayerName = SaveManagement.saved_variables["$name"]
 	world = world_scene.instantiate()
 	add_child(world)
 	start_menu.hide()
 	start_menu.process_mode = Node.PROCESS_MODE_DISABLED
 	is_playing = true
+	SaveManagement.load_game()
+
+func new_game() -> void:
+	SaveManagement.clear_Save()
+	start_game()
 
 func go_to_menu() -> void:
+	print("Ending game, going to main menu")
+	print("==============================")
 	world.queue_free()
 	start_menu.show()
 	start_menu.process_mode = Node.PROCESS_MODE_INHERIT
 	is_playing = false
 	pause_game(false)
+	start_menu.request_ready()
 
 func _on_quit_button_pressed() -> void:
+	print("Ending game, quitting")
+	print("==============================")
 	get_tree().quit()
 
 func pause_game(is_pausing: bool) -> void:
