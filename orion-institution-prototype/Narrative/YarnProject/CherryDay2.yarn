@@ -1,16 +1,12 @@
 title: DayTwoCherry
 ---
-<<declare $friendship = "">>
-<<declare $name = "">>
-<<declare $current_location = "">>
-
 
 //Setting up the scene
 <<ChangeLocation DialogueSignals "Cell">>
 <<SetCharacterLocation DialogueSignals "Cherry" "Cell">>
-#pose:neutral
 
-Cherry:Ah. Good morning {$name} #expression:happy
+
+Cherry:Ah. Good morning {$name} #expression:happy #pose:neutral
 
 -> {$name}:Good morning Cherry!
     <<set $friendship +=1>>
@@ -32,18 +28,18 @@ Cherry:I'm doing perfectly well, thank you very much. What a lovely place for me
 ===
 title: improvement
 ---
-{$name}:Well maybe we can help each other out? Is there something I can do to improve your... living area? #expression:neutral
-Cherry:Well depends. What would you want in return?
+{$name}:Well maybe we can help each other out? Is there something I can do to improve your... living area? 
+Cherry:Well depends. What would you want in return?#expression:neutral
 {$name}:Just information. I want to know more about you, and how you ended up, the way you are.
 Cherry:Well in that case... A new outfit would be nice. If you like.
 -> Accept
     <<set $friendship +=1>> 
-    {$name}:I'm sure I can figure something like that out for you. #expression:happy
-    Cherry:Thankyou, it is much appreciated. If I think of something worth sharing, you'll be the first I tell.
+    {$name}:I'm sure I can figure something like that out for you. 
+    Cherry:Thankyou, it is much appreciated. If I think of something worth sharing, you'll be the first I tell.#expression:happy
 -> Decline
     <<set $friendship -=1>> 
-    {$name}: Sorry, I don't think I can. #expression:sad #pose:sad
-    Cherry:Well. I see how it is then.
+    {$name}: Sorry, I don't think I can. 
+    Cherry:Well. I see how it is then.#expression:sad #pose:sad
 
 
 <<if $friendship >=6>>
@@ -60,7 +56,7 @@ Cherry:So, who runs this place? Who's brilliant idea was it to create an institu
 
 -> (truth)
     <<set $friendship +=1>>
-    {$name}:Those are two different answers. The current director is NAME, but the guy who created it is called Magnus Owens. He died a while back. But NAME is pretty cool!
+    {$name}:Those are two different answers. The current director is {$Boss}, but the guy who created it is called Magnus Owens. He died a while back. But {$Boss} is pretty cool!
 -> (avoid)
     {$name}:Well Magnus is the guy who created this place. But he's not the current director, that's someone else.
 -> (lie)
@@ -79,7 +75,7 @@ Cherry:Shoot.#expression:happy #pose:neutral
 -> Arrival
     <<jump arrival>>
 -> Nevermind
-    <<jump goodbye>>
+    <<jump goodbye1>>
 ===
 
 title: name
@@ -88,7 +84,7 @@ title: name
 Cherry:Uh. I... I don't know. I think so?#expression:pensive #pose:sad
 Cherry:I can't quite remember.
 {$name}:Huh, weird. If you ever do remember, I'd love to know.
-<<jump goodbye>>
+<<jump goodbye1>>
 ===
 
 title: arrival
@@ -97,37 +93,20 @@ title: arrival
 {$name}:Do you remember much of how you got here? Or the day you arrived?
 Cherry:Um. The day I arrived. I, uh, I don't remember. I think... I don't know. That's weird.#expression:neutral #pose:neutral
 {$name}:Huh. Yeah, very weird.
-<<jump goodbye>>
+<<jump goodbye1>>
 ===
-
-title: goodbye
+//TODO: node name set to goodbye1 for now so I could do testing
+title: goodbye1
 ---
 //MC
-{$name}:Well, it was good to talk to you again. You're a very interesting... person? #expression:neutral #pose:neutral
-Cherry:Person will do. It's interesting talking to you too, {$name}. I suppose I will be seeing you again sometime soon.#expression:happy
+{$name}:Well, it was good to talk to you again. You're a very interesting... person?
+Cherry:Person will do. It's interesting talking to you too, {$name}. I suppose I will be seeing you again sometime soon.#expression:happy #pose:neutral
 {$name}:Goodbye Cherry.
 Cherry:Goodbye.
 
-
-<<SetCharacterLocation DialogueSignals "Arden" "Cell2">>
-<<SetCharacterLocation DialogueSignals "Cherry" "Cell2">>
+<<RemoveCharacter DialogueSignals "Cherry">>
 <<SetCharacterLocation DialogueSignals "Scarlet" "Hallway">>
-<<EnableNavigation DialogueSignals>>
-<<jump Navigation1>>
 
-===
-
-title: Navigation1
-tags: #Navigating
----
-Navigating....
-
-<<if $current_location == "Cell2">>
-<<jump Cellmate>>
-<<endif>>
-
-<<if $current_location == "Hallway">>
-<<jump ScarlettDay2>>
-<<endif>>
+<<jump Navigating>>
 
 ===

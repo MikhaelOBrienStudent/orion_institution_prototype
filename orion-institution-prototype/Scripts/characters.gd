@@ -21,7 +21,7 @@ func _ready() -> void:
 func Save() -> void:
 	pass
 
-func Load(load_data:Dictionary) -> void:
+func Load(_load_data:Dictionary) -> void:
 	pass
 
 

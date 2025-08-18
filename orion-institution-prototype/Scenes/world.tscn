@@ -1,9 +1,10 @@
-[gd_scene load_steps=25 format=3 uid="uid://bngaerxb3wqsl"]
+[gd_scene load_steps=26 format=3 uid="uid://bngaerxb3wqsl"]
 
 [ext_resource type="PackedScene" uid="uid://37soojyye5eb" path="res://Scenes/gui.tscn" id="1_xbk3s"]
 [ext_resource type="PackedScene" uid="uid://rskqyvn1oq28" path="res://Templates/DialogueSystem.tscn" id="2_i4fjy"]
 [ext_resource type="Resource" uid="uid://l4ehu44v1t3b" path="res://Narrative/YarnProject/OrionInstitution.yarnproject" id="3_pt3ps"]
 [ext_resource type="PackedScene" uid="uid://frlebr2m3f0d" path="res://Scenes/navigation.tscn" id="4_hmc15"]
+[ext_resource type="Script" uid="uid://o84yf7uo3qk7" path="res://Scripts/character_name_text.gd" id="4_i4fjy"]
 [ext_resource type="Script" uid="uid://cx8xav6jtt1f5" path="res://Scripts/characters.gd" id="5_dt0r1"]
 [ext_resource type="PackedScene" uid="uid://d3uqi3oqnn4mj" path="res://Scenes/Characters/Cherry.tscn" id="6_qebug"]
 [ext_resource type="Script" uid="uid://bn65klsg2o1w" path="res://Scripts/Character/pose.gd" id="7_o2rbt"]
@@ -36,7 +37,9 @@ layer = 2
 [node name="DialogueRunner" parent="DialogueCanvasLayer" index="0"]
 yarnProject = ExtResource("3_pt3ps")
 autoStart = false
-startNode = "DayTwoCherry"
+
+[node name="CharacterNameText" parent="DialogueCanvasLayer/LinePresenter/PresenterControl/NameBox" index="0"]
+script = ExtResource("4_i4fjy")
 
 [node name="ContinueButton" parent="DialogueCanvasLayer/LinePresenter/PresenterControl" index="2" node_paths=PackedStringArray("character_manager")]
 character_manager = NodePath("../../../../Characters")
@@ -46,6 +49,7 @@ showDebug = true
 debugTextView = NodePath("RichTextLabel")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="DialogueCanvasLayer/InMemoryVariableStorage" index="0"]
+visible = false
 offset_right = 336.0
 offset_bottom = 632.0
 theme_override_font_sizes/normal_font_size = 25
@@ -142,7 +146,7 @@ visible = false
 top_level = true
 z_index = 1
 position = Vector2(960, 0)
-character_name = "Arden"
+character_name = "Boss"
 
 [node name="Poses" type="Node" parent="Characters/Arden"]
 
@@ -198,6 +202,7 @@ energy = 0.55
 color = Color(0.403674, 0.691936, 0.607631, 1)
 
 [connection signal="CharacterName" from="DialogueCanvasLayer/LinePresenter" to="DialogueCanvasLayer/SignalReceiver" method="_on_line_presenter_character_name"]
+[connection signal="finished" from="DialogueCanvasLayer/LinePresenter/PresenterControl/NameBox/CharacterNameText" to="DialogueCanvasLayer/LinePresenter/PresenterControl/NameBox/CharacterNameText" method="_on_finished"]
 [connection signal="EnableNavigationSignal" from="DialogueCanvasLayer/DialogueSignals" to="DialogueCanvasLayer/SignalReceiver" method="_on_dialogue_signals_enable_navigation_signal"]
 [connection signal="StartDialogueSignal" from="DialogueCanvasLayer/DialogueSignals" to="DialogueCanvasLayer/SignalReceiver" method="_on_dialogue_signals_start_dialogue_signal"]
 [connection signal="ChangeLocation" from="DialogueCanvasLayer/SignalReceiver" to="Navigation" method="_on_signal_receiver_change_location"]

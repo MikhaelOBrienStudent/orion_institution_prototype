@@ -36,7 +36,7 @@ theme_override_fonts/font = ExtResource("2_0y8l1")
 theme_override_font_sizes/font_size = 66
 theme_override_styles/focus = SubResource("StyleBoxTexture_rx52i")
 theme_override_styles/normal = SubResource("StyleBoxTexture_rx52i")
-text = "Placeholder"
+text = "Guard"
 alignment = 1
 emoji_menu_enabled = false
 

@@ -18,7 +18,7 @@ func update_local_save() -> void:
 	memory_storage.GetSaveData()
 	SaveManagement.saved_variables = local_variables
 
-func update_in_memory_variable_storage(load_data: Dictionary) -> void:
+func update_in_memory_variable_storage(_load_data: Dictionary) -> void:
 	local_variables = SaveManagement.saved_variables
 	memory_storage.Clear()
 	print("Loading saved variables...")

@@ -27,8 +27,6 @@ func _ready() -> void:
 	
 	modulate.a = 0
 
-func _physics_process(delta: float) -> void:
-	pass#expression_sprite.offset = pose_sprite.offset
 
 func Talk() -> void:
 	var jump_tween = self.create_tween()

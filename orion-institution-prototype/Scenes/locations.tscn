@@ -79,3 +79,17 @@ use_parent_material = true
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("4_6uftb")
 centered = false
+
+[node name="EndDay" type="Node2D" parent="."]
+visible = false
+use_parent_material = true
+script = ExtResource("1_wsf7f")
+location_name = "EndDay"
+metadata/_custom_type_script = "uid://ldo4ct6oqy35"
+
+[node name="Sprite2D" type="Sprite2D" parent="EndDay"]
+modulate = Color(0, 0, 0, 1)
+use_parent_material = true
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_6uftb")
+centered = false
