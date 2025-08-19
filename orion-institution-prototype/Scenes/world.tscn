@@ -1,12 +1,12 @@
 [gd_scene load_steps=26 format=3 uid="uid://bngaerxb3wqsl"]
 
-[ext_resource type="PackedScene" uid="uid://37soojyye5eb" path="res://Scenes/gui.tscn" id="1_xbk3s"]
+[ext_resource type="PackedScene" uid="uid://37soojyye5eb" path="res://scenes/gui.tscn" id="1_xbk3s"]
 [ext_resource type="PackedScene" uid="uid://rskqyvn1oq28" path="res://Templates/DialogueSystem.tscn" id="2_i4fjy"]
 [ext_resource type="Resource" uid="uid://l4ehu44v1t3b" path="res://Narrative/YarnProject/OrionInstitution.yarnproject" id="3_pt3ps"]
-[ext_resource type="PackedScene" uid="uid://frlebr2m3f0d" path="res://Scenes/navigation.tscn" id="4_hmc15"]
+[ext_resource type="PackedScene" uid="uid://frlebr2m3f0d" path="res://scenes/navigation.tscn" id="4_hmc15"]
 [ext_resource type="Script" uid="uid://o84yf7uo3qk7" path="res://Scripts/character_name_text.gd" id="4_i4fjy"]
 [ext_resource type="Script" uid="uid://cx8xav6jtt1f5" path="res://Scripts/characters.gd" id="5_dt0r1"]
-[ext_resource type="PackedScene" uid="uid://d3uqi3oqnn4mj" path="res://Scenes/Characters/Cherry.tscn" id="6_qebug"]
+[ext_resource type="PackedScene" uid="uid://d3uqi3oqnn4mj" path="res://scenes/Characters/Cherry.tscn" id="6_qebug"]
 [ext_resource type="Script" uid="uid://bn65klsg2o1w" path="res://Scripts/Character/pose.gd" id="7_o2rbt"]
 [ext_resource type="Texture2D" uid="uid://dod8qlilv3ctm" path="res://Assets/Characters/Cherry/REFSPRITE.png" id="8_1vso6"]
 [ext_resource type="Texture2D" uid="uid://bcfh8o4na0sgq" path="res://Assets/Characters/Cherry/Poses/pose_neutral.png" id="9_3ua1v"]
@@ -17,14 +17,14 @@
 [ext_resource type="Texture2D" uid="uid://bx0hw4e56ihtp" path="res://Assets/Characters/Cherry/Expressions/expression_annoyed.png" id="14_p5wkl"]
 [ext_resource type="Texture2D" uid="uid://2jh5uhfque24" path="res://Assets/Characters/Cherry/Expressions/expression_sad.png" id="15_r74th"]
 [ext_resource type="Texture2D" uid="uid://cukwg5j32nu73" path="res://Assets/Characters/Cherry/Expressions/expression_pensive.png" id="16_04jkj"]
-[ext_resource type="PackedScene" uid="uid://bqm8pww0wodvf" path="res://Scenes/Characters/Scarlet.tscn" id="17_lkcvt"]
+[ext_resource type="PackedScene" uid="uid://bqm8pww0wodvf" path="res://scenes/Characters/Scarlet.tscn" id="17_lkcvt"]
 [ext_resource type="Texture2D" uid="uid://dr4gladfba44p" path="res://Assets/Characters/Scarlet/scarlet.png" id="18_atqvy"]
 [ext_resource type="PackedScene" uid="uid://qqgoryldvogf" path="res://Templates/character.tscn" id="19_w5giw"]
 [ext_resource type="Texture2D" uid="uid://bpdfdmortbgmx" path="res://Assets/Characters/placeholder.png" id="20_jwdyn"]
 [ext_resource type="Script" uid="uid://bqstnch2uehlr" path="res://Scripts/Game Management/scene_manager.gd" id="21_t6yt7"]
-[ext_resource type="PackedScene" uid="uid://3vnbb1aftlgl" path="res://Scenes/locations.tscn" id="22_al5m0"]
+[ext_resource type="PackedScene" uid="uid://3vnbb1aftlgl" path="res://scenes/locations.tscn" id="22_al5m0"]
 [ext_resource type="Script" uid="uid://d20h7y3toqcr6" path="res://Scripts/locations.gd" id="23_6mm6r"]
-[ext_resource type="PackedScene" uid="uid://belgi7sm4wp0g" path="res://Scenes/Location_light.tscn" id="24_xcb5n"]
+[ext_resource type="PackedScene" uid="uid://belgi7sm4wp0g" path="res://scenes/Location_light.tscn" id="24_xcb5n"]
 
 [node name="World" type="Node"]
 process_mode = 1
@@ -41,7 +41,7 @@ autoStart = false
 [node name="CharacterNameText" parent="DialogueCanvasLayer/LinePresenter/PresenterControl/NameBox" index="0"]
 script = ExtResource("4_i4fjy")
 
-[node name="ContinueButton" parent="DialogueCanvasLayer/LinePresenter/PresenterControl" index="2" node_paths=PackedStringArray("character_manager")]
+[node name="ContinueButton" parent="DialogueCanvasLayer/LinePresenter/PresenterControl" index="3" node_paths=PackedStringArray("character_manager")]
 character_manager = NodePath("../../../../Characters")
 
 [node name="InMemoryVariableStorage" parent="DialogueCanvasLayer" index="4" node_paths=PackedStringArray("debugTextView")]
