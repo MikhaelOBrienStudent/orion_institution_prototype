@@ -1,36 +1,35 @@
 title: Coworker
 ---
 
-
 //Setting up the scene
-<<ChangeLocation DialogueSignals "Hallway">>
+// <<ChangeLocation DialogueSignals "Hallway">> -----> This is the command to set the player to a specific location, and isn't needed here
 
-<<SetCharacterLocation DialogueSignals "Scarlet" "Hallway">>
-#pose:neutral
+//<<SetCharacterLocation DialogueSignals "Scarlet" "Hallway">> ----> this is already set at the end of the previous node
 
-Scarlet:Hey {$name}! How's it going?!#expression:happy
+
+Scarlet:Hey {$name}! How's it going? !#expression:happy #pose:neutral
 {$name}:Oh hey Scarlet.
-{$name}:I'm doing okay. Can't wait for lunch though. You?#expression:normal_talking
-Scarlet:Ugh, tell me about it. Heard the canteens selling some sort of 'pasta surprise' today. Me personally? I'll stick with bringing my own food.
-{$name}:Oh yeah, for sure. Screw that 'surprise' nonsense, we all know it's last weeks leftovers.#expression:sus
-Scarlet:Speaking of leftovers, heard you got last pick for shifts this week. Working the Spice ward? Yikes!
-{$name}:Yeah, but it's not been too bad so far. A bit of a slow week, actually.#expression:normal
-Scarlet:Have you met the new one? C-50-093? That freaky ass pink chick?
-{$name}:Who, Cherry?#expression:sus
-Scarlet:Cherry?! It has a name!?
-{$name}:It? I'm pretty sure she's a she!#expression:normal
-Scarlet:Damn. Well I guess that means you've met it, or her, or whatever. What's she like?
+{$name}:I'm doing okay. Can't wait for lunch though. You?
+Scarlet:Ugh, tell me about it. Heard the canteens selling some sort of 'pasta surprise' today. Me personally? I'll stick with bringing my own food.#expression:normal_talking
+{$name}:Oh yeah, for sure. Screw that 'surprise' nonsense, we all know it's last weeks leftovers.
+Scarlet:Speaking of leftovers, heard you got last pick for shifts this week. Working the Spice ward? Yikes!#expression:sus
+{$name}:Yeah, but it's not been too bad so far. A bit of a slow week, actually.
+Scarlet:Have you met the new one? C-50-093? That freaky ass pink chick?#expression:normal
+{$name}:Who, Cherry?
+Scarlet:Cherry?! It has a name!?#expression:sus
+{$name}:It? I'm pretty sure she's a she!
+Scarlet:Damn. Well I guess that means you've met it, or her, or whatever. What's she like?#expression:normal
 -> Truth
     {$name}:She's kinda cool. She's not super friendly or anything, but at least she actually talks to me. Most of the others just growl or scream or whatever. She's quite... chill, comparatively.
 -> Lie
-    {$name}:Ugh. She's so annoying and hard to talk to. I wouldn't recommend talking to her, at all.#expression:sus
-Scarlet:Wack. How are you not, like, fully scared of her? I would be petrified, especially since she killed all those people.
-{$name}:Wait, what? What people?#expression:sus_talking
-Scarlet:The Dark Matter explosion? Like a week ago?
+    {$name}:Ugh. She's so annoying and hard to talk to. I wouldn't recommend talking to her, at all.
+Scarlet:Wack. How are you not, like, fully scared of her? I would be petrified, especially since she killed all those people.#expression:sus
+{$name}:Wait, what? What people?
+Scarlet:The Dark Matter explosion? Like a week ago?#expression:sus_talking
 {$name}:That was her??
 Scarlet:Uh, yeah? Did you not realise? Dumbass
-{$name}:Woah. Well, guess I've got something to talk about next time I see her.#expression:neutral_talking
-Scarlet:Guess so. Shoot, better get back to my rounds before I get yelled at. See you at lunch?
+{$name}:Woah. Well, guess I've got something to talk about next time I see her.
+Scarlet:Guess so. Shoot, better get back to my rounds before I get yelled at. See you at lunch?#expression:neutral_talking
 {$name}:Yeah. See you.
 
 <<RemoveCharacter DialogueSignals "Scarlet">>

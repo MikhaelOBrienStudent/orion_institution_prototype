@@ -2,9 +2,11 @@ title: BBEG
 ---
 
 //Setting up the scene
-<<ChangeLocation DialogueSignals "Hallway">>
+//<<ChangeLocation DialogueSignals "Hallway">> -----> Player should already be in the hallway, so there's no need to set this
 
-<<SetCharacterLocation DialogueSignals "BBEG" "Hallway">>
+//<<SetCharacterLocation DialogueSignals "BBEG" "Hallway">> ----> Same as the other one
+
+<<declare $Boss = "Boss">> //There were some issues popping up with inconsistent naming, as well as the use of [BOSS] in the script, so I've declared a name to be used here. The name here has to be the same as the name set on the character node
 
 ?: So. You must be {$name}?
 -> {$name}: Yes?
@@ -12,27 +14,27 @@ title: BBEG
         {$name}: No, I am. That's me. And, uh, you are?
         <<jump intro>>
 -> {$name}: No?
-        <<jump no>>
-        Boss: No? Are you sure? I do make a habit of knowing who my employees are.
-        {$name}: I meant yes, sorry. Yes, that's me. Sorry Ms [BOSS]
+        //<<jump no>> //TODO node "no" doesn't exist, but there's dialogue after so there's no need to jump to anything here, with the jump to sit just after
+        {$Boss}: No? Are you sure? I do make a habit of knowing who my employees are.
+        {$name}: I meant yes, sorry. Yes, that's me. Sorry Ms {$Boss}
         <<jump sit>>
 -> {$name}: Who's asking?
         <<jump intro>>
 -> {$name}: Who's that?
-        Boss: Who? It's... you? 
-        {$name}: Uh right. Yes. Sorry, Ms [Boss]. I am {$name}.
+        {$Boss}: Who? It's... you? 
+        {$name}: Uh right. Yes. Sorry, Ms {$Boss}. I am {$name}.
         <<jump sit>>
 
 ===
 title: intro
 ---
-BOSS: My name is [BOSS]. I am the current head of the Orion Institute.
+{$Boss}: My name is {$Boss}. I am the current head of the Orion Institute.
 {$name}: I. Yes, I knew that. Um. Nice to meet you.
         <<jump sit>>
 ===
 title: sit
 ---
-Boss: So, {$name}, would you like to have a seat? I know this isn't as formal as an office, but I see no reason we can't be comfortable.
+{$Boss}: So, {$name}, would you like to have a seat? I know this isn't as formal as an office, but I see no reason we can't be comfortable.
 -> have a seat
         <<jump seat>>
 -> decline
@@ -42,9 +44,9 @@ title: seat
 ---
 {$name}: Sure, I'll sit.
 {$name}: So, uh, what's up?
-Boss: What's up?
+{$Boss}: What's up?
 {$name}: Sorry, I meant, how can I help you?
-Boss: You seem quite nervous. Is everything alright?
+{$Boss}: You seem quite nervous. Is everything alright?
 -> tell the truth
         <<jump nervous>>
 -> pretend all is good
@@ -53,10 +55,10 @@ Boss: You seem quite nervous. Is everything alright?
 title: stand
 ---
 {$name}: I'm all good, uh thanks.
-Boss: Suit yourself.
+{$Boss}: Suit yourself.
 {$name}: So like, what can I help you with?
 {$name}: Ma'am.
-Boss: You seem quite nervous. Is everything alright?
+{$Boss}: You seem quite nervous. Is everything alright?
 -> tell the truth
         <<jump nervous>>
 -> pretend all is good
@@ -65,35 +67,35 @@ Boss: You seem quite nervous. Is everything alright?
 title: nervous
 ---
 {$name}: Well, it's not every day the, uh, 'big boss', comes all the way down to security to talk to a singular officer. You know?
-Boss: Ah I see. Honestly, I would probably be nervous too.
+{$Boss}: Ah I see. Honestly, I would probably be nervous too.
 {$name}: Really?
-Boss: Of course! With no context, no time to mentally prepare? This would definitely be a nervewracking experience. 
-Boss: But rest assured, I'm not here to terrify you. I'm here to ask a favour.
+{$Boss}: Of course! With no context, no time to mentally prepare? This would definitely be a nervewracking experience. 
+{$Boss}: But rest assured, I'm not here to terrify you. I'm here to ask a favour.
 {$name}: A favour? YOU want a favour? From me?
         <<jump favour>>
 ===
 title: pretend
 ---
 {$name}: Me? Nervous? Nah, just, uhm, stoked to get the opportunity to talk to you.
-Boss: Oh, uh, thank you {$name}. That's very kind. 
+{$Boss}: Oh, uh, thank you {$name}. That's very kind. 
 {$name}: Oh hey, any time. 
 {$name}: So what do I get the pleasure of helping you with.
-Boss: I'm here to ask for a favour.
+{$Boss}: I'm here to ask for a favour.
 {$name}: A favour?
         <<jump favour>>
 ===
 title: favour
 ---
-Boss: I've heard that you've been spending a bit of time talking to our newest, uh, 'guest'.
+{$Boss}: I've heard that you've been spending a bit of time talking to our newest, uh, 'guest'.
 {$name}: Who, Cherry?
-Boss: Cherry? Is that her name?
+{$Boss}: Cherry? Is that her name?
 {$name}: Um, I think so. It might be a nickname, I'm not sure. It's the name she gave me.
-Boss: How intriguing.
-Boss: She's not been very forthcoming with information so far. I, and a few others, have failed to get any information out of her so far. 
+{$Boss}: How intriguing.
+{$Boss}: She's not been very forthcoming with information so far. I, and a few others, have failed to get any information out of her so far. 
 {$name}: Really?
-Boss: So I was wondering if you would talk to her, try and find out some information about her, and her species. I know it's technically outside your job duties, but I will discuss that with your Team Lead. 
-Boss: It's important that we find out as much as we can about her, and you seem to be our best option.
-Boss: So, what do you say, {$name}?
+{$Boss}: So I was wondering if you would talk to her, try and find out some information about her, and her species. I know it's technically outside your job duties, but I will discuss that with your Team Lead. 
+{$Boss}: It's important that we find out as much as we can about her, and you seem to be our best option.
+{$Boss}: So, what do you say, {$name}?
 -> accept
         <<jump accept>>
 -> decline
@@ -103,10 +105,10 @@ Boss: So, what do you say, {$name}?
 title: accept
 ---
 {$name}: I would be happy to help. 
-Boss: Amazing! Thank you very much. You have no idea how much time and effort you will be saving me.
+{$Boss}: Amazing! Thank you very much. You have no idea how much time and effort you will be saving me.
 {$name}: Hey, any time. That's what I'm here for.
-Boss: Excellent. I'll send you some notes on the exact type of information we're looking for, so you know how best to direct the conversation. 
-Boss: Has she told you much about who she is?
+{$Boss}: Excellent. I'll send you some notes on the exact type of information we're looking for, so you know how best to direct the conversation. 
+{$Boss}: Has she told you much about who she is?
 -> tell the truth
         <<jump truth>>
 -> lie
@@ -115,11 +117,11 @@ Boss: Has she told you much about who she is?
 title: decline
 ---
 {$name}: I'm... sorry, I don't really feel comfortable doing that. I'm not trained, and it's not like Cherry and I get along or anything, we've just had some mild conversations.
-Boss: Well that is disappointing, to say the least.
+{$Boss}: Well that is disappointing, to say the least.
 {$name}: I really am sorry.
-Boss: It's alright, it was a big ask in the first place. Just thought it was worth a shot.
-Boss: I will, of course, have to take this into consideration when conversations come up about furthering your career at the institute and whatnot.
-Boss: But maybe you can still help me. Has she told you much about her or her species?
+{$Boss}: It's alright, it was a big ask in the first place. Just thought it was worth a shot.
+{$Boss}: I will, of course, have to take this into consideration when conversations come up about furthering your career at the institute and whatnot.
+{$Boss}: But maybe you can still help me. Has she told you much about her or her species?
 -> tell the truth
         <<jump truth>>
 -> lie
@@ -128,36 +130,36 @@ Boss: But maybe you can still help me. Has she told you much about her or her sp
 title: truth
 ---
 {$name}: She has told me a couple of things.
-Boss: Oh? Such as?
+{$Boss}: Oh? Such as?
 {$name}: Well, she doesn't remember much. She appears to have almost total amnesia from before she got here.
-Boss: Including the explosion?
+{$Boss}: Including the explosion?
 {$name}: Yeah. She just remembers it being cold.
 {$name}: She seems to quite like clothes, but don't mention her hair. That's a touchy subject.
-Boss: Interesting. Anything else?
+{$Boss}: Interesting. Anything else?
 {$name}: Um. She doesn't seem to know if she has friends or family who would be looking for her.
-Boss: Hm. I wouldn't think she does.
+{$Boss}: Hm. I wouldn't think she does.
 {$name}: What do you mean?
-Boss: Oh nothing. Don't worry about it.
-Boss: Well thank you for your help. This has proven to be a very educational chat.
+{$Boss}: Oh nothing. Don't worry about it.
+{$Boss}: Well thank you for your help. This has proven to be a very educational chat.
         <<jump goodbye>>
 ===
 title: lie
 ---
 {$name}: Uh, no, not really. We haven't spoken very much about her. She's mostly asked me questions.
-Boss: Well, although not helpful, this is still interesting, thank you.
+{$Boss}: Well, although not helpful, this is still interesting, thank you.
 {$name}: Sorry I couldn't be more helpful.
-Boss: Hey, this is technically out of your job description, so you've done your best.
+{$Boss}: Hey, this is technically out of your job description, so you've done your best.
         <<jump goodbye>>
 ===
 title: goodbye
 ---
-Boss: I best get going. The duties of a director are endless, I'm afraid.
-Boss: Thank you {$name}, for meeting with me.
+{$Boss}: I best get going. The duties of a director are endless, I'm afraid.
+{$Boss}: Thank you {$name}, for meeting with me.
 {$name}: That's all good. I guess I better get back to work myself.
-Boss: A word of advice, {$name}?
-Boss: Be careful of Cherry, and what you tell her. There is much more to her then meets the eye, and I can guarantee she hasn't been entirely honest with you.
+{$Boss}: A word of advice, {$name}?
+{$Boss}: Be careful of Cherry, and what you tell her. There is much more to her then meets the eye, and I can guarantee she hasn't been entirely honest with you.
 {$name}: Uh, thanks. I'll keep that in mind.
-Boss: Goodbye {$name}. Take care.
+{$Boss}: Goodbye {$name}. Take care.
 {$name}: You too, ma'am.
 
 <<jump EndDay>>

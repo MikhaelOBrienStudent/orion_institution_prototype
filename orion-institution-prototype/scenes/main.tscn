@@ -1,10 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://c0ag56dv7yy35"]
+[gd_scene load_steps=13 format=3 uid="uid://c0ag56dv7yy35"]
 
 [ext_resource type="Script" uid="uid://bsukakrub6e60" path="res://Scripts/Game Management/main.gd" id="1_d1ilt"]
-[ext_resource type="PackedScene" uid="uid://bngaerxb3wqsl" path="res://Scenes/world.tscn" id="3_ynf5e"]
-[ext_resource type="Script" path="res://Scripts/start_menu.gd" id="4_hptm8"]
-[ext_resource type="PackedScene" uid="uid://byi28peg3cmv" path="res://Scenes/audio.tscn" id="4_jjvhh"]
-[ext_resource type="Texture2D" uid="uid://d3cbg682dg2u3" path="res://Assets/UI/Logo_White.png" id="10_d1ilt"]
+[ext_resource type="PackedScene" uid="uid://bngaerxb3wqsl" path="res://scenes/world.tscn" id="3_ynf5e"]
+[ext_resource type="Script" uid="uid://dibqanrsjdw57" path="res://Scripts/start_menu.gd" id="4_hptm8"]
+[ext_resource type="PackedScene" uid="uid://byi28peg3cmv" path="res://scenes/audio.tscn" id="4_jjvhh"]
 [ext_resource type="FontFile" uid="uid://bnyne8ygte2ui" path="res://UI/Fonts/ricasso/Ricasso-Regular.otf" id="27_kltya"]
 [ext_resource type="StyleBox" uid="uid://day233adg2oec" path="res://UI/Themes/button_panel_disabled.tres" id="28_e08e2"]
 [ext_resource type="StyleBox" uid="uid://bkvwk2g3l8n6k" path="res://UI/Themes/button_panel_pressedr.tres" id="29_neg2b"]
@@ -151,10 +150,22 @@ theme_override_styles/pressed = ExtResource("29_neg2b")
 theme_override_styles/normal = ExtResource("31_hdf80")
 text = "QUIT"
 
-[node name="LogoWhite" type="Sprite2D" parent="StartMenu/VBoxContainer"]
-position = Vector2(304, -156)
-scale = Vector2(0.544603, 0.471)
-texture = ExtResource("10_d1ilt")
+[node name="Label" type="Label" parent="StartMenu"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -832.0
+offset_top = 156.0
+offset_right = 853.0
+offset_bottom = 597.0
+grow_horizontal = 2
+size_flags_horizontal = 3
+text = "ORION INSTITUTION
+"
+label_settings = SubResource("LabelSettings_k2e45")
+horizontal_alignment = 1
+vertical_alignment = 3
+uppercase = true
 
 [node name="PauseMenu" type="CanvasLayer" parent="."]
 process_mode = 2

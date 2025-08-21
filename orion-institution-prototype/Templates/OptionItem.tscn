@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://b56ngcrq31nc5"]
+[gd_scene load_steps=13 format=3 uid="uid://b56ngcrq31nc5"]
 
 [ext_resource type="Script" uid="uid://e8endtpbxsql" path="res://addons/YarnSpinner-Godot/Runtime/Async/OptionItem.cs" id="1_lld20"]
 [ext_resource type="Theme" uid="uid://iw676ro4ts35" path="res://UI/Themes/dialogue_theme.tres" id="2_4wijh"]
@@ -10,6 +10,12 @@ content_margin_left = 10.0
 content_margin_top = 10.0
 content_margin_right = 10.0
 content_margin_bottom = 10.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p4p3o"]
+bg_color = Color(1, 1, 1, 0.596078)
+corner_radius_top_left = 25
+corner_radius_bottom_right = 25
+corner_detail = 1
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_p4p3o"]
 
@@ -68,6 +74,10 @@ theme_override_styles/panel = SubResource("StyleBoxEmpty_4wijh")
 script = ExtResource("1_lld20")
 text = NodePath("PanelContainer/RichTextLabel")
 button = NodePath("Button")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_p4p3o")
 
 [node name="Button" type="Button" parent="."]
 layout_mode = 2

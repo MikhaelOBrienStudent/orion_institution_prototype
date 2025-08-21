@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://rskqyvn1oq28"]
+[gd_scene load_steps=17 format=3 uid="uid://rskqyvn1oq28"]
 
 [ext_resource type="Script" uid="uid://budnld4qd513n" path="res://addons/YarnSpinner-Godot/Runtime/DialogueRunner.cs" id="1_j0g8m"]
 [ext_resource type="Script" uid="uid://b8nsxur6opm4k" path="res://addons/YarnSpinner-Godot/Runtime/Async/LinePresenter.cs" id="2_gatye"]
@@ -14,6 +14,13 @@
 [ext_resource type="Script" uid="uid://c1rcau3kbyn28" path="res://Scripts/signal_receiver.gd" id="12_ry6ui"]
 [ext_resource type="PackedScene" uid="uid://ccwppukwl520n" path="res://UI/player_text_input.tscn" id="13_6tvmo"]
 [ext_resource type="Script" uid="uid://6j3os7uth7nu" path="res://Scripts/Game Management/save_data.gd" id="14_l1c31"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l1c31"]
+bg_color = Color(0, 0, 0, 0.847059)
+border_color = Color(0, 0, 0, 0.854902)
+corner_radius_top_right = 60
+corner_radius_bottom_left = 60
+corner_detail = 1
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cgkmr"]
 texture = ExtResource("4_l1c31")
@@ -67,6 +74,19 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="Panel" type="Panel" parent="LinePresenter/PresenterControl"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 15.0
+offset_top = 742.0
+offset_right = -15.0
+offset_bottom = -14.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_l1c31")
+
 [node name="DialogueBox" type="PanelContainer" parent="LinePresenter/PresenterControl"]
 layout_mode = 1
 anchors_preset = 12
@@ -96,7 +116,7 @@ anchor_bottom = 1.0
 offset_left = 64.0
 offset_top = -432.0
 offset_right = -1240.0
-offset_bottom = -342.0
+offset_bottom = -337.0
 grow_horizontal = 2
 grow_vertical = 0
 theme = ExtResource("3_je7ng")
@@ -209,7 +229,7 @@ anchor_bottom = 1.0
 offset_left = 64.0
 offset_top = -432.0
 offset_right = -1240.0
-offset_bottom = -342.0
+offset_bottom = -336.0
 grow_horizontal = 2
 grow_vertical = 0
 theme = ExtResource("3_je7ng")

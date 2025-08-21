@@ -1,29 +1,111 @@
-title: Days
----
+// title: Days
+// ---
 
-<<declare $day_number = 1>>
+///----------> "Days" node not ended properly, also not called from anywhere. Prevented all the following nodes from working
+
+// title: EndDay
+// ---
+// End of Day {$day_number}.
+// <<run show_day_screen($day_number)>>
+// -> NextDay
+// ===
+
+// title: NextDay
+// ---
+// Day {$day_number}
+// <<set $day_number = $day_number + 1>>
+// -> Continue
+// ===
+
+// title: Continue
+// ---
+// <<if $day_number == 2>>
+//     <<jump Day2Start>> // Day2Start does not exist
+// <<elseif $day_number == 3>>
+//     <<jump Day3Start>> // Day3Start does not exist
+// <<else>>
+//     <<jump TheEnd>> // TheEnd does not exist
+// <<endif>>
+// ===
 
 title: EndDay
 ---
-End of Day {$day_number}.
-<<run show_day_screen($day_number)>>
--> NextDay
-===
+<<declare $day_number = 1>>
+<<ChangeLocation DialogueSignals "EndDay">>
 
-title: NextDay
----
-Day {$day_number}
-<<set $day_number = $day_number + 1>>
--> Continue
-===
-
-title: Continue
----
-<<if $day_number == 2>>
-    <<jump Day2Start>>
-<<elseif $day_number == 3>>
-    <<jump Day3Start>>
+End of Day {$day_number}
+<<if $day_number < 3>>
+Day {$day_number + 1}
 <<else>>
-    <<jump TheEnd>>
+End of Demo
 <<endif>>
+
+<<if $day_number == 1>>
+<<set $day_number = 2>>
+<<jump DayTwoCherry>>
+<<endif>>
+
+<<if $day_number == 2>>
+<<set $day_number = 3>>
+<<jump Day3>>
+<<endif>>
+
+// <<if $day_number == 3>>
+// <<jump TheEnd>>  ----> TODO: Uncomment this part if you want to jump to a finale node, adding the name of the node to jump to here
+// <<endif>>
+
+
 ===
+//Added the navigation stuff here to centralise it, so it's all just streamlined through one node to jump to
+title: Navigating
+tags: #Navigating
+---
+<<EnableNavigation DialogueSignals>>
+
+///No point in actually having this, since there's no navigating portion of the first day. But it's here in spirit
+// <<if $day_number == 1>>
+// <<jump Navigation_Day1>>
+// <<endif>>
+
+<<if $day_number == 2>>
+<<jump Navigation_Day2>>
+<<endif>>
+
+<<if $day_number == 3>>
+<<jump Navigation_Day3>>
+<<endif>>
+
+===
+
+title: Navigation_Day1
+tags: #Navigating
+---
+Navigating....
+
+// <<if>>
+// <<endif>>
+
+===
+
+title: Navigation_Day2
+tags: #Navigating
+---
+Navigating....
+
+<<if $current_location == "Hallway">>
+<<jump Coworker>>
+<<endif>>
+
+===
+
+title: Navigation_Day3
+tags: #Navigating
+---
+Navigating....
+
+<<if $current_location == "Hallway">>
+<<jump Day3_Scarlett>>
+<<endif>>
+
+===
+

@@ -62,7 +62,7 @@ public partial class DialogueSignals : Node
 	//The Get Name command will tell the other scripts to bring up the input and have the player put in their name, while the set name function is responsible for providing the name back to the dialogue script
 	[Signal]
 	public delegate void GetNameSignalEventHandler();
-	public static string PlayerName = "Placeholder";
+	public static string PlayerName = "Guard";
 
 	[YarnCommand("GetPlayerName")]
 	public void GetPlayerName()
