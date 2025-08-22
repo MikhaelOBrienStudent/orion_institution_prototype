@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://bngaerxb3wqsl"]
+[gd_scene load_steps=33 format=3 uid="uid://bngaerxb3wqsl"]
 
 [ext_resource type="PackedScene" uid="uid://37soojyye5eb" path="res://scenes/gui.tscn" id="1_xbk3s"]
 [ext_resource type="PackedScene" uid="uid://rskqyvn1oq28" path="res://Templates/DialogueSystem.tscn" id="2_i4fjy"]
@@ -21,10 +21,17 @@
 [ext_resource type="Texture2D" uid="uid://dr4gladfba44p" path="res://Assets/Characters/Scarlet/scarlet.png" id="18_atqvy"]
 [ext_resource type="PackedScene" uid="uid://qqgoryldvogf" path="res://Templates/character.tscn" id="19_w5giw"]
 [ext_resource type="Texture2D" uid="uid://bpdfdmortbgmx" path="res://Assets/Characters/placeholder.png" id="20_jwdyn"]
+[ext_resource type="Texture2D" uid="uid://dj4m41vqvxsfm" path="res://Assets/Characters/Scarlet/Poses/pose_happy.png" id="20_rup4s"]
+[ext_resource type="Texture2D" uid="uid://dujq4ho1uu0ay" path="res://Assets/Characters/Scarlet/Poses/pose_normal.png" id="21_4kbfs"]
 [ext_resource type="Script" uid="uid://bqstnch2uehlr" path="res://Scripts/Game Management/scene_manager.gd" id="21_t6yt7"]
 [ext_resource type="PackedScene" uid="uid://3vnbb1aftlgl" path="res://scenes/locations.tscn" id="22_al5m0"]
-[ext_resource type="Script" uid="uid://d20h7y3toqcr6" path="res://Scripts/locations.gd" id="23_6mm6r"]
+[ext_resource type="Texture2D" uid="uid://dy80n46f2xln5" path="res://Assets/Characters/Scarlet/Poses/pose_sus.png" id="22_f17e3"]
+[ext_resource type="PackedScene" uid="uid://bhre1n5aky6et" path="res://scenes/Characters/Zoe.tscn" id="22_ts3gi"]
+[ext_resource type="Texture2D" uid="uid://cuaxygmlaotvw" path="res://Assets/Characters/Zoe/zoe_placeholder.png" id="23_0nbtd"]
+[ext_resource type="Texture2D" uid="uid://day84qeerqcvk" path="res://Assets/Characters/Scarlet/Expressions/expression_happy.png" id="23_x2olw"]
+[ext_resource type="Texture2D" uid="uid://dc16tnwbftxq5" path="res://Assets/Characters/Scarlet/Expressions/expression_normal.png" id="24_817gm"]
 [ext_resource type="PackedScene" uid="uid://belgi7sm4wp0g" path="res://scenes/Location_light.tscn" id="24_xcb5n"]
+[ext_resource type="Texture2D" uid="uid://j23fovikkn3e" path="res://Assets/Characters/Scarlet/Expressions/expression_sus.png" id="25_ggc52"]
 
 [node name="World" type="Node"]
 process_mode = 1
@@ -33,16 +40,23 @@ process_mode = 1
 layer = 2
 
 [node name="DialogueCanvasLayer" parent="." instance=ExtResource("2_i4fjy")]
+process_mode = 4
 
 [node name="DialogueRunner" parent="DialogueCanvasLayer" index="0"]
 yarnProject = ExtResource("3_pt3ps")
 autoStart = false
+
+[node name="NameBox" parent="DialogueCanvasLayer/LinePresenter/PresenterControl" index="2"]
+offset_bottom = -342.0
 
 [node name="CharacterNameText" parent="DialogueCanvasLayer/LinePresenter/PresenterControl/NameBox" index="0"]
 script = ExtResource("4_i4fjy")
 
 [node name="ContinueButton" parent="DialogueCanvasLayer/LinePresenter/PresenterControl" index="3" node_paths=PackedStringArray("character_manager")]
 character_manager = NodePath("../../../../Characters")
+
+[node name="LastLineNameBox" parent="DialogueCanvasLayer/OptionsPresenter/PresenterControl" index="2"]
+offset_bottom = -342.0
 
 [node name="InMemoryVariableStorage" parent="DialogueCanvasLayer" index="4" node_paths=PackedStringArray("debugTextView")]
 showDebug = true
@@ -62,6 +76,26 @@ visible = false
 location_manager = NodePath("../Locations")
 dialogue_memory = NodePath("../DialogueCanvasLayer/InMemoryVariableStorage")
 character_manager = NodePath("../Characters")
+
+[node name="Locations" parent="." instance=ExtResource("22_al5m0")]
+
+[node name="Monitor_Room" parent="Locations" index="1"]
+shade_tint = Color(0.403674, 0.691936, 0.607631, 1)
+light_tint = Color(0.121298, 0.641748, 0.61607, 1)
+
+[node name="Hallway" parent="Locations" index="2"]
+shade_tint = Color(0.846641, 0.857355, 0.872361, 1)
+light_tint = Color(0.201527, 0.201527, 0.201527, 1)
+
+[node name="Cell" parent="Locations" index="3"]
+light_tint = Color(0.12098, 0.194205, 0.20883, 1)
+
+[node name="Cell2" parent="Locations" index="4"]
+shade_tint = Color(0.999821, 0.761262, 0.810387, 1)
+light_tint = Color(0.40503, 1.3236e-07, 0.20141, 1)
+
+[node name="Sprite2D" parent="Locations/Cell2" index="0"]
+modulate = Color(1, 0.482353, 0.623529, 1)
 
 [node name="Characters" type="Node" parent="."]
 script = ExtResource("5_dt0r1")
@@ -134,6 +168,21 @@ script = ExtResource("7_o2rbt")
 pose_sprite = ExtResource("18_atqvy")
 metadata/_custom_type_script = "uid://bn65klsg2o1w"
 
+[node name="happy" type="Node" parent="Characters/Scarlet/Poses"]
+script = ExtResource("7_o2rbt")
+pose_sprite = ExtResource("20_rup4s")
+metadata/_custom_type_script = "uid://bn65klsg2o1w"
+
+[node name="normal" type="Node" parent="Characters/Scarlet/Poses"]
+script = ExtResource("7_o2rbt")
+pose_sprite = ExtResource("21_4kbfs")
+metadata/_custom_type_script = "uid://bn65klsg2o1w"
+
+[node name="sus" type="Node" parent="Characters/Scarlet/Poses"]
+script = ExtResource("7_o2rbt")
+pose_sprite = ExtResource("22_f17e3")
+metadata/_custom_type_script = "uid://bn65klsg2o1w"
+
 [node name="Expressions" type="Node" parent="Characters/Scarlet"]
 
 [node name="default" type="Node" parent="Characters/Scarlet/Expressions"]
@@ -141,12 +190,27 @@ script = ExtResource("11_opbav")
 face_sprite = ExtResource("18_atqvy")
 metadata/_custom_type_script = "uid://c02nyfnhmn2ri"
 
+[node name="happy" type="Node" parent="Characters/Scarlet/Expressions"]
+script = ExtResource("11_opbav")
+face_sprite = ExtResource("23_x2olw")
+metadata/_custom_type_script = "uid://c02nyfnhmn2ri"
+
+[node name="normal" type="Node" parent="Characters/Scarlet/Expressions"]
+script = ExtResource("11_opbav")
+face_sprite = ExtResource("24_817gm")
+metadata/_custom_type_script = "uid://c02nyfnhmn2ri"
+
+[node name="sus" type="Node" parent="Characters/Scarlet/Expressions"]
+script = ExtResource("11_opbav")
+face_sprite = ExtResource("25_ggc52")
+metadata/_custom_type_script = "uid://c02nyfnhmn2ri"
+
 [node name="Arden" parent="Characters" instance=ExtResource("19_w5giw")]
 visible = false
 top_level = true
 z_index = 1
 position = Vector2(960, 0)
-character_name = "Boss"
+character_name = "Arden"
 
 [node name="Poses" type="Node" parent="Characters/Arden"]
 
@@ -162,6 +226,24 @@ script = ExtResource("11_opbav")
 face_sprite = ExtResource("20_jwdyn")
 metadata/_custom_type_script = "uid://c02nyfnhmn2ri"
 
+[node name="Zoe" parent="Characters" instance=ExtResource("22_ts3gi")]
+visible = false
+position = Vector2(960, 0)
+
+[node name="Poses" type="Node" parent="Characters/Zoe"]
+
+[node name="default" type="Node" parent="Characters/Zoe/Poses"]
+script = ExtResource("7_o2rbt")
+pose_sprite = ExtResource("23_0nbtd")
+metadata/_custom_type_script = "uid://bn65klsg2o1w"
+
+[node name="Expressions" type="Node" parent="Characters/Zoe"]
+
+[node name="default" type="Node" parent="Characters/Zoe/Expressions"]
+script = ExtResource("11_opbav")
+face_sprite = ExtResource("23_0nbtd")
+metadata/_custom_type_script = "uid://c02nyfnhmn2ri"
+
 [node name="SceneManager" type="Node" parent="." node_paths=PackedStringArray("dialogue_runner_canvas", "dialogue_runner", "navigation", "location_manager", "character_manager")]
 script = ExtResource("21_t6yt7")
 dialogue_runner_canvas = NodePath("../DialogueCanvasLayer")
@@ -169,27 +251,6 @@ dialogue_runner = NodePath("../DialogueCanvasLayer/DialogueRunner")
 navigation = NodePath("../Navigation")
 location_manager = NodePath("../Locations")
 character_manager = NodePath("../Characters")
-
-[node name="Locations" parent="." instance=ExtResource("22_al5m0")]
-script = ExtResource("23_6mm6r")
-
-[node name="Monitor_Room" parent="Locations" index="0"]
-shade_tint = Color(0.403674, 0.691936, 0.607631, 1)
-light_tint = Color(0.121298, 0.641748, 0.61607, 1)
-
-[node name="Hallway" parent="Locations" index="1"]
-shade_tint = Color(0.846641, 0.857355, 0.872361, 1)
-light_tint = Color(0.201527, 0.201527, 0.201527, 1)
-
-[node name="Cell" parent="Locations" index="2"]
-light_tint = Color(0.12098, 0.194205, 0.20883, 1)
-
-[node name="Cell2" parent="Locations" index="3"]
-shade_tint = Color(0.999821, 0.761262, 0.810387, 1)
-light_tint = Color(0.40503, 1.3236e-07, 0.20141, 1)
-
-[node name="Sprite2D" parent="Locations/Cell2" index="0"]
-modulate = Color(1, 0.482353, 0.623529, 1)
 
 [node name="VISUAL TESTING" type="Node2D" parent="."]
 visible = false
@@ -205,7 +266,7 @@ color = Color(0.403674, 0.691936, 0.607631, 1)
 [connection signal="finished" from="DialogueCanvasLayer/LinePresenter/PresenterControl/NameBox/CharacterNameText" to="DialogueCanvasLayer/LinePresenter/PresenterControl/NameBox/CharacterNameText" method="_on_finished"]
 [connection signal="EnableNavigationSignal" from="DialogueCanvasLayer/DialogueSignals" to="DialogueCanvasLayer/SignalReceiver" method="_on_dialogue_signals_enable_navigation_signal"]
 [connection signal="StartDialogueSignal" from="DialogueCanvasLayer/DialogueSignals" to="DialogueCanvasLayer/SignalReceiver" method="_on_dialogue_signals_start_dialogue_signal"]
-[connection signal="ChangeLocation" from="DialogueCanvasLayer/SignalReceiver" to="Navigation" method="_on_signal_receiver_change_location"]
+[connection signal="ChangeLocation" from="DialogueCanvasLayer/SignalReceiver" to="Navigation" method="_on_signal_receiver_change_location" flags=3]
 [connection signal="EnableNavigation" from="DialogueCanvasLayer/SignalReceiver" to="SceneManager" method="EnableNavigation"]
 [connection signal="RemoveCharacter" from="DialogueCanvasLayer/SignalReceiver" to="SceneManager" method="ClearCharacterLocation"]
 [connection signal="SetCharacterLocation" from="DialogueCanvasLayer/SignalReceiver" to="SceneManager" method="SetCharacterLocation"]

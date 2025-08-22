@@ -6,7 +6,7 @@ title: BBEG
 
 //<<SetCharacterLocation DialogueSignals "BBEG" "Hallway">> ----> Same as the other one
 
-<<declare $Boss = "Boss">> //There were some issues popping up with inconsistent naming, as well as the use of [BOSS] in the script, so I've declared a name to be used here. The name here has to be the same as the name set on the character node
+<<declare $Boss = "Zoe">> //There were some issues popping up with inconsistent naming, as well as the use of [BOSS] in the script, so I've declared a name to be used here. The name here has to be the same as the name set on the character node
 
 ?: So. You must be {$name}?
 -> {$name}: Yes?

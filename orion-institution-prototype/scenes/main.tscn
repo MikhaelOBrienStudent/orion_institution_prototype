@@ -1,15 +1,49 @@
-[gd_scene load_steps=13 format=3 uid="uid://c0ag56dv7yy35"]
+[gd_scene load_steps=19 format=3 uid="uid://c0ag56dv7yy35"]
 
 [ext_resource type="Script" uid="uid://bsukakrub6e60" path="res://Scripts/Game Management/main.gd" id="1_d1ilt"]
 [ext_resource type="PackedScene" uid="uid://bngaerxb3wqsl" path="res://scenes/world.tscn" id="3_ynf5e"]
 [ext_resource type="Script" uid="uid://dibqanrsjdw57" path="res://Scripts/start_menu.gd" id="4_hptm8"]
 [ext_resource type="PackedScene" uid="uid://byi28peg3cmv" path="res://scenes/audio.tscn" id="4_jjvhh"]
+[ext_resource type="Texture2D" uid="uid://chwt5i4jpk2f6" path="res://Assets/Backgrounds/CAP_A1_Security_Final.png" id="5_eb6dy"]
+[ext_resource type="Texture2D" uid="uid://d3cbg682dg2u3" path="res://Assets/UI/Logo_White.png" id="11_trceg"]
 [ext_resource type="FontFile" uid="uid://bnyne8ygte2ui" path="res://UI/Fonts/ricasso/Ricasso-Regular.otf" id="27_kltya"]
 [ext_resource type="StyleBox" uid="uid://day233adg2oec" path="res://UI/Themes/button_panel_disabled.tres" id="28_e08e2"]
 [ext_resource type="StyleBox" uid="uid://bkvwk2g3l8n6k" path="res://UI/Themes/button_panel_pressedr.tres" id="29_neg2b"]
 [ext_resource type="StyleBox" uid="uid://b4m7t34gmorff" path="res://UI/Themes/button_panel_hover.tres" id="30_r33sp"]
 [ext_resource type="StyleBox" uid="uid://dw5uw4ck2qndm" path="res://UI/Themes/button_panel_normal.tres" id="31_hdf80"]
 [ext_resource type="FontFile" uid="uid://yni7qjimcu7o" path="res://UI/Fonts/0xa000/0xA000-Squareish-Bold.ttf" id="32_jwpg7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_eb6dy"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_trceg"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_right = 45
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a8y0u"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+draw_center = false
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_right = 45
+corner_detail = 1
+expand_margin_left = 10.0
+expand_margin_top = 15.0
+expand_margin_right = 10.0
+expand_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jkv2x"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cbgmd"]
 bg_color = Color(0.15, 0.175833, 0.2, 1)
@@ -34,24 +68,24 @@ play_button = NodePath("VBoxContainer/play_button")
 resume_button = NodePath("VBoxContainer/resume_button")
 new_game_button = NodePath("VBoxContainer/new_game_button")
 
-[node name="Panel" type="Panel" parent="StartMenu"]
+[node name="Panel" type="TextureRect" parent="StartMenu"]
+modulate = Color(0.49, 0.49, 0.49, 1)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_cbgmd")
+texture = ExtResource("5_eb6dy")
+expand_mode = 1
+stretch_mode = 4
 
 [node name="VBoxContainer" type="VBoxContainer" parent="StartMenu"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -320.0
-offset_top = -185.0
-offset_right = 320.0
-offset_bottom = 401.0
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_left = 144.0
+offset_top = 323.0
+offset_right = 792.0
+offset_bottom = -107.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
@@ -64,108 +98,120 @@ layout_mode = 2
 size_flags_horizontal = 5
 size_flags_vertical = 0
 theme_override_colors/font_disabled_color = Color(0.577008, 0.577008, 0.577008, 1)
-theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
 theme_override_colors/icon_normal_color = Color(0, 0, 0, 1)
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(0.903598, 0.903598, 0.903598, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("27_kltya")
 theme_override_font_sizes/font_size = 56
-theme_override_styles/disabled = ExtResource("28_e08e2")
-theme_override_styles/hover_pressed = ExtResource("29_neg2b")
-theme_override_styles/hover = ExtResource("30_r33sp")
-theme_override_styles/pressed = ExtResource("29_neg2b")
-theme_override_styles/normal = ExtResource("31_hdf80")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_eb6dy")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_trceg")
+theme_override_styles/hover = SubResource("StyleBoxFlat_a8y0u")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_trceg")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_jkv2x")
 text = "PLAY"
+alignment = 0
 
 [node name="resume_button" type="Button" parent="StartMenu/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 5
 size_flags_vertical = 0
 theme_override_colors/font_disabled_color = Color(0.577008, 0.577008, 0.577008, 1)
-theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
 theme_override_colors/icon_normal_color = Color(0, 0, 0, 1)
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(0.903598, 0.903598, 0.903598, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("27_kltya")
 theme_override_font_sizes/font_size = 56
-theme_override_styles/disabled = ExtResource("28_e08e2")
-theme_override_styles/hover_pressed = ExtResource("29_neg2b")
-theme_override_styles/hover = ExtResource("30_r33sp")
-theme_override_styles/pressed = ExtResource("29_neg2b")
-theme_override_styles/normal = ExtResource("31_hdf80")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_eb6dy")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_trceg")
+theme_override_styles/hover = SubResource("StyleBoxFlat_a8y0u")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_trceg")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_jkv2x")
 text = "RESUME"
+alignment = 0
 
 [node name="new_game_button" type="Button" parent="StartMenu/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 5
 size_flags_vertical = 0
 theme_override_colors/font_disabled_color = Color(0.577008, 0.577008, 0.577008, 1)
-theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
 theme_override_colors/icon_normal_color = Color(0, 0, 0, 1)
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(0.903598, 0.903598, 0.903598, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("27_kltya")
 theme_override_font_sizes/font_size = 56
-theme_override_styles/disabled = ExtResource("28_e08e2")
-theme_override_styles/hover_pressed = ExtResource("29_neg2b")
-theme_override_styles/hover = ExtResource("30_r33sp")
-theme_override_styles/pressed = ExtResource("29_neg2b")
-theme_override_styles/normal = ExtResource("31_hdf80")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_eb6dy")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_trceg")
+theme_override_styles/hover = SubResource("StyleBoxFlat_a8y0u")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_trceg")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_jkv2x")
 text = "NEW GAME"
+alignment = 0
 
 [node name="settings_button" type="Button" parent="StartMenu/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 5
 size_flags_vertical = 0
 theme_override_colors/font_disabled_color = Color(0.577008, 0.577008, 0.577008, 1)
-theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
 theme_override_colors/icon_normal_color = Color(0, 0, 0, 1)
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(0.903598, 0.903598, 0.903598, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("27_kltya")
 theme_override_font_sizes/font_size = 56
-theme_override_styles/disabled = ExtResource("28_e08e2")
-theme_override_styles/hover_pressed = ExtResource("29_neg2b")
-theme_override_styles/hover = ExtResource("30_r33sp")
-theme_override_styles/pressed = ExtResource("29_neg2b")
-theme_override_styles/normal = ExtResource("31_hdf80")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_eb6dy")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_trceg")
+theme_override_styles/hover = SubResource("StyleBoxFlat_a8y0u")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_trceg")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_jkv2x")
 disabled = true
 text = "SETTINGS"
+alignment = 0
 
 [node name="quit_button" type="Button" parent="StartMenu/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 5
 size_flags_vertical = 0
 theme_override_colors/font_disabled_color = Color(0.577008, 0.577008, 0.577008, 1)
-theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
 theme_override_colors/icon_normal_color = Color(0, 0, 0, 1)
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(0.903598, 0.903598, 0.903598, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("27_kltya")
 theme_override_font_sizes/font_size = 56
-theme_override_styles/disabled = ExtResource("28_e08e2")
-theme_override_styles/hover_pressed = ExtResource("29_neg2b")
-theme_override_styles/hover = ExtResource("30_r33sp")
-theme_override_styles/pressed = ExtResource("29_neg2b")
-theme_override_styles/normal = ExtResource("31_hdf80")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_eb6dy")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_trceg")
+theme_override_styles/hover = SubResource("StyleBoxFlat_a8y0u")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_trceg")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_jkv2x")
 text = "QUIT"
+alignment = 0
 
-[node name="Label" type="Label" parent="StartMenu"]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -832.0
-offset_top = 156.0
-offset_right = 853.0
-offset_bottom = 597.0
+[node name="LogoWhite" type="TextureRect" parent="StartMenu"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 160.0
+offset_top = 112.0
+offset_right = -952.0
+offset_bottom = -796.0
 grow_horizontal = 2
-size_flags_horizontal = 3
-text = "ORION INSTITUTION
-"
-label_settings = SubResource("LabelSettings_k2e45")
-horizontal_alignment = 1
-vertical_alignment = 3
-uppercase = true
+grow_vertical = 2
+texture = ExtResource("11_trceg")
+expand_mode = 1
+stretch_mode = 4
 
 [node name="PauseMenu" type="CanvasLayer" parent="."]
 process_mode = 2

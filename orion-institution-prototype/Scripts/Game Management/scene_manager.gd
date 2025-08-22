@@ -6,6 +6,9 @@ extends Node
 @export var location_manager: Node
 @export var character_manager: Node
 
+func _ready() -> void:
+	print("Nodes loaded: Enabling DialogueRunner")
+	dialogue_runner_canvas.process_mode = Node.PROCESS_MODE_INHERIT
 
 func EnableDialogue() -> void:
 	dialogue_runner_canvas.visible = true

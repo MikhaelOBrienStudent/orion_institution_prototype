@@ -23,7 +23,7 @@ title: hello
 {$name}: Hello Cherry. I'm okay, how are you?
 Cherry: Ah, same old, same old. Glad to talk to you though, as always!
 {$name}: Ah. Yeah, same.
-Cherry: You're being weird. What's up with you? #expression:neutraL
+Cherry: You're being weird. What's up with you? #expression:neutral
 -> answer gently
         <<jump answer>>
 -> answer harshly

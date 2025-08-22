@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://bqm8pww0wodvf"]
+[gd_scene load_steps=7 format=3 uid="uid://bqm8pww0wodvf"]
 
 [ext_resource type="Script" uid="uid://cslr2rxets1xq" path="res://Scripts/Character/character.gd" id="1_dfp88"]
-[ext_resource type="Texture2D" uid="uid://dr4gladfba44p" path="res://Assets/Characters/Scarlet/scarlet.png" id="2_dfp88"]
+[ext_resource type="Texture2D" uid="uid://dujq4ho1uu0ay" path="res://Assets/Characters/Scarlet/Poses/pose_normal.png" id="2_ust7q"]
+[ext_resource type="Texture2D" uid="uid://dc16tnwbftxq5" path="res://Assets/Characters/Scarlet/Expressions/expression_normal.png" id="3_g4ku1"]
 [ext_resource type="Animation" uid="uid://cc3hvbwpriugy" path="res://Assets/Characters/CharacterAnimations/talk_jump.res" id="3_jstnl"]
 
 [sub_resource type="Animation" id="Animation_7kdcx"]
@@ -31,11 +32,13 @@ animation_player = NodePath("AnimationPlayer")
 
 [node name="Pose" type="Sprite2D" parent="."]
 position = Vector2(0, 1080)
-texture = ExtResource("2_dfp88")
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("2_ust7q")
 
 [node name="Expression" type="Sprite2D" parent="."]
 position = Vector2(0, 1080)
-texture = ExtResource("2_dfp88")
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("3_g4ku1")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

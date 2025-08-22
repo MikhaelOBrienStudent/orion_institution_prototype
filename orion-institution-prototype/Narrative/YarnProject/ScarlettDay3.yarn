@@ -4,7 +4,7 @@ title: Day3_Scarlett
 //Setting up the scene
 //<<SetCharacterLocation DialogueSignals "Scarlet" "Hallway">> --> moved this to the end of the previous conversation, since the character needs to be in place before the player gets there
 
-Scarlet: {$name}! {$name}! #expression:sus_talking
+Scarlet: {$name}! {$name}! #expression:sus
 {$name}: Scarlet? 
 Scarlet: {$name}!!!!!
 {$name}: Chill! I heard you the first time! What's going on, why are you freaking out?!
@@ -17,7 +17,7 @@ Scarlet: Hey I'm just the messenger, I got no clue. But she doesn't request meet
 Scarlet: ...maybe a promotion?
 {$name}: ...be for real. No way I've got an impromptu meeting with {$Boss} for a measly security promotion.
 {$name}: I'm so dead. So so dead. 
-Scarlet: Maybe... maybe it's about Cherry?#experssion:neutral_talking
+Scarlet: Maybe... maybe it's about Cherry?#experssion:normal
 {$name}: What? What do you mean?
 Scarlet: Well, you're the only one she's really spoken to. Maybe she wants to know what she said?
 {$name}: Or maybe she wants to crucify me for talking to her.
@@ -28,7 +28,7 @@ Scarlet: Kidding!#expression:happy
 Scarlet: Mostly.
 
 <<RemoveCharacter DialogueSignals "Scarlet">>
-<<SetCharacterLocation DialogueSignals "Boss" "Hallway">>
+<<SetCharacterLocation DialogueSignals "Zoe" "Hallway">>
 <<jump BBEG>>
 
 ===

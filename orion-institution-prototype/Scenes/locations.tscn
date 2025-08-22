@@ -1,17 +1,20 @@
-[gd_scene load_steps=6 format=3 uid="uid://3vnbb1aftlgl"]
+[gd_scene load_steps=7 format=3 uid="uid://3vnbb1aftlgl"]
 
+[ext_resource type="Script" uid="uid://d20h7y3toqcr6" path="res://Scripts/locations.gd" id="1_pky4m"]
 [ext_resource type="Script" uid="uid://ldo4ct6oqy35" path="res://Scripts/location.gd" id="1_wsf7f"]
-[ext_resource type="Texture2D" uid="uid://cs8d5ohsglv8g" path="res://Assets/Backgrounds/CAP_A1_Env_1.png" id="2_ynn5r"]
+[ext_resource type="Texture2D" uid="uid://chwt5i4jpk2f6" path="res://Assets/Backgrounds/CAP_A1_Security_Final.png" id="2_ynn5r"]
 [ext_resource type="Texture2D" uid="uid://bucasu4t1o8ty" path="res://Assets/Backgrounds/CAP_A1_Env_2.png" id="3_ibxhk"]
-[ext_resource type="Texture2D" uid="uid://d4ei4cgokc1v5" path="res://Assets/Backgrounds/CAP_A1_Env_3.png" id="4_6uftb"]
+[ext_resource type="Texture2D" uid="uid://bx7vxpy31nbpk" path="res://Assets/Backgrounds/CAP_A1_Cell_Final.png" id="4_ibxhk"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_wsf7f"]
 light_mode = 1
 
-[node name="Locations" type="Node2D"]
+[node name="Locations" type="Node2D" node_paths=PackedStringArray("light")]
 z_index = -1
 material = SubResource("CanvasItemMaterial_wsf7f")
 use_parent_material = true
+script = ExtResource("1_pky4m")
+light = NodePath("")
 
 [node name="Monitor_Room" type="Node2D" parent="." node_paths=PackedStringArray("right_location")]
 visible = false
@@ -60,7 +63,7 @@ metadata/_custom_type_script = "uid://ldo4ct6oqy35"
 [node name="Sprite2D" type="Sprite2D" parent="Cell"]
 use_parent_material = true
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("4_6uftb")
+texture = ExtResource("4_ibxhk")
 centered = false
 
 [node name="Cell2" type="Node2D" parent="." node_paths=PackedStringArray("left_location")]
@@ -77,7 +80,7 @@ metadata/_custom_type_script = "uid://ldo4ct6oqy35"
 modulate = Color(1, 0.561165, 0.682978, 1)
 use_parent_material = true
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("4_6uftb")
+texture = ExtResource("4_ibxhk")
 centered = false
 
 [node name="EndDay" type="Node2D" parent="."]
@@ -91,5 +94,5 @@ metadata/_custom_type_script = "uid://ldo4ct6oqy35"
 modulate = Color(0, 0, 0, 1)
 use_parent_material = true
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("4_6uftb")
+texture = ExtResource("2_ynn5r")
 centered = false

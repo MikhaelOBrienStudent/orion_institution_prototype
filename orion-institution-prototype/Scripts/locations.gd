@@ -1,18 +1,23 @@
 extends Node2D
 
-var all_locations: Array[Location]
+var all_locations: Array#[Location]
 var all_location_names: Array[String]
 
+@export var light: PointLight2D
 
 
-func _init() -> void:
-	for location: Location in get_children():
-		all_locations.append(location)
-		all_location_names.append(location.location_name)
+func _ready() -> void:
+	print("Locations initialising")
+	if all_locations.is_empty():
+		for child in get_children():
+			all_locations.append(child)
+			all_location_names.append(child.location_name)
+			print(child)
+		#for location: Location in all_locations:
+			#location.light = light
 	
 	SaveManagement.SaveGame.connect(Save)
 	SaveManagement.LoadGame.connect(Load)
-
 
 func UpdateCharacterLocation(character_name: String, character_location: String) -> void:
 	for location: Location in all_locations:
@@ -28,6 +33,15 @@ func RemoveCharacterFromAllLocations(character_name:String) -> void:
 func SetLocation(location_name: String) -> Location:
 	print("----")
 	print("Attempting to set location...")
+	if all_locations.is_empty():
+		for child in get_children():
+			if child.is_class("Location"):
+				all_locations.append(child)
+				all_location_names.append(child.location_name)
+				print(child)
+		#for location: Location in all_locations:
+			#location.light = light
+		
 	for location: Location in all_locations:
 		print("Checking {0}".format([location]))
 		if location.location_name == location_name:
@@ -58,6 +72,7 @@ func Save() -> void:
 	SaveManagement.add_save_data("locations", save_data)
 
 func Load(load_data:Dictionary) -> void:
+	return
 	if not load_data.has("locations"):
 		return
 	var location_data: Dictionary = load_data["locations"]["character_locations"]
